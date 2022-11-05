@@ -291,7 +291,7 @@ extern BOOL PinkUI();
         return YES;
     };
  
-    NSMutableArray <YTSettingsSectionItem *> *sectionItems = [NSMutableArray arrayWithArray:@[version, autoFull, ytMiniPlayer, fixGoogleSignIn, hideAutoplaySwitch, hideCastButton, hideCC, hideHUD, hideNotificationButton, hideShorts, hidePreviousAndNextButton, hideWatermarks, bigYTMiniPlayer, oledDarkMode, oledKeyBoard, dontEatMyContent, replacePreviousAndNextButton, reExplore, ytDisableHighContrastUI, RedUI, BlueUI, GreenUI, OrangeUI, PurpleUI, PinkUI]];
+    NSMutableArray <YTSettingsSectionItem *> *sectionItems = [NSMutableArray arrayWithArray:@[version, autoFull, ytMiniPlayer, fixGoogleSignIn, hideAutoplaySwitch, hideCC, hideHUD, hideNotificationButton, hideShorts, hidePreviousAndNextButton, hideWatermarks, bigYTMiniPlayer, oledDarkMode, oledKeyBoard, dontEatMyContent, replacePreviousAndNextButton, reExplore, ytDisableHighContrastUI, RedUI, BlueUI, GreenUI, OrangeUI, PurpleUI, PinkUI]];
     [delegate setSectionItems:sectionItems forCategory:YouTubePlusSection title:@"YouTubePlus" titleDescription:nil headerHidden:NO];
 }
 
