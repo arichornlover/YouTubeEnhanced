@@ -71,9 +71,9 @@ extern BOOL PinkUI();
 
 %hook YTSettingsSectionItemManager
 %new 
-- (void)updateCercubePlusSectionWithEntry:(id)entry {
+- (void)updateYouTubePlusSectionWithEntry:(id)entry {
     YTSettingsViewController *delegate = [self valueForKey:@"_dataDelegate"];
-    NSBundle *tweakBundle = CercubePlusBundle();
+    NSBundle *tweakBundle = YouTubePlusBundle();
 
     YTSettingsSectionItem *version = [%c(YTSettingsSectionItem)
     itemWithTitle:[NSString stringWithFormat:LOC(@"VERSION"), @(OS_STRINGIFY(TWEAK_VERSION))]
@@ -81,7 +81,7 @@ extern BOOL PinkUI();
     accessibilityIdentifier:nil
     detailTextBlock:nil
     selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-        return [%c(YTUIUtils) openURL:[NSURL URLWithString:@"https://github.com/qnblackcat/CercubePlus/releases/latest"]];
+        return [%c(YTUIUtils) openURL:[NSURL URLWithString:@"https://github.com/arichorn/YouTubePlus/releases/latest"]];
     }];
     
     YTSettingsSectionItem *PinkUI = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Pink UI" titleDescription:@"Pink UI (have every other ui colors off) App restart is required."];
@@ -209,15 +209,6 @@ extern BOOL PinkUI();
         [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"ytMiniPlayer_enabled"];
         return YES;
     }; 
-
-    YTSettingsSectionItem *hideCastButton = [[%c(YTSettingsSectionItem) alloc]initWithTitle:LOC(@"HIDE_CAST_BUTTON") titleDescription:LOC(@"HIDE_CAST_BUTTON_DESC")];
-    hideCastButton.hasSwitch = YES;
-    hideCastButton.switchVisible = YES;
-    hideCastButton.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"hideCastButton_enabled"];
-    hideCastButton.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
-        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideCastButton_enabled"];
-        return YES;
-    };
 
     YTSettingsSectionItem *hideWatermarks = [[%c(YTSettingsSectionItem) alloc]initWithTitle:LOC(@"HIDE_WATERMARKS") titleDescription:LOC(@"HIDE_WATERMARKS_DESC")];
     hideWatermarks.hasSwitch = YES;
