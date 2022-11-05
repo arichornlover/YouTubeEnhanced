@@ -154,7 +154,6 @@ BOOL GreenUI () {
 %hook YTSettings
 - (void)setDisableMDXDeviceDiscovery:(BOOL)arg1 { %orig(YES); }
 %end
-%end
 
 // Hide Watermarks
 %hook YTAnnotationsViewController
