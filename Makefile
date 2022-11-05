@@ -11,7 +11,7 @@ TWEAK_NAME = YouTubePlus
 DISPLAY_NAME = YouTube
 BUNDLE_ID = com.google.ios.youtube
  
-YTRebornPlus_INJECT_DYLIBS = .theos/obj/libcolorpicker.dylib .theos/obj/iSponsorBlock.dylib .theos/obj/YTUHD.dylib .theos/obj/YouPiP.dylib .theos/obj/YouTubeDislikesReturn.dylib .theos/obj/YTABConfig.dylib
+YTRebornPlus_INJECT_DYLIBS = Tweaks/YouTubePlus/Library/MobileSubstrate/DynamicLibraries/YouTubePlus.dylib .theos/obj/libcolorpicker.dylib .theos/obj/iSponsorBlock.dylib .theos/obj/YTUHD.dylib .theos/obj/YouPiP.dylib .theos/obj/YouTubeDislikesReturn.dylib .theos/obj/YTABConfig.dylib
 YTRebornPlus_FILES = YouTubePlus.xm Settings.xm
 YTRebornPlus_IPA = ./tmp/Payload/YouTube.app
 YTRebornPlus_CFLAGS = -fobjc-arc -DTWEAK_VERSION=$(PACKAGE_VERSION)
