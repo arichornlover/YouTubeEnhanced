@@ -1189,9 +1189,6 @@ void center() {
     if (bigYTMiniPlayer() && (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad)) {
        %init(Main);
     }
-    if (hideCastButton()) {
-       %init(gHideCastButton);
-    }
     if (hidePreviousAndNextButton()) {
        %init(gHidePreviousAndNextButton);
     }
