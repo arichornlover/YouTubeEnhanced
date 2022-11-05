@@ -6,30 +6,25 @@
 #import "Tweaks/YouTubeHeader/YTUIUtils.h"
 
 @interface YTSettingsSectionItemManager (YouPiP)
-- (void)updateCercubePlusSectionWithEntry:(id)entry;
+- (void)updateYouTubePlusSectionWithEntry:(id)entry;
 @end
 
-static const NSInteger CercubePlusSection = 500;
+static const NSInteger YouTubePlusSection = 500;
 
-extern NSBundle *CercubePlusBundle();
+extern NSBundle *YouTubePlusBundle();
 extern BOOL hideHUD();
 extern BOOL oled();
 extern BOOL oledKB();
 extern BOOL autoFullScreen();
-extern BOOL hideHoverCard();
 extern BOOL reExplore();
 extern BOOL bigYTMiniPlayer();
 extern BOOL hideCC();
 extern BOOL hideAutoplaySwitch();
-extern BOOL hideCercubeButton();
-extern BOOL hideCercubePiP();
-extern BOOL hideCercubeDownload();
 extern BOOL hideCastButton();
 extern BOOL hideWatermarks();
 extern BOOL ytMiniPlayer();
 extern BOOL hideShorts();
 extern BOOL hidePreviousAndNextButton();
-extern BOOL hidePaidPromotionCard();
 extern BOOL hideNotificationButton();
 extern BOOL fixGoogleSignIn();
 extern BOOL replacePreviousAndNextButton();
@@ -49,7 +44,7 @@ extern BOOL PinkUI();
     NSMutableArray *mutableOrder = [order mutableCopy];
     NSUInteger insertIndex = [order indexOfObject:@(1)];
     if (insertIndex != NSNotFound)
-        [mutableOrder insertObject:@(CercubePlusSection) atIndex:insertIndex + 1];
+        [mutableOrder insertObject:@(YouTubePlusSection) atIndex:insertIndex + 1];
     return mutableOrder;
 }
 %end
@@ -58,7 +53,7 @@ extern BOOL PinkUI();
 
 - (void)loadWithModel:(id)model fromView:(UIView *)view {
     %orig;
-    if ([[self valueForKey:@"_detailsCategoryID"] integerValue] == CercubePlusSection)
+    if ([[self valueForKey:@"_detailsCategoryID"] integerValue] == YouTubePlusSection)
         MSHookIvar<BOOL>(self, "_shouldShowSearchBar") = YES;
 }
 
@@ -188,15 +183,6 @@ extern BOOL PinkUI();
         return YES;
     };
 
-    YTSettingsSectionItem *hidePaidPromotionCard = [[%c(YTSettingsSectionItem) alloc] initWithTitle:LOC(@"HIDE_PAID_PROMOTION_CARDS") titleDescription:LOC(@"HIDE_PAID_PROMOTION_CARDS_DESC")];
-    hidePaidPromotionCard.hasSwitch = YES;
-    hidePaidPromotionCard.switchVisible = YES;
-    hidePaidPromotionCard.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"hidePaidPromotionCard_enabled"];
-    hidePaidPromotionCard.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
-        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hidePaidPromotionCard_enabled"];
-        return YES;
-    };
-
     YTSettingsSectionItem *hidePreviousAndNextButton = [[%c(YTSettingsSectionItem) alloc] initWithTitle:LOC(@"HIDE_PREVIOUS_AND_NEXT_BUTTON") titleDescription:LOC(@"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC")];
     hidePreviousAndNextButton.hasSwitch = YES;
     hidePreviousAndNextButton.switchVisible = YES;
@@ -222,34 +208,7 @@ extern BOOL PinkUI();
     ytMiniPlayer.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
         [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"ytMiniPlayer_enabled"];
         return YES;
-    };
-
-    YTSettingsSectionItem *hideCercubeButton = [[%c(YTSettingsSectionItem) alloc]initWithTitle:LOC(@"HIDE_CERCUBE_BUTTON") titleDescription:LOC(@"")];
-    hideCercubeButton.hasSwitch = YES;
-    hideCercubeButton.switchVisible = YES;
-    hideCercubeButton.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"hideCercubeButton_enabled"];
-    hideCercubeButton.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
-        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideCercubeButton_enabled"];
-        return YES;
-    };
-
-    YTSettingsSectionItem *hideCercubePiP = [[%c(YTSettingsSectionItem) alloc]initWithTitle:LOC(@"HIDE_CERCUBE_PIP_BUTTON") titleDescription:LOC(@"HIDE_CERCUBE_PIP_BUTTON_DESC")];
-    hideCercubePiP.hasSwitch = YES;
-    hideCercubePiP.switchVisible = YES;
-    hideCercubePiP.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"hideCercubePiP_enabled"];
-    hideCercubePiP.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
-        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideCercubePiP_enabled"];
-        return YES;
-    };
-
-    YTSettingsSectionItem *hideCercubeDownload = [[%c(YTSettingsSectionItem) alloc]initWithTitle:LOC(@"HIDE_CERCUBE_DOWNLOAD_BUTTON") titleDescription:LOC(@"HIDE_CERCUBE_DOWNLOAD_BUTTON_DESC")];
-    hideCercubeDownload.hasSwitch = YES;
-    hideCercubeDownload.switchVisible = YES;
-    hideCercubeDownload.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"hideCercubeDownload_enabled"];
-    hideCercubeDownload.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
-        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideCercubeDownload_enabled"];
-        return YES;
-    };
+    }; 
 
     YTSettingsSectionItem *hideCastButton = [[%c(YTSettingsSectionItem) alloc]initWithTitle:LOC(@"HIDE_CAST_BUTTON") titleDescription:LOC(@"HIDE_CAST_BUTTON_DESC")];
     hideCastButton.hasSwitch = YES;
@@ -266,15 +225,6 @@ extern BOOL PinkUI();
     hideWatermarks.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"hideWatermarks_enabled"];
     hideWatermarks.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
         [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideWatermarks_enabled"];
-        return YES;
-    };
-
-    YTSettingsSectionItem *hideHoverCard = [[%c(YTSettingsSectionItem) alloc]initWithTitle:LOC(@"HIDE_HOVER_CARD") titleDescription:LOC(@"HIDE_HOVER_CARD_DESC")];
-    hideHoverCard.hasSwitch = YES;
-    hideHoverCard.switchVisible = YES;
-    hideHoverCard.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"hideHoverCard_enabled"];
-    hideHoverCard.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
-        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideHoverCard_enabled"];
         return YES;
     };
 
@@ -350,13 +300,13 @@ extern BOOL PinkUI();
         return YES;
     };
  
-    NSMutableArray <YTSettingsSectionItem *> *sectionItems = [NSMutableArray arrayWithArray:@[version, autoFull, ytMiniPlayer, fixGoogleSignIn, hideAutoplaySwitch, hideCercubeButton, hideCercubePiP, hideCercubeDownload, hideCastButton, hideCC, hideHUD, hideHoverCard, hideNotificationButton, hideShorts, hidePaidPromotionCard, hidePreviousAndNextButton, hideWatermarks, bigYTMiniPlayer, oledDarkMode, oledKeyBoard, dontEatMyContent, replacePreviousAndNextButton, reExplore, ytDisableHighContrastUI, RedUI, BlueUI, GreenUI, OrangeUI, PurpleUI, PinkUI]];
-    [delegate setSectionItems:sectionItems forCategory:CercubePlusSection title:@"CercubePlus" titleDescription:nil headerHidden:NO];
+    NSMutableArray <YTSettingsSectionItem *> *sectionItems = [NSMutableArray arrayWithArray:@[version, autoFull, ytMiniPlayer, fixGoogleSignIn, hideAutoplaySwitch, hideCastButton, hideCC, hideHUD, hideNotificationButton, hideShorts, hidePreviousAndNextButton, hideWatermarks, bigYTMiniPlayer, oledDarkMode, oledKeyBoard, dontEatMyContent, replacePreviousAndNextButton, reExplore, ytDisableHighContrastUI, RedUI, BlueUI, GreenUI, OrangeUI, PurpleUI, PinkUI]];
+    [delegate setSectionItems:sectionItems forCategory:YouTubePlusSection title:@"YouTubePlus" titleDescription:nil headerHidden:NO];
 }
 
 - (void)updateSectionForCategory:(NSUInteger)category withEntry:(id)entry {
-    if (category == CercubePlusSection) {
-        [self updateCercubePlusSectionWithEntry:entry];
+    if (category == YouTubePlusSection) {
+        [self updateYouTubePlusSectionWithEntry:entry];
         return;
     }
     %orig;
