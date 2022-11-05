@@ -1,4 +1,4 @@
-TARGET = iphone:clang:15.5:14.0
+TARGET = iphone:clang:latest:13.0
 YouTubePlus_USE_FLEX = 0
 YouTubePlus_USE_FISHHOOK = 0
 ARCHS = arm64
