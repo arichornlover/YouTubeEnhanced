@@ -82,7 +82,7 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
-      - name: Download Cercube & prepare YouTube iPA
+      - name: Download YouTube App Extensions & prepare YouTube iPA
         run: |
           curl "https://raw.githubusercontent.com/Muirey03/RemoteLog/master/RemoteLog.h" --output "$THEOS/include/RemoteLog.h"
           wget "$YOUTUBE_URL" --no-verbose -O ./main/YouTube.ipa
