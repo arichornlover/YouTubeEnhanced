@@ -1,6 +1,25 @@
-## YouTube with extra features!
+## YouTube but with more features!
 
-![IMG_3425](https://user-images.githubusercontent.com/52943116/179364947-760ffb4d-a280-4203-9a9d-b2b7462a3c69.PNG)
+
+![IMAGE_CERCUBEPLUS_PREVIEW](https://user-images.githubusercontent.com/78001398/217129808-4efa2213-9e01-4fa4-a9d4-04c90e7fa88b.png)
+
+---
+
+<p align="center">
+    <img src="https://img.shields.io/badge/Platform-iOS%20%7C%20iPadOS%2014.0%2B-yellow" alt="Badge"/>  
+</p>
+
+<p align="center">
+    <a href="https://github.com/arichorn/CercubePlusExtra/release/latest"><img src="https://custom-icon-badges.demolab.com/github/v/release/arichorn/CercubePlusExtra?color=brightgreen&label=Latest%20release" alt="Badge"></img></a>
+    <a href="https://github.com/arichorn/CercubePlusExtra/releases/latest"><img src="https://img.shields.io/github/downloads/arichorn/CercubePlusExtra/total?label=Download" alt="Badge"></img></a>
+    <a href="https://github.com/arichorn/CercubePlusExtra/commit"><img src="https://custom-icon-badges.demolab.com/github/last-commit/arichorn/CercubePlusExtra?logo=history&logoColor=white&label=Last commit" alt="Badge"></img></a>
+</p>
+
+<p align="center">
+   <img src="https://img.shields.io/github/stars/arichorn/CercubePlusExtra?style=social" alt="Badge"/>
+   <img src="https://img.shields.io/github/forks/arichorn/CercubePlusExtra?style=social" alt="Badge"/>
+   <a href="https://github.com/qnblackcat/uYouPlus#support-the-developers"><img src="https://img.shields.io/badge/-Support-lightgrey?style=social&logo=paypal" alt="Badge"></img></a>
+</p>
 
 # Table of Contents
 
@@ -13,29 +32,111 @@
 
 # Credits
 
-- [Galactic-Dev](https://github.com/Galactic-Dev) and [Luewii](https://github.com/Luewii) for [iSponsorBlock](https://github.com/Galactic-Dev/iSponsorBlock).
+<table id='maintainer credit'>
+Special thanks to these developer(s) for maintaining and improving CercubePlus!
+<tr>
+<td id='arichorn'>
+<a href='https://github.com/arichorn'>
+<img src='https://github.com/arichorn.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://github.com/arichorn'>arichorn</a></h4>
+</td>
+<td id='dayanch96'>
+<a href='https://github.com/dayanch96'>
+<img src='https://github.com/dayanch96.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://github.com/dayanch96'>dayanch96</a></h4>
+</td>
 
-- [HASHBANG Productions](https://github.com/hbang) for [Alderis Color Picker](https://github.com/hbang/Alderis) - a dependency of iSponsorBlock.
-
-- [PoomSmart](https://twitter.com/poomsmart) - the developer of many tweaks used by YTRebornPlus, see [Version info - Download](#download) for more details.
-
-- [level3tjg](https://twitter.com/level3tjg) for [YTMiniplayerEnabler](https://github.com/level3tjg/YTMiniplayerEnabler).
-
-- [BandarHL](https://twitter.com/bandarhl) for a bunch of improvements.
-
-- [Julioverne](https://twitter.com/ijulioverne) for the solution to skip Google's safety warning when logging in.
-
-- [Lyvendia](https://github.com/Lyvendia/) for [YTSpeed](https://github.com/Lyvendia/YTSpeed/)
-
-- [therealFoxster](https://github.com/therealFoxster) for [DontEatMyContent](https://github.com/therealFoxster/DontEatMyContent).
-
-- [MiRO92](https://twitter.com/miro92) for [YTNoShorts](https://github.com/MiRO92/YTNoShorts/blob/main/Tweak.h).
-
-- [YouTube Extensions](https://github.com/CokePokes/YoutubeExtensions) by [CokePokes](https://github.com/CokePokes/).
-
-- [theos team](https://github.com/theos/theos) for theos & theos-jailed.
-
-- Thanks to all the translators who have contributed to CercubePlus. Your contribution is highly appreciated!
+<table id='credit'>
+Special thanks to all the developers who have contributed to CercubePlus!
+<tr>
+<td id='poomsmart'>
+<a href='https://github.com/PoomSmart'>
+<img src='https://github.com/PoomSmart.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://twitter.com/poomsmart'>PoomSmart</a></h4>
+</td>
+<td id='level3tjg'>
+<a href='https://github.com/level3tjg'>
+<img src='https://github.com/level3tjg.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://twitter.com/level3tjg'>level3tjg</a></h4>
+</td>
+<td id='bandarHL'>
+<a href='https://github.com/BandarHL'>
+<img src='https://github.com/BandarHL.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://twitter.com/bandarhl'>BandarHelal</a></h4>
+</td>
+<td id='galactic-dev'>
+<a href='https://github.com/Galactic-Dev'>
+<img src='https://github.com/Galactic-Dev.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://twitter.com/dev_galactic'>galactic</a></h4>
+</td>
+</tr>
+  
+<tr>
+<td id='hbang'>
+<a href='https://github.com/hbang'>
+<img src='https://github.com/hbang.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://twitter.com/hashbang'>HASHBANG</a></h4>
+</td>
+<td id='lyvendia'>
+<a href='https://github.com/Lyvendia'>
+<img src='https://github.com/Lyvendia.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://github.com/Lyvendia'>Lyvendia</a></h4>
+</td>
+<td id='foxster'>
+<a href='https://github.com/therealFoxster'>
+<img src='https://github.com/therealFoxster.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://twitter.com/therealFoxster'>Foxster</a></h4>
+</td>
+<td id='julioverne'>
+<a href='https://github.com/julioverne'>
+<img src='https://github.com/julioverne.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://twitter.com/ijulioverne'>julioverne</a></h4>
+</td>
+</tr>
+  
+<tr>
+<td id='ichitaso'>
+<a href='https://github.com/ichitaso'>
+<img src='https://github.com/ichitaso.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://twitter.com/ichitaso'>ichitaso</a></h4>
+</td>
+<td id='ahmed-bafkir'>
+<a href='https://github.com/AhmedBafkir'>
+<img src='https://github.com/AhmedBafkir.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://twitter.com/Peaceful_0'>Ahmed Bafkir</a></h4>
+</td>
+<td id='cokepokes'>
+<a href='https://github.com/CokePokes'>
+<img src='https://github.com/CokePokes.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://twitter.com/cokepokes'>CokePokes</a></h4>
+</td>
+<td id='isnackable'>
+<a href='https://github.com/ISnackable'>
+<img src='https://github.com/ISnackable.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://isnackable.me/'>Tommy Teo</a></h4>
+</td>
+<td id='theos-team'>
+<a href='https://github.com/theos/theos'>
+<img src='https://github.com/theos.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://theos.dev'>theos</a></h4>
+</td>
+</tr>
+</table>
 
 # Features
 
@@ -52,7 +153,9 @@
 
 5. **YTClassicVideoQuality:** since YouTube v16.xx, you need one more step to change the video quality. YTClassicVideoQuality brings back the old video quality selector, which is a lot better than the new one.
 
-6. **YTABGoodies:** allow you to disable some YouTube A/B testing features. It is a combination of several tweaks, such as:
+6. **YTNoHoverCards:** offer an option to enable/disable the annoying suggested videos show up at the end of the videos.
+
+7. **YTABGoodies:** allow you to disable some YouTube A/B testing features. It is a combination of several tweaks, such as:
 
 - YouAreThere: disable "Video paused. Continue watching?" popup in the YouTube app when you play a long video.
 
@@ -60,28 +163,34 @@
 
 - YTNoCheckLocalNetwork: block the Local Network permission popup.
 
-7. **NOYTPremium:** remove YouTube Premium upsell alerts.
+8. **NOYTPremium:** remove YouTube Premium upsell alerts.
 
-8. **YTSpeed**: add 2.25, 2.5, 2.75, and 3x playback speed
+9. **YTSpeed**: add 2.25x, 2.5x, 2.75x, 3x, 3.25x, 3.5x, 3.75x and 4x playback speed
 
-9. **YTMiniplayerEnabler**: enable Miniplayer for all YouTube videos.
+10. **YTMiniplayerEnabler**: enable Miniplayer for all YouTube videos.
 
-10. **DontEatMyContent**: prevent the notch/Dynamic Island from munching on 2:1 video content in YouTube.
+11. **DontEatMyContent**: prevent the notch/Dynamic Island from munching on 2:1 video content in YouTube.
 
-11. **YTShortsProgress**: always enable progress bar and scrubbing in YouTube Shorts (iPhone only).
+12. **YTShortsProgress**: always enable progress bar and scrubbing in YouTube Shorts (iPhone only).
 
-12. **YTABConfig**: allow user to control over YouTube A/B testing flags.
+13. **YTABConfig**: allow user to control over YouTube A/B testing flags.
+
+14. **YouMute**: Mute/unmute videos in iOS YouTube directly.
+
+15. **LowContrastMode**: makes the YouTube Interface Low Contrast as possible to make it easier on the eyes.
 
 any many more...
 </details>
 
 # Known issues
 
-1. **YTUHD**: [Stuttering on 4K videos](https://github.com/qnblackcat/uYouPlus/issues/6).
+1. **LowContrastMode**: this tweak doesn't work everywhere with every ui element on the YouTube App.
 
-2. **YouPiP** (iOS 14.0 - 14.4.2): due to Apple's fault, you may encounter the *speedup-bug* as described [here](https://drive.google.com/file/d/1NKdv1fr_KRWgD8nhkMDfG2eLBnbdeVtX/view?usp=sharing). The bug also happens when you try to play multi-sources of sound at the same time. Enable **LegacyPiP** is a workaround. Keep in mind that LegacyPiP also removes UHD quality and breaks YouTube Autoplay next. Use it at your own risk!
+2. **YTUHD**: [Stuttering on 4K videos](https://github.com/qnblackcat/uYouPlus/issues/6).
 
-3. **Not a bug**: 
+3. **YouPiP** (iOS 14.0 - 14.4.2): due to Apple's fault, you may encounter the *speedup-bug* as described [here](https://drive.google.com/file/d/1NKdv1fr_KRWgD8nhkMDfG2eLBnbdeVtX/view?usp=sharing). The bug also happens when you try to play multi-sources of sound at the same time. Enable **LegacyPiP** is a workaround. Keep in mind that LegacyPiP also removes UHD quality and breaks YouTube Autoplay next. Use it at your own risk!
+
+4. **Not a bug**: 
 
 - The app won't be able to receive push notifications if you use a free developer account to sideload it. 
 
@@ -89,33 +198,37 @@ any many more...
 
 # Download (IPA)
 
-- **YouTubePlus** (or you can call it YouTube+) requires iOS & iPadOS 14.0 and later. The latest version of **YouTubePlus** can be found in the [Release tab](https://github.com/arichorn/YouTubePlus/releases).
+- **YouTubePlus** (or you can call it YouTube+) requires iOS & iPadOS 14.0 and later. The latest version of **YouTubePlus** can be found in the [Release tab](https://github.com/arichorn/YouTubePlus/releases/latest).
 
-~~- For AltStore user: [Open in AltStore (v17.42.7-5.3.11)](https://tinyurl.com/57s9yus9) - It will take a while to install because AltStore needs to download the IPA first.~~
+- For AltStore user: [Open in AltStore (v18.08.1-5.3.11)](https://tinyurl.com/4946cnwx) - It will take a while to install because AltStore needs to download the IPA first.
 
-- Version info: _(Oct 29)_
+- Version info: _(Mar 13 2023)_
 
 <details>
   <summary>Expand!</summary>
 
 | **Tweaks/App** | **Developer** | **Version** | **Open source** |
 | - | - | :-: | :-:  |
-| **YouTube** | Google Inc | 17.43.1 | ✖︎ |
+| **YouTube** | Google Inc | 18.08.1 | ✖︎ |
 | **Open in YouTube** | [CokePokes](https://github.com/CokePokes/) | 1.2 | ✖︎ |
 | **YTNoShorts** | [MiRO92](https://twitter.com/miro92) | 1.0.2 | [✔︎](https://github.com/MiRO92/YTNoShorts) |
 | **iSponsorBlock** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.0-15 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
 | **BigYTMiniPlayer** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.0-1 | [✔︎](https://github.com/Galactic-Dev/BigYTMiniPlayer) |
+| **YTNoHoverCards** | [level3tjg](https://twitter.com/level3tjg) | 0.0.3 | [✔︎](https://github.com/level3tjg/YTNoHoverCards) |
 | **YTMiniplayerEnabler** | [level3tjg](https://twitter.com/level3tjg) | 0.0.2 | [✔︎](https://github.com/level3tjg/YTMiniplayerEnabler) |
-| **YTUHD** | [PoomSmart](https://twitter.com/poomsmart) | 1.3.4 | [✔︎](https://github.com/PoomSmart/YTUHD) |
-| **YouPiP** | [PoomSmart](https://twitter.com/poomsmart) | 1.7.14 | [✔︎](https://github.com/PoomSmart/YouPiP) |
-| **YTABConfig** | [PoomSmart](https://twitter.com/poomsmart) | 1.4.2 | [✔︎](https://github.com/PoomSmart/YTABConfig) |
+| **DontEatMyContent** | [therealFoxster](https://github.com/therealFoxster) | 1.0.6 | [✔︎](https://github.com/therealFoxster/DontEatMyContent) |
+| **LowContrastMode** | [arichorn](https://twitter.com/LilithAcc) | 1.2.1-4 | [✔︎](https://github.com/arichorn/LowContrastMode) |
+| **YTUHD** | [PoomSmart](https://twitter.com/poomsmart) | 1.3.5 | [✔︎](https://github.com/PoomSmart/YTUHD) |
+| **YouPiP** | [PoomSmart](https://twitter.com/poomsmart) | 1.7.19 | [✔︎](https://github.com/PoomSmart/YouPiP) |
+| **YouMute** | [PoomSmart](https://twitter.com/poomsmart) | 1.1.1 | [✔︎](https://github.com/PoomSmart/YouMute) |
+| **YTABConfig** | [PoomSmart](https://twitter.com/poomsmart) | 1.5.0 | [✔︎](https://github.com/PoomSmart/YTABConfig) |
 | **IAmYouTube** | [PoomSmart](https://twitter.com/poomsmart) | 1.2.0 | [✔︎](https://github.com/PoomSmart/IAmYouTube) |
 | **YTReExplore** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTReExplore) |
 | **NoYTPremium** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.4 | [✔︎](https://github.com/PoomSmart/NoYTPremium) |
-| **YTABGoodies** | [PoomSmart](https://twitter.com/poomsmart) | 1.0 | [✔︎](https://poomsmart.github.io/repo/depictions/ytabgoodies.html) |
+| **YTNoPaidPromo** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.0 | [✔︎](https://github.com/PoomSmart/YTNoPaidPromo) |
 | **YTAutoFullScreen** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.3 | [✔︎](https://github.com/PoomSmart/YTAutoFullScreen) |
 | **YTShortsProgress** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTShortsProgress) |
-| **Return YouTube Dislike** | [PoomSmart](https://twitter.com/poomsmart) | 1.7.3 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
+| **Return YouTube Dislike** | [PoomSmart](https://twitter.com/poomsmart) | 1.11.1 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
 
 </details>
 
@@ -129,5 +242,7 @@ any many more...
   - Paypal: https://www.paypal.com/paypalme/DBrett684 
   - Venmo: https://venmo.com/u/DavidBrett
 
-# Building (optional)
-See [Building - Wiki](https://github.com/qnblackcat/CercubePlus/wiki/Building)
+# Building(s) (optional)
+See [CercubePlusExtra/Building - Wiki](https://github.com/arichorn/CercubePlusExtra/wiki/Building)
+or Another Version [uYouPlus/Building - Wiki](https://github.com/qnblackcat/uYouPlus/wiki/Building)
+
