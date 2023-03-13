@@ -1,10 +1,11 @@
 #import "Tweaks/YouTubeHeader/YTPlayerViewController.h"
+#import "Tweaks/YouTubeHeader/YTQTMButton.h"
 
 #define LOC(x) [tweakBundle localizedStringForKey:x value:nil table:nil]
 #define YT_BUNDLE_ID @"com.google.ios.youtube"
 #define YT_NAME @"YouTube"
-#define UNSUPPORTED_DEVICES @[@"iPhone14,3", @"iPhone14,6", @"iPhone14,8"] // DontEatMycontent
-#define THRESHOLD 1.99 // DontEatMycontent
+#define DEMC_UNSUPPORTED_DEVICES @[@"iPhone14,3", @"iPhone14,6", @"iPhone14,8"] // DontEatMycontent
+#define DEMC_THRESHOLD 1.99 // DontEatMycontent
 
 // YTSpeed
 @interface YTVarispeedSwitchControllerOption : NSObject
@@ -30,27 +31,30 @@
 - (void)setRate:(float)rate;
 @end
 
-// CercubePlus
+// YouTubePlus
+@interface YTChipCloudCell : UIView
+@end
+
 @interface YTPlayabilityResolutionUserActionUIController : NSObject // Skips content warning before playing *some videos - @PoomSmart
 - (void)confirmAlertDidPressConfirm;
 @end 
 
-@interface YTMainAppControlsOverlayView: UIView
+@interface YTMainAppControlsOverlayView : UIView
 @end
 
 @interface YTTransportControlsButtonView : UIView
 @end
 
-// Cercube button in Nav bar
-@interface MDCButton : UIButton
+@interface YTPlaybackButton : UIControl
 @end
 
-@interface YTQTMButton : UIButton
+@interface YTSegmentableInlinePlayerBarView
+@property (nonatomic, assign, readwrite) BOOL enableSnapToChapter;
 @end
 
 @interface YTRightNavigationButtons : UIView
-@property (nonatomic, strong, readwrite) MDCButton *cercubeButton;
 @property YTQTMButton *notificationButton;
+@property YTQTMButton *sponsorBlockButton;
 @end
 
 // IAmYouTube
@@ -85,28 +89,45 @@
 @end
 
 // DontEatMyContent
-NSString* deviceName();
-BOOL isDeviceSupported();
-void activate(); 
-void deactivate();
-void center();
+BOOL DEMC_deviceIsSupported();
+void DEMC_activate();
+void DEMC_deactivate(); 
+void DEMC_centerRenderingView();
 
 @interface YTPlayerView : UIView
-- (BOOL)zoomToFill;
 - (id)renderingView;
-- (id)playerView;
-@end
-
-@interface MLHAMSBDLSampleBufferRenderingView : UIView
 @end
 
 @interface YTMainAppVideoPlayerOverlayViewController : UIViewController
 - (BOOL)isFullscreen;
-- (id)videoPlayerOverlayView;
-- (id)activeVideoPlayerOverlay;
 @end
 
-// OLED Darkmode
+@interface HAMSBDLSampleBufferRenderingView : UIView
+@end
+
+@interface MLHAMSBDLSampleBufferRenderingView : HAMSBDLSampleBufferRenderingView
+@end
+
+@interface YTMainAppEngagementPanelViewController : UIViewController
+- (BOOL)isLandscapeEngagementPanel;
+- (BOOL)isPeekingSupported;
+@end
+
+@interface YTEngagementPanelContainerViewController : UIViewController
+- (BOOL)isLandscapeEngagementPanel;
+- (BOOL)isPeekingSupported;
+@end
+
+// App Theme
+@interface YCHLiveChatView : UIView
+@end
+
+@interface YTFullscreenEngagementOverlayView : UIView
+@end
+
+@interface YTRelatedVideosView : UIView
+@end
+
 @interface ELMView: UIView
 @end
 
