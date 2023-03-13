@@ -15,13 +15,13 @@ static int GetSelection(NSString *key) {
 static int colorContrastMode() {
     return [[NSUserDefaults standardUserDefaults] integerForKey:@"lcmColor"];
 }
-static const NSInteger CercubePlusSection = 500;
+static const NSInteger YouTubePlusSection = 500;
 
-@interface YTSettingsSectionItemManager (CercubePlus)
-- (void)updateCercubePlusSectionWithEntry:(id)entry;
+@interface YTSettingsSectionItemManager (YouTubePlus)
+- (void)updateYouTubePlusSectionWithEntry:(id)entry;
 @end
 
-extern NSBundle *CercubePlusBundle();
+extern NSBundle *YouTubePlusBundle();
 
 // Settings
 %hook YTAppSettingsPresentationData
@@ -30,7 +30,7 @@ extern NSBundle *CercubePlusBundle();
     NSMutableArray *mutableOrder = [order mutableCopy];
     NSUInteger insertIndex = [order indexOfObject:@(1)];
     if (insertIndex != NSNotFound)
-        [mutableOrder insertObject:@(CercubePlusSection) atIndex:insertIndex + 1];
+        [mutableOrder insertObject:@(YouTubePlusSection) atIndex:insertIndex + 1];
     return mutableOrder;
 }
 %end
@@ -45,9 +45,9 @@ extern NSBundle *CercubePlusBundle();
 
 %hook YTSettingsSectionItemManager
 %new(v@:@)
-- (void)updateCercubePlusSectionWithEntry:(id)entry {
+- (void)updateYouTubePlusSectionWithEntry:(id)entry {
     NSMutableArray *sectionItems = [NSMutableArray array];
-    NSBundle *tweakBundle = CercubePlusBundle();
+    NSBundle *tweakBundle = YouTubePlusBundle();
     Class YTSettingsSectionItemClass = %c(YTSettingsSectionItem);
     YTSettingsViewController *settingsViewController = [self valueForKey:@"_settingsViewControllerDelegate"];
 
@@ -57,7 +57,7 @@ extern NSBundle *CercubePlusBundle();
     accessibilityIdentifier:nil
     detailTextBlock:nil
     selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-        return [%c(YTUIUtils) openURL:[NSURL URLWithString:@"https://github.com/arichorn/CercubePlusExtra/releases/latest"]];
+        return [%c(YTUIUtils) openURL:[NSURL URLWithString:@"https://github.com/arichorn/YouTubePlus/releases/latest"]];
     }];
     [sectionItems addObject:main];
 
@@ -666,12 +666,12 @@ extern NSBundle *CercubePlusBundle();
     }];
     [sectionItems addObject:miscellaneousGroup];
 
-    [settingsViewController setSectionItems:sectionItems forCategory:CercubePlusSection title:@"CercubePlus" titleDescription:LOC(@"TITLE DESCRIPTION") headerHidden:YES];
+    [settingsViewController setSectionItems:sectionItems forCategory:YouTubePlusSection title:@"YouTubePlus" titleDescription:LOC(@"TITLE DESCRIPTION") headerHidden:YES];
 }
 
 - (void)updateSectionForCategory:(NSUInteger)category withEntry:(id)entry {
-    if (category == CercubePlusSection) {
-        [self updateCercubePlusSectionWithEntry:entry];
+    if (category == YouTubePlusSection) {
+        [self updateYouTubePlusSectionWithEntry:entry];
         return;
     }
     %orig;
