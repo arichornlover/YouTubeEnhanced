@@ -10,14 +10,14 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/arichorn/CercubePlusExtra/release/latest"><img src="https://custom-icon-badges.demolab.com/github/v/release/arichorn/CercubePlusExtra?color=brightgreen&label=Latest%20release" alt="Badge"></img></a>
-    <a href="https://github.com/arichorn/CercubePlusExtra/releases/latest"><img src="https://img.shields.io/github/downloads/arichorn/CercubePlusExtra/total?label=Download" alt="Badge"></img></a>
-    <a href="https://github.com/arichorn/CercubePlusExtra/commit"><img src="https://custom-icon-badges.demolab.com/github/last-commit/arichorn/CercubePlusExtra?logo=history&logoColor=white&label=Last commit" alt="Badge"></img></a>
+    <a href="https://github.com/arichorn/YouTubePlus/release/latest"><img src="https://custom-icon-badges.demolab.com/github/v/release/arichorn/YouTubePlus?color=brightgreen&label=Latest%20release" alt="Badge"></img></a>
+    <a href="https://github.com/arichorn/YouTubePlus/releases/latest"><img src="https://img.shields.io/github/downloads/arichorn/YouTubePlus/total?label=Download" alt="Badge"></img></a>
+    <a href="https://github.com/arichorn/YouTubePlus/commit"><img src="https://custom-icon-badges.demolab.com/github/last-commit/arichorn/YouTubePlus?logo=history&logoColor=white&label=Last commit" alt="Badge"></img></a>
 </p>
 
 <p align="center">
-   <img src="https://img.shields.io/github/stars/arichorn/CercubePlusExtra?style=social" alt="Badge"/>
-   <img src="https://img.shields.io/github/forks/arichorn/CercubePlusExtra?style=social" alt="Badge"/>
+   <img src="https://img.shields.io/github/stars/arichorn/YouTubePlus?style=social" alt="Badge"/>
+   <img src="https://img.shields.io/github/forks/arichorn/YouTubePlus?style=social" alt="Badge"/>
    <a href="https://github.com/qnblackcat/uYouPlus#support-the-developers"><img src="https://img.shields.io/badge/-Support-lightgrey?style=social&logo=paypal" alt="Badge"></img></a>
 </p>
 
@@ -200,7 +200,7 @@ any many more...
 
 - **YouTubePlus** (or you can call it YouTube+) requires iOS & iPadOS 14.0 and later. The latest version of **YouTubePlus** can be found in the [Release tab](https://github.com/arichorn/YouTubePlus/releases/latest).
 
-- For AltStore user: [Open in AltStore (v18.08.1-5.3.11)](https://tinyurl.com/4946cnwx) - It will take a while to install because AltStore needs to download the IPA first.
+- For AltStore user: [Open in AltStore (v18.08.1)](https://tinyurl.com/4946cnwx) - It will take a while to install because AltStore needs to download the IPA first.
 
 - Version info: _(Mar 13 2023)_
 
