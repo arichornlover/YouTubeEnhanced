@@ -224,6 +224,53 @@ static BOOL didFinishLaunching;
 - (BOOL)shouldShowUpgradeDialog { return NO;}
 %end
 
+// No YouTube Ads
+%hook YTIPlayerResponse
+- (BOOL)isMonetized {
+    return NO;
+}
+%end
+
+%hook YTDataUtils
++ (id)spamSignalsDictionary {
+    return NULL;
+}
+%end
+
+%hook YTAdsInnerTubeContextDecorator
+- (void)decorateContext:(id)arg1 {
+}
+%end
+
+%hook YTSectionListViewController
+- (void)loadWithModel:(id)model {
+}
+%end
+
+// No YouTube Search Ads
+%hook YTIElementRenderer
+- (NSData *)elementData {
+    if (self.hasCompatibilityOptions && self.compatibilityOptions.hasAdLoggingData)
+        return nil;
+    return %orig;
+}
+%end
+
+%hook YTSectionListViewController
+
+- (void)loadWithModel:(YTISectionListRenderer *)model {
+    NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = model.contentsArray;
+    NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
+        YTIItemSectionRenderer *sectionRenderer = renderers.itemSectionRenderer;
+        YTIItemSectionSupportedRenderers *firstObject = [sectionRenderer.contentsArray firstObject];
+        return firstObject.hasPromotedVideoRenderer || firstObject.hasCompactPromotedVideoRenderer || firstObject.hasPromotedVideoInlineMutedRenderer;
+    }];
+    [contentsArray removeObjectsAtIndexes:removeIndexes];
+    %orig;
+}
+
+%end
+
 // Disabled - Autoplay Settings Section - qnblackcat
 %hook YTSettingsSectionItemManager
 - (void)updateAutoplaySectionWithEntry:(id)arg1 {}
