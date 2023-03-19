@@ -1997,6 +1997,9 @@ void DEMC_centerRenderingView() {
        %init(gHideChipBar);
     }
 
+    // iSponsorBlock Button (hidden by default)
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hideSponsorBlockButton_enabled"];
+
     // Change the default value of some options
     NSArray *allKeys = [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys];
     if (![allKeys containsObject:@"RYD-ENABLED"]) { 
