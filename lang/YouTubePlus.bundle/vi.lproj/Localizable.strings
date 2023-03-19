@@ -1,0 +1,180 @@
+// Settings
+"VERSION" = "YouTubePlus Phiên bản: %@";
+"VERSION_CHECK" = "Nhấn để kiểm tra cập nhật!";
+
+// Video player options
+"VIDEO_PLAYER_OPTIONS" = "Tùy chọn trình phát video";
+
+"TAP_TO_SKIP" = "Tắt nhấn để bỏ qua";
+"TAP_TO_SKIP_DESC" = "Tắt tính năng nhấn để bỏ qua trong trình phát video. Khởi động lại ứng dụng là bắt buộc.";
+
+"SNAP_TO_CHAPTER" = "Tắt Snap to chapter";
+"SNAP_TO_CHAPTER_DESC" = "Tắt tính năng tự động chuyển sang chương khi tìm kiếm trong video. Bắt buộc khởi động lại ứng dụng.";
+
+"PINCH_TO_ZOOM" = "Tắt chụm để thu phóng";
+"PINCH_TO_ZOOM_DESC" = "Bắt buộc khởi động lại ứng dụng";
+
+// Video controls overlay options
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "Tùy chọn lớp phủ điều khiển video";
+
+"HIDE_CHANNEL_WATERMARK" = "Ẩn hình mờ kênh";
+"HIDE_CHANNEL_WATERMARK_DESC" = "Ẩn hình mờ của kênh trong lớp phủ điều khiển video. Khởi động lại ứng dụng là bắt buộc.";
+
+"HIDE_SHADOW_OVERLAY_BUTTONS" = "Ẩn các nút lớp phủ bóng";
+"HIDE_SHADOW_OVERLAY_BUTTONS_DESC" = "Ẩn lớp phủ bóng trên các nút Phát/Tạm dừng, Trước đó và Tiếp theo";
+
+"HIDE_DARK_OVERLAY_BACKGROUND" = "Ẩn nền lớp phủ tối";
+"HIDE_DARK_OVERLAY_BACKGROUND_DESC" = "Ẩn nền lớp phủ tối của trình phát video.";
+
+"RED_PROGRESS_BAR" = "Thanh tiến trình màu đỏ";
+"RED_PROGRESS_BAR_DESC" = "Mang lại thanh tiến trình màu đỏ. Khởi động lại ứng dụng là bắt buộc.";
+
+"DONT_EAT_MY_CONTENT" = "Ngăn Notch/Đảo trên nội dung video 2:1 (DontEatMyContent)";
+"DONT_EAT_MY_CONTENT_DESC" = "Ngăn notch/Dynamic Island nghiền ngẫm nội dung video 2:1 trên YouTube. Khởi động lại ứng dụng là bắt buộc.";
+
+"HIDE_HEATWAVES" = "Ẩn sóng nhiệt";
+"HIDE_HEATWAVES_DESC" = "Ẩn Sóng nhiệt trong trình phát video. Khởi động lại ứng dụng là bắt buộc.";
+
+// Shorts controls overlay options
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Tùy chọn hiển thị trong Shorts";
+
+"HIDE_SHORTS_CHANNEL_AVATAR" = "Ẩn hình đại diện của kênh Shorts";
+"HIDE_SHORTS_CHANNEL_AVATAR_DESC" = "";
+
+"HIDE_SHORTS_LIKE_BUTTON" = "Ẩn nút thích Shorts";
+"HIDE_SHORTS_LIKE_BUTTON_DESC" = "";
+
+"HIDE_SHORTS_DISLIKE_BUTTON" = "Ẩn nút không thích Shorts";
+"HIDE_SHORTS_DISLIKE_BUTTON_DESC" = "";
+
+"HIDE_SHORTS_COMMENT_BUTTON" = "Ẩn nút bình luận Shorts";
+"HIDE_SHORTS_COMMENT_BUTTON_DESC" = "";
+
+"HIDE_SHORTS_REMIX_BUTTON" = "Ẩn nút phối lại video ngắn";
+"HIDE_SHORTS_REMIX_BUTTON_DESC" = "";
+
+"HIDE_SHORTS_SHARE_BUTTON" = "Ẩn nút chia sẻ Shorts";
+"HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
+
+"HIDE_SUPER_THANKS" = "Ẩn biểu ngữ 'Mua hàng Vô cùng cảm ơn'";
+"HIDE_SUPER_THANKS_DESC" = "Ẩn biểu ngữ "Mua hàng Vô cùng cảm ơn" trong Shorts.";
+
+"DISABLE_RESUME_TO_SHORTS" = "Tắt sơ yếu lý lịch cho Shorts";
+"DISABLE_RESUME_TO_SHORTS_DESC" = "Nếu bạn đóng YouTube khi đang xem các video ngắn, thì các video ngắn đó sẽ không tự động phát vào lần tới khi bạn mở YouTube.";
+
+// Theme
+"THEME_OPTIONS" = "Tùy chọn chủ đề";
+
+"OLED_DARK_THEME" = "OLED dark theme (Experimental)";
+"OLED_DARK_THEME_2" = "OLED dark theme";
+"OLED_DARK_THEME_DESC" = "Chủ đề tối thực sự. Có thể không hoạt động chính xác trong một số trường hợp. Cần phải khởi động lại ứng dụng sau khi bạn bật/tắt tùy chọn này.";
+
+"OLD_DARK_THEME" = "Old dark theme";
+"OLD_DARK_THEME_DESC" = "Chủ đề tối cũ của YouTube (chủ đề màu xám). Khởi động lại ứng dụng là bắt buộc.";
+
+"DEFAULT_THEME" = "Default";
+"DEFAULT_THEME_DESC" = "Chủ đề (er) tối mặc định của YouTube. Khởi động lại ứng dụng là bắt buộc.";
+
+"OLED_KEYBOARD" = "OLED Keyboard (Experimental)";
+"OLED_KEYBOARD_DESC" = "Có thể không hoạt động chính xác trong một số trường hợp. Khởi động lại ứng dụng là bắt buộc.";
+
+"LOW_CONTRAST_MODE" = "Chế độ tương phản thấp";
+"LOW_CONTRAST_MODE_DESC" = "Tùy chọn này sẽ có Độ tương phản thấp của văn bản và các nút giống như Giao diện YouTube cũ. Khởi động lại ứng dụng là bắt buộc.";
+
+"LCM_CHOOSE_COLOR" = "Low contrast text color";
+"DEFAULT_UI" = "Default";
+"RED_UI" = "Red UI";
+"BLUE_UI" = "Blue UI";
+"GREEN_UI" = "Green UI";
+"YELLOW_UI" = "Yellow UI";
+"ORANGE_UI" = "Orange UI";
+"PURPLE_UI" = "Purple UI";
+"PINK_UI" = "Pink UI";
+
+// Miscellaneous
+"MISCELLANEOUS" = "Các tuỳ chọn khác";
+
+"CAST_CONFIRM" = "Xác nhận thông báo trước khi truyền (YTCastConfirm)";
+"CAST_CONFIRM_DESC" = "Hiển thị cảnh báo xác nhận trước khi truyền để tránh vô tình chiếm quyền điều khiển TV.";
+"CASTING" = "Castings";
+"MSG_ARE_YOU_SURE" = "Bạn có chắc chắn muốn bắt đầu truyền không?";
+"MSG_YES" = "Yes";
+"MSG_CANCEL" = "Cancel";
+
+"DISABLE_HINTS" = "Tắt gợi ý";
+"DISABLE_HINTS_DESC" = "Tắt gợi ý tính năng từ YouTube thường hiển thị khi ứng dụng mới được cài đặt.";
+
+"ENABLE_YT_STARTUP_ANIMATION" = "Bật Aimation khi khởi động YouTube";
+"ENABLE_YT_STARTUP_ANIMATION_DESC" = "";
+
+"HIDE_CHIP_BAR" = "Ẩn Upper bar";
+"HIDE_CHIP_BAR_DESC" = "Ẩn thanh trên trong nguồn cấp dữ liệu Trang chủ (Xu hướng, Âm nhạc, Trò chơi...) và nguồn cấp dữ liệu Đăng ký (Tất cả video, Tiếp tục xem...).";
+
+"NEW_MINIPLAYER_STYLE" = "Kiểu thanh trình phát mini mới (BigYTMiniPlayer)";
+"NEW_MINIPLAYER_STYLE_DESC" = "Khởi động lại ứng dụng là bắt buộc.";
+
+"REPLACE_PREVIOUS_NEXT_BUTTON" = "Thay nút Previous và Next";
+"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Thay thế các nút Trước và Tiếp theo bằng các nút Tua đi và Tua lại. Khởi động lại ứng dụng là bắt buộc.";
+
+"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Ẩn nút Trước và Tiếp theo";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Ẩn nút Trước đó và Tiếp theo trong lớp phủ điều khiển video.";
+
+"HIDE_SHORTS_VIDEOS" = "Ẩn video Shorts";
+"HIDE_SHORTS_VIDEOS_DESC" = "Ẩn video ngắn trong Trang chủ, được đề xuất...";
+
+"YT_MINIPLAYER" = "Bật Trình phát thu nhỏ cho tất cả các video trên YouTube";
+"YT_MINIPLAYER_DESC" = "Video dành cho trẻ em chẳng hạn.";
+
+"HIDE_CAST_BUTTON" = "Ẩn nút Truyền";
+"HIDE_CAST_BUTTON_DESC" = "Khởi động lại ứng dụng là bắt buộc.";
+
+"HIDE_HOVER_CARD" = "Ẩn thẻ di chuột trên Màn hình kết thúc (YTNoHoverCards)";
+"HIDE_HOVER_CARD_DESC" = "Ẩn màn hình kết thúc (hình thu nhỏ) của người tạo ở cuối video.";
+
+"HIDE_RIGHT_PANEL" = "Ẩn bảng điều khiển bên phải ở chế độ toàn màn hình";
+"HIDE_RIGHT_PANEL_DESC" = "Khởi động lại ứng dụng là bắt buộc.";
+
+"NEW_MINIPLAYER_STYLE" = "Kiểu thanh trình phát mini mới (BigYTMiniPlayer)";
+"NEW_MINIPLAYER_STYLE_DESC" = "Khởi động lại ứng dụng là bắt buộc.";
+
+"HIDE_SUBTITLES_BUTTON" = "Ẩn nút phụ đề";
+"HIDE_SUBTITLES_BUTTON_DESC" = "Ẩn nút Phụ đề trong lớp phủ điều khiển video.";
+
+"HIDE_AUTOPLAY_SWITCH" = "Ẩn nút Tự động phát";
+"HIDE_AUTOPLAY_SWITCH_DESC" = "Ẩn nút Tự động phát trong lớp phủ điều khiển video.";
+
+"AUTO_FULLSCREEN" = "Tự động toàn màn hình (YTAutoFullScreen)";
+"AUTO_FULLSCREEN_DESC" = "Tự động phát video ở chế độ toàn màn hình.";
+
+"HIDE_HUD_MESSAGES" = "Ẩn tin nhắn HUD";
+"HIDE_HUD_MESSAGES_DESC" = "Ví dụ: Bật/tắt CC, Bật vòng lặp video,...";
+
+"HIDE_PAID_PROMOTION_CARDS" = "Ẩn thẻ Khuyến mại trả phí";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "Ẩn thẻ "Bao gồm quảng cáo trả phí" trong một số video.";
+
+"HIDE_NOTIFICATION_BUTTON" = "Ẩn nút Thông báo trong thanh Điều hướng";
+"HIDE_NOTIFICATION_BUTTON_DESC" = "";
+
+"HIDE_SPONSORBLOCK_BUTTON" = "Ẩn nút iSponsorBlock trong thanh Điều hướng";
+"HIDE_SPONSORBLOCK_BUTTON_DESC" = "";
+
+"HIDE_MODERN_INTERFACE" = "Ẩn giao diện hiện đại (YTNoModernUI)";
+"HIDE_MODERN_INTERFACE_DESC" = "Bật tính năng này để ẩn mọi Thành phần hiện đại do YouTube thêm vào. Loại bỏ Chế độ môi trường xung quanh, Thiết kế bo tròn và hơn thế nữa. Khởi động lại ứng dụng là bắt buộc.";
+
+"HIDE_YOUTUBE_LOGO" = "Ẩn logo YouTube";
+"HIDE_YOUTUBE_LOGO_DESC" = "Thao tác này sẽ Ẩn Logo YouTube ở trên cùng bên trái của Giao diện. Khởi động lại ứng dụng là bắt buộc.";
+
+"DISABLE_WIFI_RELATED_SETTINGS" = "Tắt cài đặt liên quan đến Wifi";
+"DISABLE_WIFI_RELATED_SETTINGS_DESC" = "Tắt các phần liên quan đến Wifi (Thông báo, Ứng dụng được kết nối, Quyền riêng tư & Trò chuyện trực tiếp, v.v.) trong Menu Cài đặt. Khởi động lại ứng dụng là bắt buộc.";
+
+"YT_RE_EXPLORE" = "Thay thế tab Shorts bằng tab Khám phá (YTReExplore)";
+"YT_RE_EXPLORE_DESC" = "Khởi động lại ứng dụng là bắt buộc.";
+
+"IPAD_LAYOUT" = "iPad Layout";
+"IPAD_LAYOUT_DESC" = "Chỉ sử dụng tùy chọn này nếu bạn muốn có Bố cục iPad trên iPhone/iPod hiện tại của mình. Khởi động lại ứng dụng là bắt buộc.";
+
+"IPHONE_LAYOUT" = "iPhone Layout";
+"IPHONE_LAYOUT_DESC" = "Chỉ sử dụng cái này nếu bạn muốn có Bố cục iPhone trên iPad hiện tại của mình. Khởi động lại ứng dụng là bắt buộc.";
+
+"ENABLE_FLEX" = "Kích hoạt FLEX";
+"ENABLE_FLEX_DESC" = "Bật FLEX để gỡ lỗi (không khuyến nghị). Bỏ qua điều này trừ khi bạn biết những gì bạn đang làm.";
