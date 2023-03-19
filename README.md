@@ -200,16 +200,16 @@ any many more...
 
 - **YouTubePlus** (or you can call it YouTube+) requires iOS & iPadOS 14.0 and later. The latest version of **YouTubePlus** can be found in the [Release tab](https://github.com/arichorn/YouTubePlus/releases/latest).
 
-- For AltStore user: [Open in AltStore (v18.08.1)](https://tinyurl.com/4946cnwx) - It will take a while to install because AltStore needs to download the IPA first.
+- For AltStore user: [Open in AltStore (v18.09.4)](https://tinyurl.com/y4ujv62n) - It will take a while to install because AltStore needs to download the IPA first.
 
-- Version info: _(Mar 13 2023)_
+- Version info: _(Mar 18 2023)_
 
 <details>
   <summary>Expand!</summary>
 
 | **Tweaks/App** | **Developer** | **Version** | **Open source** |
 | - | - | :-: | :-:  |
-| **YouTube** | Google Inc | 18.08.1 | ✖︎ |
+| **YouTube** | Google Inc | 18.09.4 | ✖︎ |
 | **Open in YouTube** | [CokePokes](https://github.com/CokePokes/) | 1.2 | ✖︎ |
 | **YTNoShorts** | [MiRO92](https://twitter.com/miro92) | 1.0.2 | [✔︎](https://github.com/MiRO92/YTNoShorts) |
 | **iSponsorBlock** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.0-15 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
