@@ -51,12 +51,6 @@ Special thanks to these developer(s) for maintaining and improving CercubePlus!
 <table id='credit'>
 Special thanks to all the developers who have contributed to CercubePlus!
 <tr>
-<td id='poomsmart'>
-<a href='https://github.com/PoomSmart'>
-<img src='https://github.com/PoomSmart.png' width='140px;'>
-</a>
-<h4 align='center'><a href='https://twitter.com/poomsmart'>PoomSmart</a></h4>
-</td>
 <td id='level3tjg'>
 <a href='https://github.com/level3tjg'>
 <img src='https://github.com/level3tjg.png' width='140px;'>
@@ -75,15 +69,15 @@ Special thanks to all the developers who have contributed to CercubePlus!
 </a>
 <h4 align='center'><a href='https://twitter.com/dev_galactic'>galactic</a></h4>
 </td>
-</tr>
-  
-<tr>
 <td id='hbang'>
 <a href='https://github.com/hbang'>
 <img src='https://github.com/hbang.png' width='140px;'>
 </a>
 <h4 align='center'><a href='https://twitter.com/hashbang'>HASHBANG</a></h4>
 </td>
+</tr>
+  
+<tr>
 <td id='lyvendia'>
 <a href='https://github.com/Lyvendia'>
 <img src='https://github.com/Lyvendia.png' width='140px;'>
@@ -102,15 +96,15 @@ Special thanks to all the developers who have contributed to CercubePlus!
 </a>
 <h4 align='center'><a href='https://twitter.com/ijulioverne'>julioverne</a></h4>
 </td>
-</tr>
-  
-<tr>
 <td id='ichitaso'>
 <a href='https://github.com/ichitaso'>
 <img src='https://github.com/ichitaso.png' width='140px;'>
 </a>
 <h4 align='center'><a href='https://twitter.com/ichitaso'>ichitaso</a></h4>
 </td>
+</tr>
+  
+<tr>
 <td id='ahmed-bafkir'>
 <a href='https://github.com/AhmedBafkir'>
 <img src='https://github.com/AhmedBafkir.png' width='140px;'>
