@@ -225,29 +225,13 @@ static BOOL didFinishLaunching;
 %end
 
 // No YouTube Ads
-%hook YTIPlayerResponse
-- (BOOL)isMonetized {
-    return NO;
-}
-%end
-
 %hook YTDataUtils
 + (id)spamSignalsDictionary {
     return NULL;
 }
 %end
 
-%hook YTAdsInnerTubeContextDecorator
-- (void)decorateContext:(id)arg1 {
-}
-%end
-
-%hook YTSectionListViewController
-- (void)loadWithModel:(id)model {
-}
-%end
-
-// No YouTube Search Ads
+// Hide YouTube search ads
 %hook YTIElementRenderer
 - (NSData *)elementData {
     if (self.hasCompatibilityOptions && self.compatibilityOptions.hasAdLoggingData)
@@ -268,7 +252,6 @@ static BOOL didFinishLaunching;
     [contentsArray removeObjectsAtIndexes:removeIndexes];
     %orig;
 }
-
 %end
 
 // Disabled - Autoplay Settings Section - qnblackcat
