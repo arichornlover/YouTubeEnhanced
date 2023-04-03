@@ -1820,15 +1820,6 @@ void DEMC_centerRenderingView() {
 }
 %end
 
-%hook _ASDisplayView
-- (void)didMoveToWindow {
-    %orig;
-    if ((IsEnabled(@"hideBuySuperThanks_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.suggested_action"])) { 
-        self.hidden = YES; 
-    }
-}
-%end
-
 // Won't Work
 // %hook _ASDisplayView
 // - (void)didMoveToWindow {
