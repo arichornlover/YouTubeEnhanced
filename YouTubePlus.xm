@@ -1713,13 +1713,6 @@ void DEMC_centerRenderingView() {
 %end
 %end
 
-// Disable Pinch to zoom
-%hook YTColdConfig
-- (BOOL)videoZoomFreeZoomEnabledGlobalConfig {
-    return IsEnabled(@"pinchToZoom_enabled") ? NO : %orig;
-}
-%end
-
 // Disable snap to chapter
 %hook YTSegmentableInlinePlayerBarView
 - (void)didMoveToWindow {
@@ -1728,6 +1721,28 @@ void DEMC_centerRenderingView() {
         self.enableSnapToChapter = NO;
     }
 }
+%end
+
+// Disable Pinch to zoom
+%hook YTColdConfig
+- (BOOL)videoZoomFreeZoomEnabledGlobalConfig {
+    return IsEnabled(@"pinchToZoom_enabled") ? NO : %orig;
+}
+%end
+
+// YTStockVolumeHUD - https://github.com/lilacvibes/YTStockVolumeHUD
+%group gStockVolumeHUD
+%hook YTVolumeBarView
+- (void)volumeChanged:(id)arg1 {
+	%orig(nil);
+}
+%end
+
+%hook UIApplication 
+- (void)setSystemVolumeHUDEnabled:(BOOL)arg1 forAudioCategory:(id)arg2 {
+	%orig(true, arg2);
+}
+%end
 %end
 
 // Hide Watermark
@@ -1785,6 +1800,22 @@ void DEMC_centerRenderingView() {
 }
 - (void)setShareButton:(id)arg1 {
     if (IsEnabled(@"hideShortsShareButton_enabled")) {}
+    else { return %orig; }
+}
+%end
+
+%hook _ASDisplayView
+- (void)didMoveToWindow {
+    %orig;
+    if ((IsEnabled(@"hideBuySuperThanks_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.suggested_action"])) { 
+        self.hidden = YES; 
+    }
+}
+%end
+
+%hook YTReelWatchRootViewController
+- (void)setPausedStateCarouselView {
+    if (IsEnabled(@"hideSubcriptions_enabled")) {}
     else { return %orig; }
 }
 %end
@@ -1995,6 +2026,9 @@ void DEMC_centerRenderingView() {
     }
     if (IsEnabled(@"hideChipBar_enabled")) {
        %init(gHideChipBar);
+    }
+    if (IsEnabled(@"stockVolumeHUD_enabled")) {
+        %init(gStockVolumeHUD);
     }
 
     // iSponsorBlock Button (hidden by default)
