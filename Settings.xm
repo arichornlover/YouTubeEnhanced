@@ -352,6 +352,17 @@ extern NSBundle *YouTubePlusBundle();
                 }
                 settingItemId:0],
 
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_SUPER_THANKS")
+                titleDescription:LOC(@"HIDE_SUPER_THANKS_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"hideBuySuperThanks_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideBuySuperThanks_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_SUBCRIPTIONS")
                 titleDescription:LOC(@"HIDE_SUBCRIPTIONS_DESC")
                 accessibilityIdentifier:nil
