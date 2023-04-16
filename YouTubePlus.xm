@@ -1668,7 +1668,7 @@ void DEMC_centerRenderingView() {
 %end 
 
 %hook YTPlayerViewController
-%property float playbackRate;
+%property (nonatomic, assign) float playbackRate;
 - (void)singleVideo:(id)video playbackRateDidChange:(float)rate {
 	%orig;
 }
