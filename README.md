@@ -33,7 +33,7 @@
 # Credits
 
 <table id='maintainer credit'>
-Special thanks to these developer(s) for maintaining and improving CercubePlus!
+Special thanks to these developer(s) for maintaining and improving YouTubePlus!
 <tr>
 <td id='arichorn'>
 <a href='https://github.com/arichorn'>
@@ -47,10 +47,28 @@ Special thanks to these developer(s) for maintaining and improving CercubePlus!
 </a>
 <h4 align='center'><a href='https://github.com/dayanch96'>dayanch96</a></h4>
 </td>
+<td id='ssuesskind'>
+<a href='https://github.com/ssuesskind'>
+<img src='https://github.com/ssuesskind.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://github.com/ssuesskind'>ssuesskind</a></h4>
+</td>
 
 <table id='credit'>
-Special thanks to all the developers who have contributed to CercubePlus!
+Special thanks to all the developers who have contributed to YouTube!
 <tr>
+<td id='majd'>
+<a href='https://github.com/majd'>
+<img src='https://github.com/majd.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://github.com/majd'>Majd Alfhaily</a></h4>
+</td>
+<td id='miro92'>
+<a href='https://github.com/MiRO92'>
+<img src='https://github.com/MiRO92.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://twitter.com/miro92'>MiRO92</a></h4>
+</td>
 <td id='level3tjg'>
 <a href='https://github.com/level3tjg'>
 <img src='https://github.com/level3tjg.png' width='140px;'>
@@ -69,15 +87,15 @@ Special thanks to all the developers who have contributed to CercubePlus!
 </a>
 <h4 align='center'><a href='https://twitter.com/dev_galactic'>galactic</a></h4>
 </td>
+</tr>
+  
+<tr>
 <td id='hbang'>
 <a href='https://github.com/hbang'>
 <img src='https://github.com/hbang.png' width='140px;'>
 </a>
 <h4 align='center'><a href='https://twitter.com/hashbang'>HASHBANG</a></h4>
 </td>
-</tr>
-  
-<tr>
 <td id='lyvendia'>
 <a href='https://github.com/Lyvendia'>
 <img src='https://github.com/Lyvendia.png' width='140px;'>
@@ -122,6 +140,12 @@ Special thanks to all the developers who have contributed to CercubePlus!
 <img src='https://github.com/ISnackable.png' width='140px;'>
 </a>
 <h4 align='center'><a href='https://isnackable.me/'>Tommy Teo</a></h4>
+</td>
+<td id='SKIEDs'>
+<a href='https://github.com/SKEIDs'>
+<img src='https://github.com/SKEIDs.png' width='140px;'>
+</a>
+<h4 align='center'><a href='https://github.com/SKEIDs'>SKIEDs</a></h4>
 </td>
 <td id='theos-team'>
 <a href='https://github.com/theos/theos'>
@@ -194,16 +218,16 @@ any many more...
 
 - **YouTubePlus** (or you can call it YouTube+) requires iOS & iPadOS 14.0 and later. The latest version of **YouTubePlus** can be found in the [Release tab](https://github.com/arichorn/YouTubePlus/releases/latest).
 
-- For AltStore user: [Open in AltStore (v18.09.4)](https://tinyurl.com/y4ujv62n) - It will take a while to install because AltStore needs to download the IPA first.
+- For AltStore user: [Open in AltStore (v18.15.1)](https://tinyurl.com/3m3k98mm) - It will take a while to install because AltStore needs to download the IPA first.
 
-- Version info: _(Mar 18 2023)_
+- Version info: _(Apr 17 2023)_
 
 <details>
   <summary>Expand!</summary>
 
 | **Tweaks/App** | **Developer** | **Version** | **Open source** |
 | - | - | :-: | :-:  |
-| **YouTube** | Google Inc | 18.09.4 | ✖︎ |
+| **YouTube** | Google Inc | 18.15.1 | ✖︎ |
 | **Open in YouTube** | [CokePokes](https://github.com/CokePokes/) | 1.2 | ✖︎ |
 | **YTNoShorts** | [MiRO92](https://twitter.com/miro92) | 1.0.2 | [✔︎](https://github.com/MiRO92/YTNoShorts) |
 | **iSponsorBlock** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.0-15 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
@@ -211,24 +235,23 @@ any many more...
 | **YTNoHoverCards** | [level3tjg](https://twitter.com/level3tjg) | 0.0.3 | [✔︎](https://github.com/level3tjg/YTNoHoverCards) |
 | **YTMiniplayerEnabler** | [level3tjg](https://twitter.com/level3tjg) | 0.0.2 | [✔︎](https://github.com/level3tjg/YTMiniplayerEnabler) |
 | **DontEatMyContent** | [therealFoxster](https://github.com/therealFoxster) | 1.0.6 | [✔︎](https://github.com/therealFoxster/DontEatMyContent) |
-| **LowContrastMode** | [arichorn](https://twitter.com/LilithAcc) | 1.2.1-4 | [✔︎](https://github.com/arichorn/LowContrastMode) |
-| **YTUHD** | [PoomSmart](https://twitter.com/poomsmart) | 1.3.5 | [✔︎](https://github.com/PoomSmart/YTUHD) |
-| **YouPiP** | [PoomSmart](https://twitter.com/poomsmart) | 1.7.19 | [✔︎](https://github.com/PoomSmart/YouPiP) |
-| **YouMute** | [PoomSmart](https://twitter.com/poomsmart) | 1.1.1 | [✔︎](https://github.com/PoomSmart/YouMute) |
-| **YTABConfig** | [PoomSmart](https://twitter.com/poomsmart) | 1.5.0 | [✔︎](https://github.com/PoomSmart/YTABConfig) |
-| **IAmYouTube** | [PoomSmart](https://twitter.com/poomsmart) | 1.2.0 | [✔︎](https://github.com/PoomSmart/IAmYouTube) |
-| **YTReExplore** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTReExplore) |
-| **NoYTPremium** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.4 | [✔︎](https://github.com/PoomSmart/NoYTPremium) |
-| **YTNoPaidPromo** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.0 | [✔︎](https://github.com/PoomSmart/YTNoPaidPromo) |
-| **YTAutoFullScreen** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.3 | [✔︎](https://github.com/PoomSmart/YTAutoFullScreen) |
-| **YTShortsProgress** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTShortsProgress) |
-| **Return YouTube Dislike** | [PoomSmart](https://twitter.com/poomsmart) | 1.11.1 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
+| **LowContrastMode** | [arichorn](https://twitter.com/LilithAcc) | 1.2.3 | [✔︎](https://github.com/arichorn/LowContrastMode) |
+| **YTUHD** | [PoomSmart] | 1.3.5 | [✔︎](https://github.com/PoomSmart/YTUHD) |
+| **YouPiP** | [PoomSmart] | 1.7.19 | [✔︎](https://github.com/PoomSmart/YouPiP) |
+| **YouMute** | [PoomSmart] | 1.1.1 | [✔︎](https://github.com/PoomSmart/YouMute) |
+| **YTABConfig** | [PoomSmart] | 1.5.0-1 | [✔︎](https://github.com/PoomSmart/YTABConfig) |
+| **IAmYouTube** | [PoomSmart] | 1.2.0 | [✔︎](https://github.com/PoomSmart/IAmYouTube) |
+| **YTReExplore** | [PoomSmart] | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTReExplore) |
+| **NoYTPremium** | [PoomSmart] | 1.0.4 | [✔︎](https://github.com/PoomSmart/NoYTPremium) |
+| **YTNoPaidPromo** | [PoomSmart] | 1.0.0 | [✔︎](https://github.com/PoomSmart/YTNoPaidPromo) |
+| **YTAutoFullScreen** | [PoomSmart] | 1.0.3 | [✔︎](https://github.com/PoomSmart/YTAutoFullScreen) |
+| **YTShortsProgress** | [PoomSmart] | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTShortsProgress) |
+| **Return YouTube Dislike** | [PoomSmart] | 1.11.3 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
 
 </details>
 
 # Support the developers
 - [**MiRO92**](https://twitter.com/miro92): https://github.com/MiRO92/uYou-for-YouTube#support
-- [**Poomsmart**](https://twitter.com/poomsmart): https://poomsmart.github.io
 - [**level3tjg**](https://twitter.com/level3tjg): https://ko-fi.com/level3tjg
 - [**BandarHL**](https://twitter.com/bandarhl): https://www.paypal.com/paypalme/BandarHL
 - [**julioverne**](https://twitter.com/ijulioverne): https://www.patreon.com/julioverne
