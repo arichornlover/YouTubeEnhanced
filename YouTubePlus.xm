@@ -508,6 +508,16 @@ static BOOL didFinishLaunching;
 }
 %end
 
+// Fix login for YouTube 18.13.2 and higher @arichorn
+%hook SSOKeychainHelper
++ (NSString *)accessGroup {
+    return accessGroupID();
+}
++ (NSString *)sharedAccessGroup {
+    return accessGroupID();
+}
+%end
+
 // Fix login for YouTube 17.33.2 and higher - @BandarHL
 // https://gist.github.com/BandarHL/492d50de46875f9ac7a056aad084ac10
 %hook SSOKeychainCore
