@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>YouTubeTweak</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.qn.uyouplus</string>
+	<string>com.arichorn.youtubeplus</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -19,6 +19,6 @@
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>NSPrincipalClass</key>
-	<string>uYouPlus</string>
+	<string>YouTubePlus</string>
 </dict>
 </plist>
