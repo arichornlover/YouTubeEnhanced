@@ -1,30 +1,4 @@
-#import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
-#import <objc/runtime.h>
-#import <dlfcn.h>
-#import <sys/utsname.h>
-#import <substrate.h>
 #import "Header.h"
-#import "Tweaks/FLEX/FLEX.h"
-#import "Tweaks/YouTubeHeader/YTVideoQualitySwitchOriginalController.h"
-#import "Tweaks/YouTubeHeader/YTPlayerViewController.h"
-#import "Tweaks/YouTubeHeader/YTWatchController.h"
-#import "Tweaks/YouTubeHeader/YTIGuideResponse.h"
-#import "Tweaks/YouTubeHeader/YTIGuideResponseSupportedRenderers.h"
-#import "Tweaks/YouTubeHeader/YTIPivotBarSupportedRenderers.h"
-#import "Tweaks/YouTubeHeader/YTIPivotBarRenderer.h"
-#import "Tweaks/YouTubeHeader/YTIBrowseRequest.h"
-#import "Tweaks/YouTubeHeader/YTColorPalette.h"
-#import "Tweaks/YouTubeHeader/YTCommonColorPalette.h"
-#import "Tweaks/YouTubeHeader/ASCollectionView.h"
-#import "Tweaks/YouTubeHeader/YTPlayerOverlay.h"
-#import "Tweaks/YouTubeHeader/YTPlayerOverlayProvider.h"
-#import "Tweaks/YouTubeHeader/YTReelWatchPlaybackOverlayView.h"
-#import "Tweaks/YouTubeHeader/YTReelPlayerBottomButton.h"
-#import "Tweaks/YouTubeHeader/YTReelPlayerViewController.h"
-#import "Tweaks/YouTubeHeader/YTAlertView.h"
-#import "Tweaks/YouTubeHeader/YTISectionListRenderer.h"
-#import "Tweaks/YouTubeHeader/YTPivotBarItemView.h"
 
 NSBundle *YouTubePlusBundle() {
     static NSBundle *bundle = nil;
@@ -34,7 +8,7 @@ NSBundle *YouTubePlusBundle() {
         if (tweakBundlePath)
             bundle = [NSBundle bundleWithPath:tweakBundlePath];
         else
-            bundle = [NSBundle bundleWithPath:@"/Library/Application Support/YouTubePlus.bundle"];
+            bundle = [NSBundle bundleWithPath:ROOT_PATH_NS(@"/Library/Application Support/YouTubePlus.bundle")];
     });
     return bundle;
 }
@@ -208,10 +182,9 @@ static BOOL didFinishLaunching;
 %hook YTColdConfig 
 - (BOOL)respectDeviceCaptionSetting { return NO; } // YouRememberCaption: https://poomsmart.github.io/repo/depictions/youremembercaption.html
 - (BOOL)isLandscapeEngagementPanelSwipeRightToDismissEnabled { return YES; } // Swipe right to dismiss the right panel in fullscreen mode
-- (BOOL)mainAppCoreClientIosTransientVisualGlitchInPivotBarFix { return NO; } // Fix uYou's label glitching - qnblackcat/uYouPlus#552
 %end
 
-// Disabled App Breaking Dialog Flags - @PoomSmart
+// Disabled App Breaking Dialog Flags - @arichorn
 %hook YTColdConfig
 - (BOOL)commercePlatformClientEnablePopupWebviewInWebviewDialogController { return NO;}
 %end
@@ -229,6 +202,10 @@ static BOOL didFinishLaunching;
 + (id)spamSignalsDictionary {
     return NULL;
 }
+%end
+
+%hook YTHotConfig
+- (BOOL)disableAfmaIdfaCollection { return NO; }
 %end
 
 // Hide YouTube search ads
@@ -254,19 +231,15 @@ static BOOL didFinishLaunching;
 }
 %end
 
-// Disabled - Autoplay Settings Section - qnblackcat
-%hook YTSettingsSectionItemManager
-- (void)updateAutoplaySectionWithEntry:(id)arg1 {}
-%end
-
+// Disable Wifi Related Settings - @arichorn
 %group gDisableWifiRelatedSettings
 %hook YTSettingsSectionItemManager
-- (void)updatePurchasesandmembershipsSectionWithEntry:(id)arg1 {} // Purchases and memberships
-- (void)updateNotificationsSectionWithEntry:(id)arg1 {} // Notifications
-- (void)updateConnectedappsSectionWithEntry:(id)arg1 {} // Connected apps
-- (void)updateManageallhistorySectionWithEntry:(id)arg1 {} // Manage all history
+- (void)updateAutoplaySectionWithEntry:(id)arg1 {} // Autoplay
+- (void)updateNotificationSectionWithEntry:(id)arg1 {} // Notifications
+- (void)updateHistorySectionWithEntry:(id)arg1 {} // History
 - (void)updatePrivacySectionWithEntry:(id)arg1 {} // Privacy
-- (void)updateLivechatSectionWithEntry:(id)arg1 {} // Live chat
+- (void)updateHistoryAndPrivacySectionWithEntry:(id)arg1 {} // History & Privacy
+- (void)updateLiveChatSectionWithEntry:(id)arg1 {} // Live Chat
 %end
 %end
 
@@ -319,7 +292,7 @@ static BOOL didFinishLaunching;
 - (BOOL)enablePlayerBarForVerticalVideoWhenControlsHiddenInFullscreen { return YES; }
 %end
 
-// YTNoModernUI - arichorn
+// YTNoModernUI - @arichorn
 %group gYTNoModernUI
 %hook YTColdConfig
 // Disable Modern Content - YTNoModernUI
@@ -328,6 +301,10 @@ static BOOL didFinishLaunching;
 - (BOOL)enableClientShortsSheetsModernization { return NO; }
 - (BOOL)enableTimestampModernizationForNative { return NO; }
 - (BOOL)mainAppCoreClientIosEnableModernOssPage { return NO; }
+- (BOOL)uiSystemsClientGlobalConfigEnableModernButtonsForNative { return NO; }
+- (BOOL)uiSystemsClientGlobalConfigEnableModernButtonsForNativeLongTail { return NO; }
+- (BOOL)uiSystemsClientGlobalConfigEnableModernTabsForNative { return NO; }
+- (BOOL)uiSystemsClientGlobalConfigIosEnableSnackbarModernization { return NO; }
 // Disable Rounded Content - YTNoModernUI
 - (BOOL)iosEnableRoundedSearchBar { return NO; }
 - (BOOL)enableIosRoundedSearchBar { return NO; }
@@ -337,21 +314,25 @@ static BOOL didFinishLaunching;
 - (BOOL)uiSystemsClientGlobalConfigEnableRoundedThumbnailsForNativeLongTail { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigEnableRoundedTimestampForNative { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigEnableRoundedDialogForNative { return NO; }
-- (BOOL)uiSystemsClientGlobalConfigEnableModernButtonsForNative { return NO; }
-- (BOOL)uiSystemsClientGlobalConfigEnableModernButtonsForNativeLongTail { return NO; }
-- (BOOL)uiSystemsClientGlobalConfigEnableModernTabsForNative { return NO; }
-- (BOOL)uiSystemsClientGlobalConfigIosEnableSnackbarModernization { return NO; }
 // Disable Darker Dark Mode - YTNoModernUI
 - (BOOL)enableDarkerDarkMode { return NO; }
+- (BOOL)useDarkerPaletteBgColorForElements { return NO; }
+- (BOOL)useDarkerPaletteTextColorForElements { return NO; }
 - (BOOL)modernizeElementsTextColor { return NO; }
 - (BOOL)modernizeElementsBgColor { return NO; }
 - (BOOL)modernizeCollectionLockups { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteTextColorForNative { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteBgColorForNative { return NO; }
 // Disable Ambient Mode
+- (BOOL)disableCinematicForLowPowerMode { return NO; }
 - (BOOL)enableCinematicContainer { return NO; }
 - (BOOL)enableCinematicContainerOnClient { return NO; }
+- (BOOL)enableCinematicContainerOnTablet { return NO; }
 - (BOOL)iosCinematicContainerClientImprovement { return NO; }
+- (BOOL)iosEnableGhostCardInlineTitleCinematicContainerFix { return NO; }
+- (BOOL)mainAppCoreClientEnableClientCinematicPlaylists { return NO; }
+- (BOOL)mainAppCoreClientEnableClientCinematicPlaylistsPostMvp { return NO; }
+- (BOOL)mainAppCoreClientEnableClientCinematicTablets { return NO; }
 // 16.42.3 Styled YouTube Channel Page Interface - YTNoModernUI
 - (BOOL)channelsClientConfigIosChannelNavRestructuring { return NO; }
 %end
