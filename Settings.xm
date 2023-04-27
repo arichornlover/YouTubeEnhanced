@@ -73,16 +73,16 @@ extern NSBundle *YouTubePlusBundle();
                     return YES;
                 }
                 settingItemId:0],
-// Tap To Skip Option is disabled until it works.
-//            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"TAP_TO_SKIP")
-//                titleDescription:LOC(@"TAP_TO_SKIP_DESC")
-//                accessibilityIdentifier:nil
-//                switchOn:IsEnabled(@"tapToSkip_enabled")
-//                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
-//                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"tapToSkip_enabled"];
-//                    return YES;
-//                }
-//                settingItemId:0],
+
+           [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"DISABLE_DOUBLE_TAP_TO_SKIP")
+               titleDescription:LOC(@"DISABLE_DOUBLE_TAP_TO_SKIP_DESC")
+               accessibilityIdentifier:nil
+               switchOn:IsEnabled(@"disableDoubleTapToSkip_enabled")
+               switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                   [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableDoubleTapToSkip_enabled"];
+                   return YES;
+               }
+               settingItemId:0],
 
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"SNAP_TO_CHAPTER")
                 titleDescription:LOC(@"SNAP_TO_CHAPTER_DESC")
@@ -219,6 +219,16 @@ extern NSBundle *YouTubePlusBundle();
                 switchOn:IsEnabled(@"redProgressBar_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"redProgressBar_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"DISABLE_VIDEO_PLAYER_ZOOM")
+                titleDescription:LOC(@"DISABLE_VIDEO_PLAYER_ZOOM")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"disableVideoPlayerZoom_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableVideoPlayerZoom_enabled"];
                     return YES;
                 }
                 settingItemId:0],
@@ -397,6 +407,8 @@ extern NSBundle *YouTubePlusBundle();
                 case 6:
                     return LOC(@"PURPLE_UI");
                 case 7:
+                    return LOC(@"VIOLET_UI");
+                case 8:
                     return LOC(@"PINK_UI");
                 case 0:
                 default:
@@ -430,18 +442,18 @@ extern NSBundle *YouTubePlusBundle();
                     [settingsViewController reloadData];
                     return YES;
                 }],
-                [YTSettingsSectionItemClass checkmarkItemWithTitle:LOC(@"ORANGE_UI") titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-                    [[NSUserDefaults standardUserDefaults] setInteger:5 forKey:@"lcmColor"];
-                    [settingsViewController reloadData];
-                    return YES;
-                }],
                 [YTSettingsSectionItemClass checkmarkItemWithTitle:LOC(@"PURPLE_UI") titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
                     [[NSUserDefaults standardUserDefaults] setInteger:6 forKey:@"lcmColor"];
                     [settingsViewController reloadData];
                     return YES;
                 }],
-                [YTSettingsSectionItemClass checkmarkItemWithTitle:LOC(@"PINK_UI") titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+                [YTSettingsSectionItemClass checkmarkItemWithTitle:LOC(@"VIOLET_UI") titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
                     [[NSUserDefaults standardUserDefaults] setInteger:7 forKey:@"lcmColor"];
+                    [settingsViewController reloadData];
+                    return YES;
+                }],
+                [YTSettingsSectionItemClass checkmarkItemWithTitle:LOC(@"PINK_UI") titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+                    [[NSUserDefaults standardUserDefaults] setInteger:8 forKey:@"lcmColor"];
                     [settingsViewController reloadData];
                     return YES;
                 }]
@@ -637,26 +649,6 @@ extern NSBundle *YouTubePlusBundle();
                 switchOn:IsEnabled(@"hideCercubeButton_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideCercubeButton_enabled"];
-                    return YES;
-                }
-                settingItemId:0],
-
-            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_CERCUBE_PIP_BUTTON")
-                titleDescription:LOC(@"HIDE_CERCUBE_PIP_BUTTON_DESC")
-                accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"hideCercubePiP_enabled")
-                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
-                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideCercubePiP_enabled"];
-                    return YES;
-                }
-                settingItemId:0],
-
-            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_CERCUBE_DOWNLOAD_BUTTON")
-                titleDescription:LOC(@"HIDE_CERCUBE_DOWNLOAD_BUTTON_DESC")
-                accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"hideCercubeDownload_enabled")
-                switchBlock:^BOOL (YTSettingsCell *cell, BOOL disabled) {
-                    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hideCercubeDownload_enabled"];
                     return YES;
                 }
                 settingItemId:0],
