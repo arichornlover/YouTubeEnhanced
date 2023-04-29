@@ -1,5 +1,5 @@
+.theos
 .DS_Store
-.theos/
 packages/
 tmp/
 Resources/
