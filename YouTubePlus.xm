@@ -551,6 +551,21 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 }
 %end
 
+%hook YTAsyncCollectionView
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor blackColor] : %orig;
+}
+- (UIColor *)darkBackgroundColor {
+         return [UIColor blackColor];
+}
+%end
+
+%hook YTInnerTubeCollectionViewController
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor blackColor] : %orig;
+}
+%end
+
 // Explore
 %hook ASScrollView 
 - (void)didMoveToWindow {
@@ -763,6 +778,37 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 %hook UIKBRenderConfig // Prediction text color
 - (void)setLightKeyboard:(BOOL)arg1 { %orig(NO); }
 %end
+%end
+
+BOOL selectedTabIndex = NO;
+
+%hook YTPivotBarViewController
+- (void)viewDidAppear:(BOOL)animated {
+    %orig();
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:@"kStartupPageIntVTwo"]) {
+        int selectedTab = [[NSUserDefaults standardUserDefaults] integerForKey:@"kStartupPageIntVTwo"];
+        if (selectedTab == 0 && !selectedTabIndex) {
+            [self selectItemWithPivotIdentifier:@"FEwhat_to_watch"];
+            selectedTabIndex = YES;
+        }
+        if (selectedTab == 1 && !selectedTabIndex) {
+            [self selectItemWithPivotIdentifier:@"FEexplore"];
+            selectedTabIndex = YES;
+        }
+        if (selectedTab == 2 && !selectedTabIndex) {
+            [self selectItemWithPivotIdentifier:@"FEshorts"];
+            selectedTabIndex = YES;
+        }
+        if (selectedTab == 3 && !selectedTabIndex) {
+            [self selectItemWithPivotIdentifier:@"FEsubscriptions"];
+            selectedTabIndex = YES;
+        }
+        if (selectedTab == 4 && !selectedTabIndex) {
+            [self selectItemWithPivotIdentifier:@"FElibrary"];
+            selectedTabIndex = YES;
+        }
+    }
+}
 %end
 
 // YTReExplore: https://github.com/PoomSmart/YTReExplore/
@@ -1103,6 +1149,21 @@ void DEMC_centerRenderingView() {
 // Theme Options
 // Old dark theme (gray)
 %group gOldDarkTheme
+%hook YTAsyncCollectionView
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0] : %orig;
+}
+- (UIColor *)darkBackgroundColor {
+         return [UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0];
+}
+%end
+
+%hook YTInnerTubeCollectionViewController
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0] : %orig;
+}
+%end
+
 %hook YTColdConfig
 - (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteBgColorForNative { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteTextColorForNative { return NO; }
