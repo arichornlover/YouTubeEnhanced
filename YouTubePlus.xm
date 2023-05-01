@@ -780,37 +780,6 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 %end
 %end
 
-BOOL selectedTabIndex = NO;
-
-%hook YTPivotBarViewController
-- (void)viewDidAppear:(BOOL)animated {
-    %orig();
-    if ([[NSUserDefaults standardUserDefaults] integerForKey:@"kStartupPageIntVTwo"]) {
-        int selectedTab = [[NSUserDefaults standardUserDefaults] integerForKey:@"kStartupPageIntVTwo"];
-        if (selectedTab == 0 && !selectedTabIndex) {
-            [self selectItemWithPivotIdentifier:@"FEwhat_to_watch"];
-            selectedTabIndex = YES;
-        }
-        if (selectedTab == 1 && !selectedTabIndex) {
-            [self selectItemWithPivotIdentifier:@"FEexplore"];
-            selectedTabIndex = YES;
-        }
-        if (selectedTab == 2 && !selectedTabIndex) {
-            [self selectItemWithPivotIdentifier:@"FEshorts"];
-            selectedTabIndex = YES;
-        }
-        if (selectedTab == 3 && !selectedTabIndex) {
-            [self selectItemWithPivotIdentifier:@"FEsubscriptions"];
-            selectedTabIndex = YES;
-        }
-        if (selectedTab == 4 && !selectedTabIndex) {
-            [self selectItemWithPivotIdentifier:@"FElibrary"];
-            selectedTabIndex = YES;
-        }
-    }
-}
-%end
-
 // YTReExplore: https://github.com/PoomSmart/YTReExplore/
 %group gReExplore
 static void replaceTab(YTIGuideResponse *response) {
@@ -1263,6 +1232,81 @@ void DEMC_centerRenderingView() {
 %end
 %end
 
+%group gHideExploreTab
+%hook YTPivotBarView
+- (void)setRenderer:(YTIPivotBarRenderer *)renderer {
+    NSMutableArray <YTIPivotBarSupportedRenderers *> *items = [renderer itemsArray];
+
+    NSUInteger index = [items indexOfObjectPassingTest:^BOOL(YTIPivotBarSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
+        return [[[renderers pivotBarItemRenderer] pivotIdentifier] isEqualToString:@"FEexplore"];
+    }];
+    if (index != NSNotFound) [items removeObjectAtIndex:index];
+
+    %orig;
+}
+%end
+%end
+
+%group gHideShortsTab
+%hook YTPivotBarView
+- (void)setRenderer:(YTIPivotBarRenderer *)renderer {
+    NSMutableArray <YTIPivotBarSupportedRenderers *> *items = [renderer itemsArray];
+
+    NSUInteger index = [items indexOfObjectPassingTest:^BOOL(YTIPivotBarSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
+        return [[[renderers pivotBarItemRenderer] pivotIdentifier] isEqualToString:@"FEshorts"];
+    }];
+    if (index != NSNotFound) [items removeObjectAtIndex:index];
+
+    %orig;
+}
+%end
+%end
+
+%group gHideUploadTab
+%hook YTPivotBarView
+- (void)setRenderer:(YTIPivotBarRenderer *)renderer {
+    NSMutableArray <YTIPivotBarSupportedRenderers *> *items = [renderer itemsArray];
+
+    NSUInteger index = [items indexOfObjectPassingTest:^BOOL(YTIPivotBarSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
+        return [[[renderers pivotBarIconOnlyItemRenderer] pivotIdentifier] isEqualToString:@"FEuploads"];
+    }];
+    if (index != NSNotFound) [items removeObjectAtIndex:index];
+
+    %orig;
+}
+%end
+%end
+
+%group gHideSubscriptionsTab
+%hook YTPivotBarView
+- (void)setRenderer:(YTIPivotBarRenderer *)renderer {
+    NSMutableArray <YTIPivotBarSupportedRenderers *> *items = [renderer itemsArray];
+
+    NSUInteger index = [items indexOfObjectPassingTest:^BOOL(YTIPivotBarSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
+        return [[[renderers pivotBarItemRenderer] pivotIdentifier] isEqualToString:@"FEsubscriptions"];
+    }];
+    if (index != NSNotFound) [items removeObjectAtIndex:index];
+
+    %orig;
+}
+%end
+%end
+
+%group gHideLibraryTab
+%hook YTPivotBarView
+- (void)setRenderer:(YTIPivotBarRenderer *)renderer {
+    NSMutableArray <YTIPivotBarSupportedRenderers *> *items = [renderer itemsArray];
+
+    NSUInteger index = [items indexOfObjectPassingTest:^BOOL(YTIPivotBarSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
+        return [[[renderers pivotBarItemRenderer] pivotIdentifier] isEqualToString:@"FElibrary"];
+    }];
+    if (index != NSNotFound) [items removeObjectAtIndex:index];
+
+    %orig;
+}
+%end
+%end
+
 // Shorts options
 %hook YTReelWatchPlaybackOverlayView
 - (void)setNativePivotButton:(id)arg1 {
@@ -1478,6 +1522,21 @@ void DEMC_centerRenderingView() {
     if (IsEnabled(@"stockVolumeHUD_enabled")) {
         %init(gStockVolumeHUD);
     }
+    if (IsEnabled(@"hideExploreTab_enabled")) {
+        %init(gHideExploreTab);
+    }
+    if (IsEnabled(@"hideShortsTab_enabled")) {
+        %init(gHideShortsTab);
+    }
+    if (IsEnabled(@"hideUploadTab_enabled")) {
+        %init(gHideUploadTab);
+    }
+    if (IsEnabled(@"hideSubscriptionsTab_enabled")) {
+        %init(gHideSubscriptionsTab);
+    }
+    if (IsEnabled(@"hideLibraryTab_enabled")) {
+        %init(gHideLibraryTab);
+    }
     if (IsEnabled(@"oledKeyBoard_enabled")) {
        %init(gOLEDKB);
     }
@@ -1487,9 +1546,6 @@ void DEMC_centerRenderingView() {
     if (oldDarkTheme()) {
        %init(gOldDarkTheme)
     }
-
-    // iSponsorBlock Button (hidden by default) - remove this below if you want the button shown.
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hideSponsorBlockButton_enabled"];
 
     // Change the default value of some options
     NSArray *allKeys = [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys];
