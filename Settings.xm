@@ -289,6 +289,66 @@ extern NSBundle *YouTubePlusBundle();
     }];
     [sectionItems addObject:videoControlOverlayGroup];
 
+
+# pragma mark - Hide Tabs
+    YTSettingsSectionItem *hidePivotBarTabsGroup = [YTSettingsSectionItemClass itemWithTitle:LOC(@"HIDE_PIVOT_BAR_TABS") accessibilityIdentifier:nil detailTextBlock:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+        NSArray <YTSettingsSectionItem *> *rows = @[
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_EXPLORE_TAB")
+                titleDescription:LOC(@"HIDE_EXPLORE_TAB_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"hideExploreTab_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideExploreTab_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
+           [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_SHORTS_TAB")
+               titleDescription:LOC(@"HIDE_SHORTS_TAB_DESC")
+               accessibilityIdentifier:nil
+               switchOn:IsEnabled(@"hideShortsTab_enabled")
+               switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                   [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideShortsTab_enabled"];
+                   return YES;
+               }
+               settingItemId:0],
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_UPLOAD_TAB")
+                titleDescription:LOC(@"HIDE_UPLOAD_TAB_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"hideUploadTab_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideUploadTab_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_SUBSCRIPTIONS_TAB")
+                titleDescription:LOC(@"HIDE_SUBSCRIPTIONS_TAB_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"hideSubscriptionsTab_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideSubscriptionsTab_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_LIBRARY_TAB")
+                titleDescription:LOC(@"HIDE_LIBRARY_TAB_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"hideLibraryTab_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideLibraryTab_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+        ];
+        YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"HIDE_PIVOT_BAR_TABS") pickerSectionTitle:nil rows:rows selectedItemIndex:NSNotFound parentResponder:[self parentResponder]];
+        [settingsViewController pushViewController:picker];
+        return YES;
+    }];
+    [sectionItems addObject:hidePivotBarTabsGroup];
+
 # pragma mark - Shorts Controls Overlay Options
     YTSettingsSectionItem *shortsControlOverlayGroup = [YTSettingsSectionItemClass itemWithTitle:LOC(@"SHORTS_CONTROLS_OVERLAY_OPTIONS") accessibilityIdentifier:nil detailTextBlock:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
         NSArray <YTSettingsSectionItem *> *rows = @[
