@@ -183,7 +183,7 @@ Special thanks to all the developers who have contributed to YouTube!
 
 8. **NOYTPremium:** remove YouTube Premium upsell alerts.
 
-9. **YTSpeed**: add 2.25x, 2.5x, 2.75x, 3x, 3.25x, 3.5x, 3.75x and 4x playback speed
+9. **YTSpeed**: a toggleable tweak to add 2.25x, 2.5x, 2.75x, 3x, 3.25x, 3.5x, 3.75x, 4x & 5x playback speed options in the video player.
 
 10. **YTMiniplayerEnabler**: enable Miniplayer for all YouTube videos.
 
@@ -218,16 +218,16 @@ any many more...
 
 - **YouTubePlus** (or you can call it YouTube+) requires iOS & iPadOS 14.0 and later. The latest version of **YouTubePlus** can be found in the [Release tab](https://github.com/arichorn/YouTubePlus/releases/latest).
 
-- For AltStore user: [Open in AltStore (v18.15.1)](https://tinyurl.com/3m3k98mm) - It will take a while to install because AltStore needs to download the IPA first.
+- For AltStore user: [Open in AltStore (v18.16.2)](https://tinyurl.com/y4x8kj6h) - It will take a while to install because AltStore needs to download the IPA first.
 
-- Version info: _(Apr 17 2023)_
+- Version info: _(Apr 30 2023)_
 
 <details>
   <summary>Expand!</summary>
 
 | **Tweaks/App** | **Developer** | **Version** | **Open source** |
 | - | - | :-: | :-:  |
-| **YouTube** | Google Inc | 18.15.1 | ✖︎ |
+| **YouTube** | Google Inc | 18.16.2 | ✖︎ |
 | **Open in YouTube** | [CokePokes](https://github.com/CokePokes/) | 1.2 | ✖︎ |
 | **YTNoShorts** | [MiRO92](https://twitter.com/miro92) | 1.0.2 | [✔︎](https://github.com/MiRO92/YTNoShorts) |
 | **iSponsorBlock** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.0-15 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
