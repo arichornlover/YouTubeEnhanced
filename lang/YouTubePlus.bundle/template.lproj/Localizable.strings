@@ -86,6 +86,24 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "HIDE_DARK_OVERLAY_BACKGROUND" = "Hide Dark Overlay Background";
 "HIDE_DARK_OVERLAY_BACKGROUND_DESC" = "Hide video player's dark overlay background.";
 
+// Hide Pivot Bar Tabs
+"HIDE_PIVOT_BAR_TABS" = "Hide Pivot Bar Tabs";
+
+"HIDE_EXPLORE_TAB" = "Hide 'Explore' Tab";
+"HIDE_EXPLORE_TAB_DESC" = "Hide the Explore Tab in the Pivot Bar.";
+
+"HIDE_SHORTS_TAB" = "Hide 'Shorts' Tab";
+"HIDE_SHORTS_TAB_DESC" = "Hide the Explore Tab in the Pivot Bar.";
+
+"HIDE_UPLOAD_TAB" = "Hide 'Upload' Tab";
+"HIDE_UPLOAD_TAB_DESC" = "Hide the Explore Tab in the Pivot Bar.";
+
+"HIDE_SUBSCRIPTIONS_TAB" = "Hide 'Subscriptions' Tab";
+"HIDE_SUBSCRIPTIONS_TAB_DESC" = "Hide the Subscriptions Tab in the Pivot Bar.";
+
+"HIDE_LIBRARY_TAB" = "Hide 'Library' Tab";
+"HIDE_LIBRARY_TAB_DESC" = "Hide the Library Tab in the Pivot Bar.";
+
 // Shorts controls overlay options
 "SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Shorts Controls Overlay Options";
 
