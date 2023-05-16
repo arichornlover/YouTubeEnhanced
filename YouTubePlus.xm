@@ -326,6 +326,12 @@ static BOOL didFinishLaunching;
 - (BOOL)iosShouldRepositionChannelBar { return NO; }
 - (BOOL)enableElementRendererOnChannelCreation { return NO; }
 %end
+
+%hook YTCinematicContainerView
+- (void)setHidden:(BOOL)arg1 {
+    %orig(YES);
+}
+%end
 %end
 
 // Disable Video Player Zoom - @arichorn
