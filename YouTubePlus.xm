@@ -116,6 +116,14 @@ static BOOL didFinishLaunching;
     if (IsEnabled(@"hideAutoplaySwitch_enabled")) {}
     else { return %orig; }
 }
++ (void)setShareButtonAvailable:(BOOL)arg2 { // enable Share Button
+    if (IsEnabled(@"enableShareButton_enabled")) {}
+    else { return %orig; }
+}
++ (void)setAddToButtonAvailable:(BOOL)arg2 { // enable Save to Playlist Button
+    if (IsEnabled(@"enableSaveToButton_enabled")) {}
+    else { return %orig; }
+}
 %end
 
 %hook YTColdConfig
@@ -153,15 +161,16 @@ static BOOL didFinishLaunching;
 %end
 %end
 
+// New YouTube Version
+%hook YTVersionUtils
++ (NSString *)appVersion { return @"18.21.3"; }
+%end
+
 // A/B flags
 %hook YTColdConfig 
 - (BOOL)respectDeviceCaptionSetting { return NO; } // YouRememberCaption: https://poomsmart.github.io/repo/depictions/youremembercaption.html
 - (BOOL)isLandscapeEngagementPanelSwipeRightToDismissEnabled { return YES; } // Swipe right to dismiss the right panel in fullscreen mode
-%end
-
-// Disabled App Breaking Dialog Flags - @arichorn
-%hook YTColdConfig
-- (BOOL)commercePlatformClientEnablePopupWebviewInWebviewDialogController { return NO;}
+- (BOOL)commercePlatformClientEnablePopupWebviewInWebviewDialogController { return NO;} // Disable In-App Website in the App
 %end
 
 // Hide Upgrade Dialog
@@ -269,7 +278,30 @@ static BOOL didFinishLaunching;
 
 // YTNoModernUI - @arichorn
 %group gYTNoModernUI
-%hook YTColdConfig
+%hook YTVersionUtils // YTNoModernUI Version
++ (NSString *)appVersion { return @"16.42.3"; }
+%end
+
+%hook YTInlinePlayerBarContainerView // Red Progress Bar - YTNoModernUI
+- (id)quietProgressBarColor {
+    return [UIColor redColor];
+}
+%end
+
+%hook YTSegmentableInlinePlayerBarView // Old Buffer Bar - YTNoModernUI
+- (void)setBufferedProgressBarColor:(id)arg1 {
+     [UIColor colorWithRed:0.65 green:0.65 blue:0.65 alpha:0.60];
+}
+%end
+
+%hook YTQTMButton
+- (BOOL)buttonModernizationEnabled { return NO; }
+%end
+
+%hook YTSearchBarView
+- (BOOL)_roundedSearchBarEnabled { return NO; }
+%end
+
 // Disable Modern Content - YTNoModernUI
 - (BOOL)creatorClientConfigEnableStudioModernizedMdeThumbnailPickerForClient { return NO; }
 - (BOOL)cxClientEnableModernizedActionSheet { return NO; }
@@ -499,7 +531,7 @@ static BOOL didFinishLaunching;
 }
 %end
 
-// Fix login for YouTube 18.13.2 and higher @arichorn
+// Fix login for YouTube 18.13.2 and higher @BandarHL
 %hook SSOKeychainHelper
 + (NSString *)accessGroup {
     return accessGroupID();
