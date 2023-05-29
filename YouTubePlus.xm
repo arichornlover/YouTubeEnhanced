@@ -302,6 +302,7 @@ static BOOL didFinishLaunching;
 - (BOOL)_roundedSearchBarEnabled { return NO; }
 %end
 
+%hook YTColdConfig
 // Disable Modern Content - YTNoModernUI
 - (BOOL)creatorClientConfigEnableStudioModernizedMdeThumbnailPickerForClient { return NO; }
 - (BOOL)cxClientEnableModernizedActionSheet { return NO; }
