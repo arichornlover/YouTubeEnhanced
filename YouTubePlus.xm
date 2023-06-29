@@ -465,6 +465,13 @@ static BOOL didFinishLaunching;
 }
 %end
 
+// Remove “Play next in queue” from the menu (@PoomSmart)
+%hook YTMenuItemVisibilityHandler
+- (BOOL)shouldShowServiceItemRenderer:(YTIMenuConditionalServiceItemRenderer *)renderer {
+    return renderer.icon.iconType == 251 ? NO : %orig;
+}
+%end
+
 # pragma mark - IAmYouTube - https://github.com/PoomSmart/IAmYouTube/
 %hook YTVersionUtils
 + (NSString *)appName { return YT_NAME; }
