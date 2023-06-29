@@ -1460,9 +1460,6 @@ static void replaceTab(YTIGuideResponse *response) {
     if (IsEnabled(@"bigYTMiniPlayer_enabled") && (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad)) {
        %init(Main);
     }
-    if (IsEnabled(@"dontEatMyContent_enabled") && DEMC_deviceIsSupported()) {
-       %init(gDontEatMyContent);
-    }
     if (IsEnabled(@"hidePreviousAndNextButton_enabled")) {
        %init(gHidePreviousAndNextButton);
     }
