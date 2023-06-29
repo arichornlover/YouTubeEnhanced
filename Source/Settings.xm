@@ -603,6 +603,16 @@ extern NSBundle *YouTubePlusBundle();
                 }
                 settingItemId:0],
 
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"STICK_NAVIGATION_BAR")
+                titleDescription:LOC(@"STICK_NAVIGATION_BAR_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"stickNavigationBar_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"stickNavigationBar_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_CHIP_BAR")
                 titleDescription:LOC(@"HIDE_CHIP_BAR_DESC")
                 accessibilityIdentifier:nil
@@ -699,16 +709,6 @@ extern NSBundle *YouTubePlusBundle();
                 switchOn:IsEnabled(@"hideSponsorBlockButton_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideSponsorBlockButton_enabled"];
-                    return YES;
-                }
-                settingItemId:0],
-
-            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_CERCUBE_BUTTON")
-                titleDescription:LOC(@"")
-                accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"hideCercubeButton_enabled")
-                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
-                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideCercubeButton_enabled"];
                     return YES;
                 }
                 settingItemId:0],
