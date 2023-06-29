@@ -173,6 +173,9 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "HIDE_YOUTUBE_LOGO" = "Hide YouTube Logo";
 "HIDE_YOUTUBE_LOGO_DESC" = "this will Hide the YouTube Logo on the top left of the Interface. App restart is required.";
 
+"STICK_NAVIGATION_BAR" "Stick Navigation Bar";
+"STICK_NAVIGATION_BAR_DESC" "Enable to make the Navigation Bar stay on the App when scrolling.";
+
 "HIDE_CHIP_BAR" = "Hide the Upper bar";
 "HIDE_CHIP_BAR_DESC" = "Hide Upper bar in the Home feeds (Trends, Music, Gaming...) and Subscription feeds (All videos, Continue watching...).";
 
