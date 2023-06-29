@@ -116,13 +116,19 @@ static BOOL didFinishLaunching;
     if (IsEnabled(@"hideAutoplaySwitch_enabled")) {}
     else { return %orig; }
 }
-+ (void)setShareButtonAvailable:(BOOL)arg2 { // enable Share Button
-    if (IsEnabled(@"enableShareButton_enabled")) {}
-    else { return %orig; }
+- (void)setShareButtonAvailable:(BOOL)arg1 {
+    if (IsEnabled(@"enableShareButton_enabled")) {
+        %orig(arg1);
+    } else {
+        %orig(YES);
+    }
 }
-+ (void)setAddToButtonAvailable:(BOOL)arg2 { // enable Save to Playlist Button
-    if (IsEnabled(@"enableSaveToButton_enabled")) {}
-    else { return %orig; }
+- (void)setAddToButtonAvailable:(BOOL)arg1 {
+    if (IsEnabled(@"enableSaveToButton_enabled")) {
+        %orig(arg1);
+    } else {
+        %orig(YES);
+    }
 }
 %end
 
@@ -161,11 +167,6 @@ static BOOL didFinishLaunching;
 %end
 %end
 
-// New YouTube Version
-%hook YTVersionUtils
-+ (NSString *)appVersion { return @"18.21.3"; }
-%end
-
 // A/B flags
 %hook YTColdConfig 
 - (BOOL)respectDeviceCaptionSetting { return NO; } // YouRememberCaption: https://poomsmart.github.io/repo/depictions/youremembercaption.html
@@ -183,9 +184,8 @@ static BOOL didFinishLaunching;
 
 // No YouTube Ads
 %hook YTDataUtils
-+ (id)spamSignalsDictionary {
-    return NULL;
-}
++ (id)spamSignalsDictionary { return nil; }
++ (id)spamSignalsDictionaryWithoutIDFA { return nil; }
 %end
 
 %hook YTHotConfig
@@ -197,6 +197,9 @@ static BOOL didFinishLaunching;
 - (NSData *)elementData {
     if (self.hasCompatibilityOptions && self.compatibilityOptions.hasAdLoggingData)
         return nil;
+    NSString *description = [self description]
+    if ([description containsString:@"brand_promo"] || [description containsString:@"statement_banner"])
+        return [NSData data];
     return %orig;
 }
 %end
@@ -279,7 +282,7 @@ static BOOL didFinishLaunching;
 // YTNoModernUI - @arichorn
 %group gYTNoModernUI
 %hook YTVersionUtils // YTNoModernUI Version
-+ (NSString *)appVersion { return @"16.42.3"; }
++ (NSString *)appVersion { return @"17.11.2"; } // Spoofs YouTube to v17.11.2
 %end
 
 %hook YTInlinePlayerBarContainerView // Red Progress Bar - YTNoModernUI
@@ -566,6 +569,90 @@ static BOOL didFinishLaunching;
 }
 %end
 
+// Theme Options
+// Old dark theme (gray)
+%group gOldDarkTheme
+%hook YTAsyncCollectionView
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0] : %orig;
+}
+- (UIColor *)darkBackgroundColor {
+         return [UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0];
+}
+%end
+
+%hook YTAppView
+- (void)setBackgroundColor:(UIColor *)color {
+    %orig([UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0]);
+}
+%end
+
+%hook YTPivotBarView
+- (void)setBackgroundColor:(UIColor *)color {
+    %orig([UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0]);
+}
+%end
+
+%hook YTAsyncCollectionView
+- (void)setBackgroundColor:(UIColor *)color {
+    %orig([UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0]);
+}
+%end
+
+%hook YTAppViewController
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0] : %orig;
+}
+%end
+
+%hook YTNavigationBar
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0] : %orig;
+}
+%end
+
+%hook YTInnerTubeCollectionViewController
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0] : %orig;
+}
+%end
+
+%hook YTColdConfig
+- (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteBgColorForNative { return NO; }
+- (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteTextColorForNative { return NO; }
+- (BOOL)enableCinematicContainerOnClient { return NO; }
+%end
+
+%hook _ASDisplayView
+- (void)didMoveToWindow {
+    %orig;
+    if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"]) { self.backgroundColor = [UIColor clearColor]; }
+    if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.video_list_entry"]) { self.backgroundColor = [UIColor clearColor]; }
+}
+%end
+
+%hook ASCollectionView
+- (void)didMoveToWindow {
+    %orig;
+    self.superview.backgroundColor = [UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0];
+}
+%end
+
+%hook YTFullscreenEngagementOverlayView
+- (void)didMoveToWindow {
+    %orig;
+    self.subviews[0].backgroundColor = [UIColor clearColor];
+}
+%end
+
+%hook YTRelatedVideosView
+- (void)didMoveToWindow {
+    %orig;
+    self.subviews[0].backgroundColor = [UIColor clearColor];
+}
+%end
+%end
+
 // OLED dark mode by BandarHL
 UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:1.0];
 %group gOLED
@@ -590,16 +677,117 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 }
 %end
 
+%hook YTAppView
+- (void)setBackgroundColor:(UIColor *)color {
+    %orig([UIColor blackColor]);
+}
+%end
+
+%hook YTPivotBarView
+- (void)setBackgroundColor:(UIColor *)color {
+    %orig([UIColor blackColor]);
+}
+%end
+
 %hook YTAsyncCollectionView
+- (void)setBackgroundColor:(UIColor *)color {
+    %orig([UIColor blackColor]);
+}
+%end
+
+%hook YTAppViewController
 - (UIColor *)backgroundColor:(NSInteger)pageStyle {
     return pageStyle == 1 ? [UIColor blackColor] : %orig;
 }
-- (UIColor *)darkBackgroundColor {
+%end
+
+%hook YTNavigationBar
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor blackColor] : %orig;
+}
+%end
+
+BOOL areColorsEqual(UIColor *color1, UIColor *color2, CGFloat tolerance) {
+    CGFloat r1, g1, b1, a1, r2, g2, b2, a2;
+    [color1 getRed:&r1 green:&g1 blue:&b1 alpha:&a1];
+    [color2 getRed:&r2 green:&g2 blue:&b2 alpha:&a2];
+
+    return (fabs(r1 - r2) <= tolerance) &&
+           (fabs(g1 - g2) <= tolerance) &&
+           (fabs(b1 - b2) <= tolerance) &&
+           (fabs(a1 - a2) <= tolerance);
+}
+
+%hook UIView
+- (void)setBackgroundColor:(UIColor *)color {
+    UIColor *targetColor = [UIColor colorWithRed:0.0588235 green:0.0588235 blue:0.0588235 alpha:1];
+    CGFloat tolerance = 0.01; // Adjust this value as needed
+
+    if (areColorsEqual(color, targetColor, tolerance)) {
+        color = [UIColor blackColor];
+    }
+    %orig(color);
+}
+%end
+
+%hook YTCollectionViewController
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor blackColor] : %orig;
+}
+%end
+
+%hook YTChannelMobileHeaderViewController
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor blackColor] : %orig;
+}
+%end
+
+%hook YTELMView
+- (UIColor *)backgroundColor {
          return [UIColor blackColor];
 }
 %end
 
+%hook YTHeaderViewController
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor blackColor] : %orig;
+}
+- (UIColor *)barTintColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor blackColor] : %orig;
+}
+%end
+
 %hook YTInnerTubeCollectionViewController
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor blackColor] : %orig;
+}
+%end
+
+%hook YTSettingsCell
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor blackColor] : %orig;
+}
+%end
+
+%hook YTSearchViewController
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor blackColor] : %orig;
+}
+%end
+
+%hook YTSectionListViewController
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor blackColor] : %orig;
+}
+%end
+
+%hook YTWatchMiniBarViewController
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    return pageStyle == 1 ? [UIColor blackColor] : %orig;
+}
+%end
+
+%hook YTWrapperSplitViewController
 - (UIColor *)backgroundColor:(NSInteger)pageStyle {
     return pageStyle == 1 ? [UIColor blackColor] : %orig;
 }
@@ -878,207 +1066,6 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 %end
 
-// DontEatMyContent - @therealFoxster: https://github.com/therealFoxster/DontEatMyContent
-static double videoAspectRatio = 16/9;
-static bool zoomedToFill = false;
-static bool engagementPanelIsVisible = false, removeEngagementPanelViewControllerWithIdentifierCalled = false;
-
-static MLHAMSBDLSampleBufferRenderingView *renderingView;
-static NSLayoutConstraint *widthConstraint, *heightConstraint, *centerXConstraint, *centerYConstraint;
-
-%group gDontEatMyContent
-
-// Retrieve video aspect ratio 
-%hook YTPlayerView
-- (void)setAspectRatio:(CGFloat)aspectRatio {
-    %orig(aspectRatio);
-    videoAspectRatio = aspectRatio;
-}
-%end
-
-%hook YTPlayerViewController
-- (void)viewDidAppear:(BOOL)animated {
-    YTPlayerView *playerView = [self playerView];
-    UIView *renderingViewContainer = MSHookIvar<UIView *>(playerView, "_renderingViewContainer");
-    renderingView = [playerView renderingView];
-
-    // Making renderingView a bit larger since constraining to safe area leaves a gap between the notch and video
-    CGFloat constant = 22.0; // Tested on iPhone 13 mini & 14 Pro Max
-
-    widthConstraint = [renderingView.widthAnchor constraintEqualToAnchor:renderingViewContainer.safeAreaLayoutGuide.widthAnchor constant:constant];
-    heightConstraint = [renderingView.heightAnchor constraintEqualToAnchor:renderingViewContainer.safeAreaLayoutGuide.heightAnchor constant:constant];
-    centerXConstraint = [renderingView.centerXAnchor constraintEqualToAnchor:renderingViewContainer.centerXAnchor];
-    centerYConstraint = [renderingView.centerYAnchor constraintEqualToAnchor:renderingViewContainer.centerYAnchor];
-    
-    // playerView.backgroundColor = [UIColor blueColor];
-    // renderingViewContainer.backgroundColor = [UIColor greenColor];
-    // renderingView.backgroundColor = [UIColor redColor];
-
-    YTMainAppVideoPlayerOverlayViewController *activeVideoPlayerOverlay = [self activeVideoPlayerOverlay];
-
-    // Must check class since YTInlineMutedPlaybackPlayerOverlayViewController doesn't have -(BOOL)isFullscreen
-    if ([NSStringFromClass([activeVideoPlayerOverlay class]) isEqualToString:@"YTMainAppVideoPlayerOverlayViewController"] // isKindOfClass doesn't work for some reason
-    && [activeVideoPlayerOverlay isFullscreen]) {
-        if (!zoomedToFill && !engagementPanelIsVisible) DEMC_activate();
-    } else {
-        DEMC_centerRenderingView();
-    }
-
-    %orig(animated);
-}
-- (void)didPressToggleFullscreen {
-    %orig;
-    if (![[self activeVideoPlayerOverlay] isFullscreen]) { // Entering full screen
-        if (!zoomedToFill && !engagementPanelIsVisible) DEMC_activate();
-    } else { // Exiting full screen
-        DEMC_deactivate();
-    }
-    
-    %orig;
-}
-- (void)didSwipeToEnterFullscreen {
-    %orig; 
-    if (!zoomedToFill && !engagementPanelIsVisible) DEMC_activate();
-}
-- (void)didSwipeToExitFullscreen { 
-    %orig; 
-    DEMC_deactivate(); 
-}
-// New video played
--(void)playbackController:(id)playbackController didActivateVideo:(id)video withPlaybackData:(id)playbackData {
-    %orig(playbackController, video, playbackData);
-    if ([[self activeVideoPlayerOverlay] isFullscreen]) // New video played while in full screen (landscape)
-        // Activate since new videos played in full screen aren't zoomed-to-fill by default
-        // (i.e. the notch/Dynamic Island will cut into content when playing a new video in full screen)
-        DEMC_activate(); 
-    engagementPanelIsVisible = false;
-    removeEngagementPanelViewControllerWithIdentifierCalled = false;
-}
-%end
-
-// Pinch to zoom
-%hook YTVideoFreeZoomOverlayView
-- (void)didRecognizePinch:(UIPinchGestureRecognizer *)pinchGestureRecognizer {
-    DEMC_deactivate();
-    %orig(pinchGestureRecognizer);
-}
-// Detect zoom to fill
-- (void)showLabelForSnapState:(NSInteger)snapState {
-    if (snapState == 0) { // Original
-        zoomedToFill = false;
-        DEMC_activate();
-    } else if (snapState == 1) { // Zoomed to fill
-        zoomedToFill = true;
-        // No need to deactivate constraints as it's already done in -(void)didRecognizePinch:(UIPinchGestureRecognizer *)
-    }
-    %orig(snapState);
-}
-%end
-
-// Mini bar dismiss
-%hook YTWatchMiniBarViewController
-- (void)dismissMiniBarWithVelocity:(CGFloat)velocity gestureType:(int)gestureType {
-    %orig(velocity, gestureType);
-    zoomedToFill = false; // Setting to false since YouTube undoes zoom-to-fill when mini bar is dismissed
-}
-- (void)dismissMiniBarWithVelocity:(CGFloat)velocity gestureType:(int)gestureType skipShouldDismissCheck:(BOOL)skipShouldDismissCheck {
-    %orig(velocity, gestureType, skipShouldDismissCheck);
-    zoomedToFill = false;
-}
-%end
-
-%hook YTMainAppEngagementPanelViewController
-// Engagement panel (comment, description, etc.) about to show up
-- (void)viewWillAppear:(BOOL)animated {
-    if ([self isPeekingSupported]) {
-        // Shorts (only Shorts support peeking, I think)
-    } else {
-        // Everything else
-        engagementPanelIsVisible = true;
-        if ([self isLandscapeEngagementPanel]) {
-            DEMC_deactivate();
-        }
-    }
-    %orig(animated);
-}
-// Engagement panel about to dismiss
-// - (void)viewDidDisappear:(BOOL)animated { %orig; %log; } // Called too late & isn't reliable so sometimes constraints aren't activated even when engagement panel is closed
-%end
-
-%hook YTEngagementPanelContainerViewController
-// Engagement panel about to dismiss
-- (void)notifyEngagementPanelContainerControllerWillHideFinalPanel { // Called in time but crashes if plays new video while in full screen causing engagement panel dismissal
-    // Must check if engagement panel was dismissed because new video played
-    // (i.e. if -(void)removeEngagementPanelViewControllerWithIdentifier:(id) was called prior)
-    if (![self isPeekingSupported] && !removeEngagementPanelViewControllerWithIdentifierCalled) {
-        engagementPanelIsVisible = false;
-        if ([self isLandscapeEngagementPanel] && !zoomedToFill) {
-            DEMC_activate();
-        }
-    }
-    %orig;
-}
-- (void)removeEngagementPanelViewControllerWithIdentifier:(id)identifier {
-    // Usually called when engagement panel is open & new video is played or mini bar is dismissed
-    removeEngagementPanelViewControllerWithIdentifierCalled = true;
-    %orig(identifier);
-}
-%end
-
-%end// group gDontEatMyContent
-
-BOOL DEMC_deviceIsSupported() {
-    // Get device model identifier (e.g. iPhone14,4)
-    // https://stackoverflow.com/a/11197770/19227228
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    NSString *deviceModelID = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
-    
-    NSArray *unsupportedModelIDs = DEMC_UNSUPPORTED_DEVICES;
-    for (NSString *identifier in unsupportedModelIDs) {
-        if ([deviceModelID isEqualToString:identifier]) {
-            return NO;
-        }
-    }
-
-    if ([deviceModelID containsString:@"iPhone"]) {
-        if ([deviceModelID isEqualToString:@"iPhone13,1"]) {
-            // iPhone 12 mini
-            return YES; 
-        } 
-        NSString *modelNumber = [[deviceModelID stringByReplacingOccurrencesOfString:@"iPhone" withString:@""] stringByReplacingOccurrencesOfString:@"," withString:@"."];
-        if ([modelNumber floatValue] >= 14.0) {
-            // iPhone 13 series and newer
-            return YES;
-        } else return NO;
-    } else return NO;
-}
-
-void DEMC_activate() {
-    if (videoAspectRatio < DEMC_THRESHOLD) {
-        DEMC_deactivate();
-        return;
-    }
-    // NSLog(@"activate");
-    DEMC_centerRenderingView();
-    renderingView.translatesAutoresizingMaskIntoConstraints = NO;
-    widthConstraint.active = YES;
-    heightConstraint.active = YES;
-}
-
-void DEMC_deactivate() {
-    // NSLog(@"deactivate");
-    DEMC_centerRenderingView();
-    renderingView.translatesAutoresizingMaskIntoConstraints = YES;
-    widthConstraint.active = NO;
-    heightConstraint.active = NO;
-}
-
-void DEMC_centerRenderingView() {
-    centerXConstraint.active = YES;
-    centerYConstraint.active = YES;
-}
-
 // Hide YouTube annoying banner in Home page? - @MiRO92 - YTNoShorts: https://github.com/MiRO92/YTNoShorts
 %hook YTAsyncCollectionView
 - (id)cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -1154,60 +1141,6 @@ void DEMC_centerRenderingView() {
 %end
 %end
 
-// Theme Options
-// Old dark theme (gray)
-%group gOldDarkTheme
-%hook YTAsyncCollectionView
-- (UIColor *)backgroundColor:(NSInteger)pageStyle {
-    return pageStyle == 1 ? [UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0] : %orig;
-}
-- (UIColor *)darkBackgroundColor {
-         return [UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0];
-}
-%end
-
-%hook YTInnerTubeCollectionViewController
-- (UIColor *)backgroundColor:(NSInteger)pageStyle {
-    return pageStyle == 1 ? [UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0] : %orig;
-}
-%end
-
-%hook YTColdConfig
-- (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteBgColorForNative { return NO; }
-- (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteTextColorForNative { return NO; }
-- (BOOL)enableCinematicContainerOnClient { return NO; }
-%end
-
-%hook _ASDisplayView
-- (void)didMoveToWindow {
-    %orig;
-    if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"]) { self.backgroundColor = [UIColor clearColor]; }
-    if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.video_list_entry"]) { self.backgroundColor = [UIColor clearColor]; }
-}
-%end
-
-%hook ASCollectionView
-- (void)didMoveToWindow {
-    %orig;
-    self.superview.backgroundColor = [UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0];
-}
-%end
-
-%hook YTFullscreenEngagementOverlayView
-- (void)didMoveToWindow {
-    %orig;
-    self.subviews[0].backgroundColor = [UIColor clearColor];
-}
-%end
-
-%hook YTRelatedVideosView
-- (void)didMoveToWindow {
-    %orig;
-    self.subviews[0].backgroundColor = [UIColor clearColor];
-}
-%end
-%end
-
 // Disable snap to chapter
 %hook YTSegmentableInlinePlayerBarView
 - (void)didMoveToWindow {
@@ -1248,11 +1181,19 @@ void DEMC_centerRenderingView() {
 }
 %end
 
-// Bring back the red progress bar
+// Bring back the Red Progress Bar and Gray Buffer Progress
+%group gRedProgressBar
 %hook YTInlinePlayerBarContainerView
 - (id)quietProgressBarColor {
-    return IsEnabled(@"redProgressBar_enabled") ? [UIColor redColor] : %orig;
+    return [UIColor redColor];
 }
+%end
+
+%hook YTSegmentableInlinePlayerBarView
+- (void)setBufferedProgressBarColor:(id)arg1 {
+     [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.90];
+}
+%end
 %end
 
 // Disable Double tap to skip
@@ -1390,13 +1331,6 @@ void DEMC_centerRenderingView() {
 }
 %end
 
-// Won't Work
-// %hook _ASDisplayView
-// - (void)didMoveToWindow {
-//     %orig;
-//     if ((IsEnabled(@"hideShortsSubscriptions_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.module_framework"])) { self.hidden = YES;  }
-// %end
-
 %hook YTColdConfig
 - (BOOL)enableResumeToShorts {
     if (IsEnabled(@"disableResumeToShorts")) { return NO; }
@@ -1422,6 +1356,13 @@ void DEMC_centerRenderingView() {
 - (void)setHintsDisabled:(BOOL)arg1 {
     %orig(YES);
 }
+%end
+%end
+
+// Stick Navigation bar
+%group gStickNavigationBar
+%hook YTHeaderView
+- (BOOL)stickyNavHeaderEnabled { return YES; } 
 %end
 %end
 
@@ -1551,6 +1492,12 @@ void DEMC_centerRenderingView() {
     }
     if (IsEnabled(@"disableHints_enabled")) {
         %init(gDisableHints);
+    }
+    if (IsEnabled(@"redProgressBar_enabled")) {
+        %init(gRedProgressBar);
+    }
+    if (IsEnabled(@"stickNavigationBar_enabled")) {
+        %init(gStickNavigationBar);
     }
     if (IsEnabled(@"hideChipBar_enabled")) {
        %init(gHideChipBar);
