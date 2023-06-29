@@ -116,6 +116,9 @@
 "ENABLE_YT_STARTUP_ANIMATION" = "YouTube起動時のアニメーションを有効にする";
 "ENABLE_YT_STARTUP_ANIMATION_DESC" = "";
 
+"STICK_NAVIGATION_BAR" "Stick Navigation Bar";
+"STICK_NAVIGATION_BAR_DESC" "Enable to make the Navigation Bar stay on the App when scrolling.";
+
 "HIDE_CHIP_BAR" = "トップバーを非表示;
 "HIDE_CHIP_BAR_DESC" = "ホーム(トレンド,音楽,ゲーム...)とサブスクリプション(すべてのビデオ、視聴を続ける...)リボンのトップバーを非表示にします。アプリの再起動が必要です";
 
