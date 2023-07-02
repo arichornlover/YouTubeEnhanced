@@ -192,35 +192,41 @@ static BOOL didFinishLaunching;
 - (BOOL)disableAfmaIdfaCollection { return NO; }
 %end
 
-// Hide YouTube search ads
-%hook YTIElementRenderer
-- (NSData *)elementData {
-    if (self.hasCompatibilityOptions && self.compatibilityOptions.hasAdLoggingData)
-        return nil;
-    NSString *description = [self description]
-    if ([description containsString:@"brand_promo"] || [description containsString:@"statement_banner"])
-        return [NSData data];
-    return %orig;
+BOOL isAd(id node) {
+    if ([node isKindOfClass:NSClassFromString(@"YTVideoWithContextNode")]
+        && [node respondsToSelector:@selector(parentResponder)]
+        && [[(YTVideoWithContextNode *)node parentResponder] isKindOfClass:NSClassFromString(@"YTAdVideoElementsCellController")])
+        return YES;
+    if ([node isKindOfClass:NSClassFromString(@"ELMCellNode")]) {
+        NSString *description = [[[node controller] owningComponent] description];
+        if ([description containsString:@"brand_promo"]
+            || [description containsString:@"statement_banner"]
+            || [description containsString:@"product_carousel"]
+            || [description containsString:@"product_engagement_panel"]
+            || [description containsString:@"product_item"]
+            || [description containsString:@"text_search_ad"]
+            || [description containsString:@"square_image_layout"] // install app ad
+            || [description containsString:@"feed_ad_metadata"])
+            return YES;
+    }
+    return NO;
 }
-%end
 
-%hook YTSectionListViewController
-
-- (void)loadWithModel:(YTISectionListRenderer *)model {
-    NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = model.contentsArray;
-    NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
-        YTIItemSectionRenderer *sectionRenderer = renderers.itemSectionRenderer;
-        YTIItemSectionSupportedRenderers *firstObject = [sectionRenderer.contentsArray firstObject];
-        return firstObject.hasPromotedVideoRenderer || firstObject.hasCompactPromotedVideoRenderer || firstObject.hasPromotedVideoInlineMutedRenderer;
-    }];
-    [contentsArray removeObjectsAtIndexes:removeIndexes];
-    %orig;
+%hook YTAsyncCollectionView
+- (id)collectionView:(id)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    _ASCollectionViewCell *cell = %orig;
+    if ([cell isKindOfClass:NSClassFromString(@"_ASCollectionViewCell")]
+        && [cell respondsToSelector:@selector(node)]
+        && isAd([cell node]))
+            [self deleteItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
+    return cell;
 }
 %end
 
 // Disable Wifi Related Settings - @arichorn
 %group gDisableWifiRelatedSettings
 %hook YTSettingsSectionItemManager
+- (void)updatePremiumEarlyAccessSectionWithEntry:(id)arg1 {} // Try New Features
 - (void)updateAutoplaySectionWithEntry:(id)arg1 {} // Autoplay
 - (void)updateNotificationSectionWithEntry:(id)arg1 {} // Notifications
 - (void)updateHistorySectionWithEntry:(id)arg1 {} // History
