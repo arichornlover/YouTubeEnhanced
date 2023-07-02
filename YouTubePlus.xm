@@ -1209,10 +1209,10 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 %end
 
-// Disable Double tap to skip
-%hook YTDoubleTapToSeekController
- - (void)enableDoubleTapToSeek:(BOOL)arg1 {
-     return IsEnabled(@"disableDoubleTapToSkip_enabled") ? %orig(NO) : %orig;
+// Disable double tap to skip
+%hook YTMainAppVideoPlayerOverlayViewController
+- (BOOL)allowDoubleTapToSeekGestureRecognizer {
+     return IsEnabled(@"disableDoubleTapToSkip_enabled") ? NO : %orig;
 }
 %end
 
