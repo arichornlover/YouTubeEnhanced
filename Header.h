@@ -105,15 +105,12 @@
 @end
 
 // YTNoShorts
-@interface ELMCellNode
-@end
-
 @interface _ASCollectionViewCell : UICollectionViewCell
 - (id)node;
 @end
 
 @interface YTAsyncCollectionView : UICollectionView
-- (void)removeShortsCellAtIndexPath:(NSIndexPath *)indexPath;
+- (void)removeCellsAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
 // App Theme
