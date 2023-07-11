@@ -1584,7 +1584,7 @@ extern NSBundle *YouTubePlusBundle();
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"flex_enabled"];
                     return YES;
                 }
-                settingItemId:0]
+                settingItemId:0],
 
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"APP_VERSION_SPOOFER")
                 titleDescription:LOC(@"APP_VERSION_SPOOFER_DESC")
