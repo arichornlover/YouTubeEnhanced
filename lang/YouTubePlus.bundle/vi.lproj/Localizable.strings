@@ -116,8 +116,8 @@
 "ENABLE_YT_STARTUP_ANIMATION" = "Bật Aimation khi khởi động YouTube";
 "ENABLE_YT_STARTUP_ANIMATION_DESC" = "";
 
-"STICK_NAVIGATION_BAR" "Stick Navigation Bar";
-"STICK_NAVIGATION_BAR_DESC" "Enable to make the Navigation Bar stay on the App when scrolling.";
+"STICK_NAVIGATION_BAR" = "Stick Navigation Bar";
+"STICK_NAVIGATION_BAR_DESC" = "Enable to make the Navigation Bar stay on the App when scrolling.";
 
 "HIDE_CHIP_BAR" = "Ẩn Upper bar";
 "HIDE_CHIP_BAR_DESC" = "Ẩn thanh trên trong nguồn cấp dữ liệu Trang chủ (Xu hướng, Âm nhạc, Trò chơi...) và nguồn cấp dữ liệu Đăng ký (Tất cả video, Tiếp tục xem...).";
