@@ -182,6 +182,15 @@ static BOOL IsEnabled(NSString *key) {
 - (BOOL)disableAfmaIdfaCollection { return NO; }
 %end
 
+// Hide YouTube search ads
+%hook YTIElementRenderer
+- (NSData *)elementData {
+    if (self.hasCompatibilityOptions && self.compatibilityOptions.hasAdLoggingData)
+        return nil;
+    return %orig;
+}
+%end
+
 BOOL isAd(id node) {
     if ([node isKindOfClass:NSClassFromString(@"YTVideoWithContextNode")]
         && [node respondsToSelector:@selector(parentResponder)]
