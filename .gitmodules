@@ -43,3 +43,6 @@
 [submodule "Tweaks/YTNoCommunityPosts"]
 	path = Tweaks/YTNoCommunityPosts
 	url = https://github.com/arichorn/YTNoCommunityPosts.git
+[submodule "Tweaks/YTHoldForSpeed"]
+	path = Tweaks/YTHoldForSpeed
+	url = https://github.com/arichorn/YTHoldForSpeed.git
