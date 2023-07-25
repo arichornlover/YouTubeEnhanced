@@ -137,9 +137,12 @@ static BOOL IsEnabled(NSString *key) {
 %end
 
 %group gHideOverlayDarkBackground
-%hook YTMainAppVideoPlayerOverlayView
-- (void)setBackgroundVisible:(BOOL)arg1 {
-    %orig(NO);
+%hook UIView
+- (void)setBackgroundColor:(UIColor *)color {
+    if ([self.nextResponder isKindOfClass:NSClassFromString(@"YTMainAppVideoPlayerOverlayView")]) {
+        color = nil;
+    }
+    %orig;
 }
 %end
 %end
