@@ -288,8 +288,19 @@ BOOL isAd(id node) {
 
 // YTNoModernUI - @arichorn
 %group gYTNoModernUI
-%hook YTVersionUtils // YTNoModernUI Version
-+ (NSString *)appVersion { return @"17.11.2"; } // Spoofs YouTube to v17.11.2
+%hook YTVersionUtils // YTNoModernUI Original Version
++ (NSString *)appVersion { return @"17.38.10"; }
+%end
+
+%hook YTSettingsCell // made by Dayanch96
+- (void)setDetailText:(id)arg1 {
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *appVersion = infoDictionary[@"CFBundleShortVersionString"];
+
+    if ([arg1 isEqualToString:@"17.38.10"]) {
+        arg1 = appVersion;
+    } %orig(arg1);
+}
 %end
 
 %hook YTInlinePlayerBarContainerView // Red Progress Bar - YTNoModernUI
@@ -300,7 +311,7 @@ BOOL isAd(id node) {
 
 %hook YTSegmentableInlinePlayerBarView // Old Buffer Bar - YTNoModernUI
 - (void)setBufferedProgressBarColor:(id)arg1 {
-     [UIColor colorWithRed:0.65 green:0.65 blue:0.65 alpha:0.60];
+     [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.90];
 }
 %end
 
@@ -328,9 +339,6 @@ BOOL isAd(id node) {
 - (BOOL)uiSystemsClientGlobalConfigEnableModernTabsForNative { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigIosEnableSnackbarModernization { return NO; }
 // Disable Rounded Content - YTNoModernUI
-- (BOOL)iosEnableRoundedSearchBar { return NO; }
-- (BOOL)enableIosRoundedSearchBar { return NO; }
-- (BOOL)enableIosSearchBar { return NO; }
 - (BOOL)iosDownloadsPageRoundedThumbs { return NO; }
 - (BOOL)iosRoundedSearchBarSuggestZeroPadding { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigEnableRoundedThumbnailsForNative { return NO; }
@@ -368,12 +376,6 @@ BOOL isAd(id node) {
 - (BOOL)liveChatIosUseModernRotationDetectiom { return NO; } // Disable Modern Content (YTHotConfig)
 - (BOOL)iosShouldRepositionChannelBar { return NO; }
 - (BOOL)enableElementRendererOnChannelCreation { return NO; }
-%end
-
-%hook YTCinematicContainerView
-- (void)setHidden:(BOOL)arg1 {
-    %orig(YES);
-}
 %end
 %end
 
