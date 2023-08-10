@@ -1,3 +1,7 @@
+## Tweak Deprecation Notice ⚠️
+This tweak is deprecated! use https://github.com/Balackburn/YTLitePlus/releases/latest or https://github.com/Dayanch96/YTLite/releases/latest
+for a better experience.
+
 ## YouTube but with more features!
 
 
