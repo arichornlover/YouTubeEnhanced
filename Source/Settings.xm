@@ -467,6 +467,95 @@ extern NSBundle *YouTubePlusBundle();
     }];
     [sectionItems addObject:shortsControlOverlayGroup];
 
+# pragma mark - App Settings Overlay Options
+    YTSettingsSectionItem *appSettingsOverlayGroup = [YTSettingsSectionItemClass itemWithTitle:LOC(@"App Settings Overlay Options") accessibilityIdentifier:nil detailTextBlock:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+        NSArray <YTSettingsSectionItem *> *rows = @[
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_DONTEATMYCONTENT_SECTION")
+                titleDescription:LOC(@"APP_RESTART_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"disableDontEatMyContentSection_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableDontEatMyContentSection_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_YOUTUBERETURNDISLIKE_SECTION")
+                titleDescription:LOC(@"APP_RESTART_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"disableReturnYouTubeDislikeSection_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableReturnYouTubeDislikeSection_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+                
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_YOUPIP_SECTION")
+                titleDescription:LOC(@"APP_RESTART_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"disableYouPiPSection_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableYouPiPSection_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_TRYNEWFEATURES_SECTION")
+                titleDescription:LOC(@"APP_RESTART_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"disableTryNewFeaturesSection_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableTryNewFeaturesSection_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_AUTOPLAY_SECTION")
+                titleDescription:LOC(@"APP_RESTART_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"disableAutoplaySection_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableAutoplaySection_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_NOTIFICATIONS_SECTION")
+                titleDescription:LOC(@"APP_RESTART_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"disableNotificationsSection_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableNotificationsSection_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+                
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_HISTORYANDPRIVACY_SECTION")
+                titleDescription:LOC(@"APP_RESTART_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"disableHistoryAndPrivacySection_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableHistoryAndPrivacySection_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_LIVECHAT_SECTION")
+                titleDescription:LOC(@"APP_RESTART_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"disableLiveChatSection_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableLiveChatSection_enabled"];
+                    return YES;
+                }
+                settingItemId:0]
+        ];        
+        YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"App Settings Overlay Options") pickerSectionTitle:nil rows:rows selectedItemIndex:NSNotFound parentResponder:[self parentResponder]];
+        [settingsViewController pushViewController:picker];
+        return YES;
+    }];
+    [sectionItems addObject:appSettingsOverlayGroup];
+
 # pragma mark - VersionSpoofer
     YTSettingsSectionItem *versionSpooferSection = [YTSettingsSectionItemClass itemWithTitle:LOC(@"VERSION_SPOOFER_TITLE")
         accessibilityIdentifier:nil
@@ -1552,16 +1641,6 @@ extern NSBundle *YouTubePlusBundle();
                 switchOn:IsEnabled(@"hideSponsorBlockButton_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideSponsorBlockButton_enabled"];
-                    return YES;
-                }
-                settingItemId:0],
-
-            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"DISABLE_WIFI_RELATED_SETTINGS")
-                titleDescription:LOC(@"DISABLE_WIFI_RELATED_SETTINGS_DESC")
-                accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"disableWifiRelatedSettings_enabled")
-                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
-                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableWifiRelatedSettings_enabled"];
                     return YES;
                 }
                 settingItemId:0],
