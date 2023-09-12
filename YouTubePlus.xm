@@ -225,19 +225,6 @@ BOOL isAd(id node) {
 }
 %end
 
-// Disable Wifi Related Settings - @arichorn
-%group gDisableWifiRelatedSettings
-%hook YTSettingsSectionItemManager
-- (void)updatePremiumEarlyAccessSectionWithEntry:(id)arg1 {} // Try New Features
-- (void)updateAutoplaySectionWithEntry:(id)arg1 {} // Autoplay
-- (void)updateNotificationSectionWithEntry:(id)arg1 {} // Notifications
-- (void)updateHistorySectionWithEntry:(id)arg1 {} // History
-- (void)updatePrivacySectionWithEntry:(id)arg1 {} // Privacy
-- (void)updateHistoryAndPrivacySectionWithEntry:(id)arg1 {} // History & Privacy
-- (void)updateLiveChatSectionWithEntry:(id)arg1 {} // Live Chat
-%end
-%end
-
 // NOYTPremium - https://github.com/PoomSmart/NoYTPremium/
 %hook YTCommerceEventGroupHandler
 - (void)addEventHandlers {}
@@ -280,7 +267,6 @@ BOOL isAd(id node) {
 
 %hook YTColdConfig
 - (BOOL)iosEnableVideoPlayerScrubber { return YES; }
-- (BOOL)mobileShortsTabInlined { return YES; }
 %end
 
 %hook YTHotConfig
@@ -721,77 +707,6 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 %end
 
-// Disable snap to chapter
-%hook YTSegmentableInlinePlayerBarView
-- (void)didMoveToWindow {
-    %orig;
-    if (IsEnabled(@"snapToChapter_enabled")) {
-        self.enableSnapToChapter = NO;
-    }
-}
-%end
-
-// Disable Pinch to zoom
-%hook YTColdConfig
-- (BOOL)videoZoomFreeZoomEnabledGlobalConfig {
-    return IsEnabled(@"pinchToZoom_enabled") ? NO : %orig;
-}
-%end
-
-// YTStockVolumeHUD - https://github.com/lilacvibes/YTStockVolumeHUD
-%group gStockVolumeHUD
-%hook YTVolumeBarView
-- (void)volumeChanged:(id)arg1 {
-	%orig(nil);
-}
-%end
-
-%hook UIApplication 
-- (void)setSystemVolumeHUDEnabled:(BOOL)arg1 forAudioCategory:(id)arg2 {
-	%orig(true, arg2);
-}
-%end
-%end
-
-// Hide Watermark
-%hook YTAnnotationsViewController
-- (void)loadFeaturedChannelWatermark {
-    if (IsEnabled(@"hideChannelWatermark_enabled")) {}
-    else { return %orig; }
-}
-%end
-
-// Bring back the Red Progress Bar and Gray Buffer Progress - @dayanch96
-%group gRedProgressBar
-%hook YTInlinePlayerBarContainerView
-- (id)quietProgressBarColor {
-    return [UIColor redColor];
-}
-%end
-
-%hook YTSegmentableInlinePlayerBarView
-- (void)setBufferedProgressBarColor:(id)arg1 {
-     [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.90];
-}
-%end
-%end
-
-// Disable double tap to skip
-%hook YTMainAppVideoPlayerOverlayViewController
-- (BOOL)allowDoubleTapToSeekGestureRecognizer {
-     return IsEnabled(@"disableDoubleTapToSkip_enabled") ? NO : %orig;
-}
-%end
-
-// Hide YouTube Logo
-%group gHideYouTubeLogo
-%hook YTHeaderLogoController
-- (YTHeaderLogoController *)init {
-    return NULL;
-}
-%end
-%end
-
 %group gHideExploreTab
 %hook YTPivotBarView
 - (void)setRenderer:(YTIPivotBarRenderer *)renderer {
@@ -916,6 +831,128 @@ static void replaceTab(YTIGuideResponse *response) {
     if (IsEnabled(@"disableResumeToShorts")) { return NO; }
     else { return %orig; }
 }
+%end
+
+// Disable snap to chapter
+%hook YTSegmentableInlinePlayerBarView
+- (void)didMoveToWindow {
+    %orig;
+    if (IsEnabled(@"snapToChapter_enabled")) {
+        self.enableSnapToChapter = NO;
+    }
+}
+%end
+
+// Disable Pinch to zoom
+%hook YTColdConfig
+- (BOOL)videoZoomFreeZoomEnabledGlobalConfig {
+    return IsEnabled(@"pinchToZoom_enabled") ? NO : %orig;
+}
+%end
+
+// Bring back the Red Progress Bar and Gray Buffer Progress - @dayanch96
+%group gRedProgressBar
+%hook YTInlinePlayerBarContainerView
+- (id)quietProgressBarColor {
+    return [UIColor redColor];
+}
+%end
+
+%hook YTSegmentableInlinePlayerBarView
+- (void)setBufferedProgressBarColor:(id)arg1 {
+     [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.90];
+}
+%end
+%end
+
+// Hide YouTube Logo
+%group gHideYouTubeLogo
+%hook YTHeaderLogoController
+- (YTHeaderLogoController *)init {
+    return NULL;
+}
+%end
+%end
+
+// YTStockVolumeHUD - https://github.com/lilacvibes/YTStockVolumeHUD
+%group gStockVolumeHUD
+%hook YTVolumeBarView
+- (void)volumeChanged:(id)arg1 {
+	%orig(nil);
+}
+%end
+
+%hook UIApplication 
+- (void)setSystemVolumeHUDEnabled:(BOOL)arg1 forAudioCategory:(id)arg2 {
+	%orig(true, arg2);
+}
+%end
+%end
+
+// Hide Watermark
+%hook YTAnnotationsViewController
+- (void)loadFeaturedChannelWatermark {
+    if (IsEnabled(@"hideChannelWatermark_enabled")) {}
+    else { return %orig; }
+}
+%end
+
+// Disable double tap to seek
+%hook YTMainAppVideoPlayerOverlayViewController
+- (BOOL)allowDoubleTapToSeekGestureRecognizer {
+     return IsEnabled(@"disableDoubleTapToSkip_enabled") ? NO : %orig;
+}
+%end
+
+// App Settings Overlay Options
+%group gDisableDontEatMyContentSection
+%hook YTSettingsSectionItemManager
+- (void)updateDEMCSectionWithEntry:(id)arg1 {} // DontEatMyContent
+%end
+%end
+
+%group gDisableReturnYouTubeDislikeSection
+%hook YTSettingsSectionItemManager
+- (void)updateRYDSectionWithEntry:(id)arg1 {} // Return YouTube Dislike
+%end
+%end
+
+%group gDisableYouPiPSection
+%hook YTSettingsSectionItemManager
+- (void)updateYouPiPSectionWithEntry:(id)arg1 {} // YouPiP
+%end
+%end
+
+%group gDisableTryNewFeaturesSection
+%hook YTSettingsSectionItemManager
+- (void)updatePremiumEarlyAccessSectionWithEntry:(id)arg1 {} // Try New Features
+%end
+%end
+
+%group gDisableAutoplaySection
+%hook YTSettingsSectionItemManager
+- (void)updateAutoplaySectionWithEntry:(id)arg1 {} // Autoplay
+%end
+%end
+
+%group gDisableNotificationsSection
+%hook YTSettingsSectionItemManager
+- (void)updateNotificationSectionWithEntry:(id)arg1 {} // Notifications
+%end
+%end
+
+%group gDisableHistoryAndPrivacySection
+%hook YTSettingsSectionItemManager
+- (void)updateHistoryAndPrivacySectionWithEntry:(id)arg1 {} // History And Privacy
+- (void)updateHistorySectionWithEntry:(id)arg1 {} // History
+- (void)updatePrivacySectionWithEntry:(id)arg1 {} // Privacy
+%end
+%end
+
+%group gDisableLiveChatSection
+%hook YTSettingsSectionItemManager
+- (void)updateLiveChatSectionWithEntry:(id)arg1 {} // Live chat
+%end
 %end
 
 // Miscellaneous
@@ -1055,9 +1092,6 @@ static void replaceTab(YTIGuideResponse *response) {
     if (IsEnabled(@"hideVideoPlayerShadowOverlayButtons_enabled")) {
        %init(gHideVideoPlayerShadowOverlayButtons);
     }
-    if (IsEnabled(@"disableWifiRelatedSettings_enabled")) {
-       %init(gDisableWifiRelatedSettings);
-    }
     if (IsEnabled(@"hideHeatwaves_enabled")) {
        %init(gHideHeatwaves);
     }
@@ -1087,6 +1121,30 @@ static void replaceTab(YTIGuideResponse *response) {
     }
     if (IsEnabled(@"stockVolumeHUD_enabled")) {
         %init(gStockVolumeHUD);
+    }
+    if (IsEnabled(@"disableDontEatMyContentSection_enabled")) {
+        %init(gDisableDontEatMyContentSection);
+    }
+    if (IsEnabled(@"disableReturnYouTubeDislikeSection_enabled")) {
+        %init(gDisableReturnYouTubeDislikeSection);
+    }
+    if (IsEnabled(@"disableYouPiPSection_enabled")) {
+        %init(gDisableYouPiPSection);
+    }
+    if (IsEnabled(@"disableTryNewFeaturesSection_enabled")) {
+        %init(gDisableTryNewFeaturesSection);
+    }
+    if (IsEnabled(@"disableAutoplaySection_enabled")) {
+        %init(gDisableAutoplaySection);
+    }
+    if (IsEnabled(@"disableNotificationsSection_enabled")) {
+        %init(gDisableNotificationsSection);
+    }
+    if (IsEnabled(@"disableHistoryAndPrivacySection_enabled")) {
+        %init(gDisableHistoryAndPrivacySection);
+    }
+    if (IsEnabled(@"disableLiveChatSection_enabled")) {
+        %init(gDisableLiveChatSection);
     }
     if (IsEnabled(@"hideExploreTab_enabled")) {
         %init(gHideExploreTab);
