@@ -5,7 +5,7 @@ static BOOL IsEnabled(NSString *key) {
     return [[NSUserDefaults standardUserDefaults] boolForKey:key];
 }
 
-%group gLowContrastMode // Low Contrast Mode v1.4.1 (Compatible with only YouTube v16.05.7-v17.38.10)
+%group gLowContrastMode // Low Contrast Mode v1.4.2 (Compatible with only YouTube v16.05.7-v17.38.10)
 %hook UIColor
 + (UIColor *)whiteColor { // Dark Theme Color
          return [UIColor colorWithRed: 0.56 green: 0.56 blue: 0.56 alpha: 1.00];
@@ -56,6 +56,20 @@ static BOOL IsEnabled(NSString *key) {
 }
 - (UIColor *)overlayIconActiveOther {
     return self.pageStyle == 1 ? [UIColor whiteColor] : %orig;
+}
+%end
+%hook YTColor
++ (UIColor *)white2 {
+    return [UIColor whiteColor];
+}
++ (UIColor *)white3 {
+    return [UIColor whiteColor];
+}
++ (UIColor *)white4 {
+    return [UIColor whiteColor];
+}
++ (UIColor *)white5 {
+    return [UIColor whiteColor];
 }
 %end
 %hook QTMColorGroup
