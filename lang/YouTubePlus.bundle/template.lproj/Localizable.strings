@@ -6,8 +6,11 @@ For example: <ru.lproj> for Russia. For more details, visit: https://en.wikipedi
 3. Translate each line below after each =
 4. Open a Pull Request
 
-- You can also add your localization to YTABConfig, YouPiP, YTUHD, Return YouTube Dislike. The process is the same:
+- You can also add your localization to YTABConfig, YTVideoOverlay, YouMute, YouQuality, YouPiP, YTUHD, Return YouTube Dislike. The process is the same:
 https://github.com/PoomSmart/YTABConfig/tree/main/layout/Library/Application%20Support/YTABC.bundle
+https://github.com/PoomSmart/YTVideoOverlay/tree/main/layout/Library/Application%20Support/YTVideoOverlay.bundle
+https://github.com/PoomSmart/YouMute/tree/main/layout/Library/Application%20Support/YouMute.bundle
+https://github.com/PoomSmart/YouQuality/tree/main/layout/Library/Application%20Support/YouQuality.bundle
 https://github.com/PoomSmart/YouPiP/tree/main/layout/Library/Application%20Support/YouPiP.bundle
 https://github.com/PoomSmart/YTUHD/tree/master/layout/Library/Application%20Support/YTUHD.bundle
 https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Application%20Support/RYD.bundle
@@ -23,8 +26,8 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "AUTO_FULLSCREEN" = "Auto Full Screen (YTAutoFullScreen)";
 "AUTO_FULLSCREEN_DESC" = "Autoplay videos at full screen.";
 
-"DISABLE_DOUBLE_TAP_TO_SKIP" = "Disable Double tap to skip";
-"DISABLE_DOUBLE_TAP_TO_SKIP_DESC" = "Disable the double tap to skip feature in the video player. App restart is required.";
+"DISABLE_DOUBLE_TAP_TO_SKIP" = "Disable double tap to skip";
+"DISABLE_DOUBLE_TAP_TO_SKIP_DESC" = "Disables the double tap to skip gestures in the video player. App restart is required.";
 
 "SNAP_TO_CHAPTER" = "Disable snap to chapter";
 "SNAP_TO_CHAPTER_DESC" = "Disable auto snap to chapter when seeking in videos. App restart is required.";
@@ -83,9 +86,6 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "HIDE_RIGHT_PANEL" = "Hide the right panel in fullscreen mode";
 "HIDE_RIGHT_PANEL_DESC" = "App restart is required.";
 
-"DONT_EAT_MY_CONTENT" = "Prevent Notch/Island on 2:1 Video Content (DontEatMyContent)";
-"DONT_EAT_MY_CONTENT_DESC" = "Prevent the notch/Dynamic Island from munching on 2:1 video content in YouTube. App restart is required.";
-
 "HIDE_HEATWAVES" = "Hide Heatwaves";
 "HIDE_HEATWAVES_DESC" = "Hides the Heatwaves in the video player. App restart is required.";
 
@@ -140,6 +140,18 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "HIDE_SUBSCRIPTIONS" = "Hide Subscriptions button";
 "HIDE_SUBSCRIPTIONS_DESC" = "Hide Subscriptions button which shows up when paused.";
 
+// App settings overlay options
+"APP_SETTINGS_OVERLAY_OPTIONS" = "App Settings Overlay Options";
+
+"HIDE_DONTEATMYCONTENT_SECTION" = "Hide `DontEatMyContent` Section";
+"HIDE_YOUTUBERETURNDISLIKE_SECTION" = "Hide `YouTube Return Dislike` Section";
+"HIDE_YOUPIP_SECTION" = "Hide `YouPiP` Section";
+"HIDE_TRYNEWFEATURES_SECTION" = "Hide `Try New Features` Section";
+"HIDE_AUTOPLAY_SECTION" = "Hide `Autoplay` Section";
+"HIDE_NOTIFICATIONS_SECTION" = "Hide `Notifications` Section";
+"HIDE_HISTORYANDPRIVACY_SECTION" = "Hide `History And Privacy` Section";
+"HIDE_LIVECHAT_SECTION" = "Hide `Live Chat` Section";
+
 // Theme
 "THEME_OPTIONS" = "Theme Options";
 
@@ -158,17 +170,9 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 
 "LOW_CONTRAST_MODE" = "Low Contrast Mode";
 "LOW_CONTRAST_MODE_DESC" = "This option will Low Contrast of the texts and buttons just like how the old YouTube Interface was. App restart is required.";
-
-"LCM_CHOOSE_COLOR" = "Low contrast text color";
-"DEFAULT_UI" = "Default";
-"RED_UI" = "Red UI";
-"BLUE_UI" = "Blue UI";
-"GREEN_UI" = "Green UI";
-"YELLOW_UI" = "Yellow UI";
-"ORANGE_UI" = "Orange UI";
-"PURPLE_UI" = "Purple UI";
-"VIOLET_UI" = "Violet UI";
-"PINK_UI" = "Pink UI";
+"LCM_SELECTOR" = "Low contrast mode selection";
+"DEFAULT_LOWCONTRASTMODE" = "(Default) LowContrastMode";
+"CUSTOM_LOWCONTRASTMODE" = "(Custom Color) LowContrastMode";
 
 // Miscellaneous
 "MISCELLANEOUS" = "Miscellaneous";
@@ -216,9 +220,6 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "HIDE_SPONSORBLOCK_BUTTON" = "Hide iSponsorBlock button in the Navigation bar";
 "HIDE_SPONSORBLOCK_BUTTON_DESC" = "";
 
-"DISABLE_WIFI_RELATED_SETTINGS" = "Disable Wifi Related Settings";
-"DISABLE_WIFI_RELATED_SETTINGS_DESC" = "Disable Wifi Related Sections (Notfications, Connected apps, Privacy & Live Chat, etc.) in the Settings Menu. App restart is required.";
-
 "YT_RE_EXPLORE" = "Replace Shorts tab with Explore tab (YTReExplore)";
 "YT_RE_EXPLORE_DESC" = "App restart is required.";
 
@@ -232,3 +233,6 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "APP_VERSION_SPOOFER" = "Enable App Version Spoofer";
 "APP_VERSION_SPOOFER_DESC" = "Enable this to use the Version Spoofer and select your perferred version below. App restart is required.";
 "VERSION_SPOOFER_TITLE" = "Version Spoofer Picker";
+
+// Other Localization
+"APP_RESTART_DESC" = "App restart is required.";
