@@ -961,7 +961,7 @@ static void replaceTab(YTIGuideResponse *response) {
 %hook MDXPlaybackRouteButtonController
 - (void)didPressButton:(id)arg1 {
     if (IsEnabled(@"castConfirm_enabled")) {
-        NSBundle *tweakBundle = uYouPlusBundle();
+        NSBundle *tweakBundle = YouTubePlusBundle();
         YTAlertView *alertView = [%c(YTAlertView) confirmationDialogWithAction:^{
             %orig;
         } actionTitle:LOC(@"MSG_YES")];
