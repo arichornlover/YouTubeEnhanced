@@ -351,12 +351,12 @@ extern NSBundle *YouTubePlusBundle();
                 }
                 settingItemId:0],
 
-            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_LIBRARY_TAB")
-                titleDescription:LOC(@"HIDE_LIBRARY_TAB_DESC")
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_YOU_TAB")
+                titleDescription:LOC(@"HIDE_YOU_TAB_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"hideLibraryTab_enabled")
+                switchOn:IsEnabled(@"hideYouTab_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
-                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideLibraryTab_enabled"];
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideYouTab_enabled"];
                     return YES;
                 }
                 settingItemId:0],
