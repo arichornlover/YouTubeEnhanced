@@ -461,13 +461,6 @@ BOOL isAd(id node) {
 }
 %end
 
-// Remove “Play next in queue” from the menu (@PoomSmart)
-%hook YTMenuItemVisibilityHandler
-- (BOOL)shouldShowServiceItemRenderer:(YTIMenuConditionalServiceItemRenderer *)renderer {
-    return renderer.icon.iconType == 251 ? NO : %orig;
-}
-%end
-
 # pragma mark - IAmYouTube - https://github.com/PoomSmart/IAmYouTube/
 %hook YTVersionUtils
 + (NSString *)appName { return YT_NAME; }
@@ -538,7 +531,7 @@ BOOL isAd(id node) {
 }
 %end
 
-// Fix login for YouTube 18.13.2 and higher @BandarHL
+// Fix login for YouTube 18.13.2 and higher - @BandarHL
 %hook SSOKeychainHelper
 + (NSString *)accessGroup {
     return accessGroupID();
@@ -602,31 +595,6 @@ static void replaceTab(YTIGuideResponse *response) {
 - (void)handleResponse:(YTIGuideResponse *)response error:(id)error completion:(id)completion {
     replaceTab(response);
     %orig(response, error, completion);
-}
-%end
-%end
-
-// BigYTMiniPlayer: https://github.com/Galactic-Dev/BigYTMiniPlayer
-%group Main
-%hook YTWatchMiniBarView
-- (void)setWatchMiniPlayerLayout:(int)arg1 {
-    %orig(1);
-}
-- (int)watchMiniPlayerLayout {
-    return 1;
-}
-- (void)layoutSubviews {
-    %orig;
-    self.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width - self.frame.size.width), self.frame.origin.y, self.frame.size.width, self.frame.size.height);
-}
-%end
-
-%hook YTMainAppVideoPlayerOverlayView
-- (BOOL)isUserInteractionEnabled {
-    if([[self _viewControllerForAncestor].parentViewController.parentViewController isKindOfClass:%c(YTWatchMiniBarViewController)]) {
-        return NO;
-    }
-    return %orig;
 }
 %end
 %end
@@ -767,7 +735,7 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 %end
 
-%group gHideLibraryTab
+%group gHideYouTab
 %hook YTPivotBarView
 - (void)setRenderer:(YTIPivotBarRenderer *)renderer {
     NSMutableArray <YTIPivotBarSupportedRenderers *> *items = [renderer itemsArray];
@@ -905,15 +873,25 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 
 // App Settings Overlay Options
-%group gDisableDontEatMyContentSection
+%group gDisableAccountSection
 %hook YTSettingsSectionItemManager
-- (void)updateDEMCSectionWithEntry:(id)arg1 {} // DontEatMyContent
+- (void)updateAccountSwitcherSectionWithEntry:(id)arg1 {} // Account
 %end
 %end
 
-%group gDisableReturnYouTubeDislikeSection
+%group gDisableDontEatMyContentSection // DontEatMyContent
 %hook YTSettingsSectionItemManager
-- (void)updateRYDSectionWithEntry:(id)arg1 {} // Return YouTube Dislike
+- (void)updateDEMCSectionWithEntry:(id)arg1 {
+    [arg1 setEnabled:YES];
+}
+%end
+%end
+
+%group gDisableReturnYouTubeDislikeSection // Return YouTube Dislike
+%hook YTSettingsSectionItemManager
+- (void)updateRYDSectionWithEntry:(id)arg1 {
+    [arg1 setEnabled:YES];
+}
 %end
 %end
 
@@ -923,15 +901,21 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 %end
 
-%group gDisableTryNewFeaturesSection
-%hook YTSettingsSectionItemManager
-- (void)updatePremiumEarlyAccessSectionWithEntry:(id)arg1 {} // Try New Features
-%end
-%end
-
 %group gDisableAutoplaySection
 %hook YTSettingsSectionItemManager
 - (void)updateAutoplaySectionWithEntry:(id)arg1 {} // Autoplay
+%end
+%end
+
+%group gDisableTryNewFeaturesSection
+%hook YTSettingsSectionItemManager
+- (void)updatePremiumEarlyAccessSectionWithEntry:(id)arg1 {} // Try new features
+%end
+%end
+
+%group gDisableVideoQualityPreferencesSection
+%hook YTSettingsSectionItemManager
+- (void)updateVideoQualitySectionWithEntry:(id)arg1 {} // Video quality preferences
 %end
 %end
 
@@ -941,10 +925,20 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 %end
 
-%group gDisableHistoryAndPrivacySection
+%group gDisableManageAllHistorySection
 %hook YTSettingsSectionItemManager
-- (void)updateHistoryAndPrivacySectionWithEntry:(id)arg1 {} // History And Privacy
-- (void)updateHistorySectionWithEntry:(id)arg1 {} // History
+- (void)updateHistorySectionWithEntry:(id)arg1 {} // Manage all history
+%end
+%end
+
+%group gDisableYourDataInYouTubeSection
+%hook YTSettingsSectionItemManager
+- (void)updateYourDataSectionWithEntry:(id)arg1 {} // Your data in YouTube
+%end
+%end
+
+%group gDisablePrivacySection
+%hook YTSettingsSectionItemManager
 - (void)updatePrivacySectionWithEntry:(id)arg1 {} // Privacy
 %end
 %end
@@ -956,6 +950,43 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 
 // Miscellaneous
+// YT startup animation
+%hook YTColdConfig
+- (BOOL)mainAppCoreClientIosEnableStartupAnimation {
+    return IsEnabled(@"ytStartupAnimation_enabled") ? YES : NO;
+}
+%end
+
+// YTCastConfirm: https://github.com/JamieBerghmans/YTCastConfirm
+%hook MDXPlaybackRouteButtonController
+- (void)didPressButton:(id)arg1 {
+    if (IsEnabled(@"castConfirm_enabled")) {
+        NSBundle *tweakBundle = uYouPlusBundle();
+        YTAlertView *alertView = [%c(YTAlertView) confirmationDialogWithAction:^{
+            %orig;
+        } actionTitle:LOC(@"MSG_YES")];
+        alertView.title = LOC(@"CASTING");
+        alertView.subtitle = LOC(@"MSG_ARE_YOU_SURE");
+        [alertView show];
+	} else {
+    return %orig;
+    }
+}
+%end
+
+// %hook YTSectionListViewController
+// - (void)loadWithModel:(YTISectionListRenderer *)model {
+//     NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = model.contentsArray;
+//     NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
+//         YTIItemSectionRenderer *sectionRenderer = renderers.itemSectionRenderer;
+//         YTIItemSectionSupportedRenderers *firstObject = [sectionRenderer.contentsArray firstObject];
+//         return firstObject.hasPromotedVideoRenderer || firstObject.hasCompactPromotedVideoRenderer || firstObject.hasPromotedVideoInlineMutedRenderer;
+//     }];
+//     [contentsArray removeObjectsAtIndexes:removeIndexes];
+//     %orig;
+// }
+// %end
+
 // Disable hints - https://github.com/LillieH001/YouTube-Reborn/blob/v4/
 %group gDisableHints
 %hook YTSettings
@@ -976,7 +1007,7 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 %end
 
-// Stick Navigation bar
+// Stick Navigation bar - @Dayanch96
 %group gStickNavigationBar
 %hook YTHeaderView
 - (BOOL)stickyNavHeaderEnabled { return YES; } 
@@ -1004,6 +1035,39 @@ static void replaceTab(YTIGuideResponse *response) {
 //     self.hidden = YES;
 // }
 // %end
+%end
+
+// Remove “Play next in queue” from the menu (@PoomSmart) - qnblackcat/uYouPlus#1138
+%hook YTMenuItemVisibilityHandler
+- (BOOL)shouldShowServiceItemRenderer:(YTIMenuConditionalServiceItemRenderer *)renderer {
+    return IsEnabled(@"hidePlayNextInQueue_enabled") && renderer.icon.iconType == 251 ? NO : %orig;
+}
+%end
+
+// Hide the Comment Section under the Video Player - @arichorn
+%group gNoCommentSection
+%hook YTIElementRenderer
+- (NSData *)elementData {
+    NSArray *commentSectionIDs = @[@"id.ui.comments_entry_point_teaser", @"id.ui.comments_entry_point_simplebox", @"id.ui_video_metadata_carousel", @"id.ui.carousel_header"];
+    NSString *description = [self description];
+    for (NSString *commentSectionID in commentSectionIDs) {
+        if ([description containsString:commentSectionID]) {
+            return [NSData data];
+        }
+    } 
+    return %orig;
+}
+%end
+%end
+
+// Hide the Videos under the Video Player - @Dayanch96
+%group gNoRelatedWatchNexts
+%hook YTWatchNextResultsViewController
+- (void)setVisibleSections:(NSInteger)arg1 {
+    arg1 = 1;
+    %orig(arg1);
+}
+%end
 %end
 
 %group giPadLayout // https://github.com/LillieH001/YouTube-Reborn
@@ -1052,11 +1116,29 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 %end
 
-// YT startup animation
-%hook YTColdConfig
-- (BOOL)mainAppCoreClientIosEnableStartupAnimation {
-    return IsEnabled(@"ytStartupAnimation_enabled") ? YES : NO;
+// BigYTMiniPlayer: https://github.com/Galactic-Dev/BigYTMiniPlayer
+%group Main
+%hook YTWatchMiniBarView
+- (void)setWatchMiniPlayerLayout:(int)arg1 {
+    %orig(1);
 }
+- (int)watchMiniPlayerLayout {
+    return 1;
+}
+- (void)layoutSubviews {
+    %orig;
+    self.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width - self.frame.size.width), self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+}
+%end
+
+%hook YTMainAppVideoPlayerOverlayView
+- (BOOL)isUserInteractionEnabled {
+    if([[self _viewControllerForAncestor].parentViewController.parentViewController isKindOfClass:%c(YTWatchMiniBarViewController)]) {
+        return NO;
+    }
+    return %orig;
+}
+%end
 %end
 
 # pragma mark - ctor
@@ -1092,12 +1174,6 @@ static void replaceTab(YTIGuideResponse *response) {
     if (IsEnabled(@"hideVideoPlayerShadowOverlayButtons_enabled")) {
        %init(gHideVideoPlayerShadowOverlayButtons);
     }
-    if (IsEnabled(@"hideHeatwaves_enabled")) {
-       %init(gHideHeatwaves);
-    }
-    if (IsEnabled(@"ytNoModernUI_enabled")) {
-       %init(gYTNoModernUI);
-    }
     if (IsEnabled(@"disableVideoPlayerZoom_enabled")) {
         %init(gDisableVideoPlayerZoom);
     }
@@ -1122,6 +1198,21 @@ static void replaceTab(YTIGuideResponse *response) {
     if (IsEnabled(@"stockVolumeHUD_enabled")) {
         %init(gStockVolumeHUD);
     }
+    if (IsEnabled(@"hideHeatwaves_enabled")) {
+       %init(gHideHeatwaves);
+    }
+    if (IsEnabled(@"noCommentSection_enabled")) {
+        %init(gNoCommentSection);
+    }
+    if (IsEnabled(@"noRelatedWatchNexts_enabled")) {
+        %init(gNoRelatedWatchNexts);
+    }
+    if (IsEnabled(@"ytNoModernUI_enabled")) {
+        %init(gYTNoModernUI);
+    }
+    if (IsEnabled(@"disableAccountSection_enabled")) {
+        %init(gDisableAccountSection);
+    }
     if (IsEnabled(@"disableDontEatMyContentSection_enabled")) {
         %init(gDisableDontEatMyContentSection);
     }
@@ -1131,17 +1222,26 @@ static void replaceTab(YTIGuideResponse *response) {
     if (IsEnabled(@"disableYouPiPSection_enabled")) {
         %init(gDisableYouPiPSection);
     }
+    if (IsEnabled(@"disableAutoplaySection_enabled")) {
+        %init(gDisableAutoplaySection);
+    }
     if (IsEnabled(@"disableTryNewFeaturesSection_enabled")) {
         %init(gDisableTryNewFeaturesSection);
     }
-    if (IsEnabled(@"disableAutoplaySection_enabled")) {
-        %init(gDisableAutoplaySection);
+    if (IsEnabled(@"disableVideoQualityPreferencesSection_enabled")) {
+        %init(gDisableVideoQualityPreferencesSection);
     }
     if (IsEnabled(@"disableNotificationsSection_enabled")) {
         %init(gDisableNotificationsSection);
     }
-    if (IsEnabled(@"disableHistoryAndPrivacySection_enabled")) {
-        %init(gDisableHistoryAndPrivacySection);
+    if (IsEnabled(@"disableManageAllHistorySection_enabled")) {
+        %init(gDisableManageAllHistorySection);
+    }
+    if (IsEnabled(@"disableYourDataInYouTubeSection_enabled")) {
+        %init(gDisableYourDataInYouTubeSection);
+    }
+    if (IsEnabled(@"disablePrivacySection_enabled")) {
+        %init(gDisablePrivacySection);
     }
     if (IsEnabled(@"disableLiveChatSection_enabled")) {
         %init(gDisableLiveChatSection);
@@ -1158,8 +1258,8 @@ static void replaceTab(YTIGuideResponse *response) {
     if (IsEnabled(@"hideSubscriptionsTab_enabled")) {
         %init(gHideSubscriptionsTab);
     }
-    if (IsEnabled(@"hideLibraryTab_enabled")) {
-        %init(gHideLibraryTab);
+    if (IsEnabled(@"hideYouTab_enabled")) {
+        %init(gHideYouTab);
     }
 
     // Change the default value of some options
