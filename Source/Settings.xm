@@ -470,6 +470,16 @@ extern NSBundle *YouTubePlusBundle();
 # pragma mark - App Settings Overlay Options
     YTSettingsSectionItem *appSettingsOverlayGroup = [YTSettingsSectionItemClass itemWithTitle:LOC(@"App Settings Overlay Options") accessibilityIdentifier:nil detailTextBlock:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
         NSArray <YTSettingsSectionItem *> *rows = @[
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_ACCOUNT_SECTION")
+                titleDescription:LOC(@"APP_RESTART_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"disableAccountSection_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableAccountSection_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_DONTEATMYCONTENT_SECTION")
                 titleDescription:LOC(@"APP_RESTART_DESC")
                 accessibilityIdentifier:nil
@@ -500,6 +510,16 @@ extern NSBundle *YouTubePlusBundle();
                 }
                 settingItemId:0],
 
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_AUTOPLAY_SECTION")
+                titleDescription:LOC(@"APP_RESTART_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"disableAutoplaySection_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableAutoplaySection_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_TRYNEWFEATURES_SECTION")
                 titleDescription:LOC(@"APP_RESTART_DESC")
                 accessibilityIdentifier:nil
@@ -510,12 +530,12 @@ extern NSBundle *YouTubePlusBundle();
                 }
                 settingItemId:0],
 
-            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_AUTOPLAY_SECTION")
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_VIDEOQUALITYPREFERENCES_SECTION")
                 titleDescription:LOC(@"APP_RESTART_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"disableAutoplaySection_enabled")
+                switchOn:IsEnabled(@"disableVideoQualityPreferencesSection_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
-                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableAutoplaySection_enabled"];
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableVideoQualityPreferencesSection_enabled"];
                     return YES;
                 }
                 settingItemId:0],
@@ -530,12 +550,32 @@ extern NSBundle *YouTubePlusBundle();
                 }
                 settingItemId:0],
                 
-            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_HISTORYANDPRIVACY_SECTION")
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_MANAGEALLHISTORY_SECTION")
                 titleDescription:LOC(@"APP_RESTART_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"disableHistoryAndPrivacySection_enabled")
+                switchOn:IsEnabled(@"disableManageAllHistorySection_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
-                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableHistoryAndPrivacySection_enabled"];
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableManageAllHistorySection_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_YOURDATAINYOUTUBE_SECTION")
+                titleDescription:LOC(@"APP_RESTART_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"disableYourDataInYouTubeSection_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableYourDataInYouTubeSection_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_PRIVACY_SECTION")
+                titleDescription:LOC(@"APP_RESTART_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"disablePrivacySection_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disablePrivacySection_enabled"];
                     return YES;
                 }
                 settingItemId:0],
@@ -1525,6 +1565,26 @@ extern NSBundle *YouTubePlusBundle();
                 }
                 settingItemId:0],
 
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"DISABLE_HINTS")
+                titleDescription:LOC(@"DISABLE_HINTS_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"disableHints_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableHints_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_MODERN_INTERFACE")
+                titleDescription:LOC(@"HIDE_MODERN_INTERFACE_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"ytNoModernUI_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"ytNoModernUI_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_YOUTUBE_LOGO")
                 titleDescription:LOC(@"HIDE_YOUTUBE_LOGO_DESC")
                 accessibilityIdentifier:nil
@@ -1554,13 +1614,33 @@ extern NSBundle *YouTubePlusBundle();
                     return YES;
                 }
                 settingItemId:0],
-                
-            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_MODERN_INTERFACE")
-                titleDescription:LOC(@"HIDE_MODERN_INTERFACE_DESC")
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_PLAY_NEXT_IN_QUEUE")
+                titleDescription:LOC(@"HIDE_PLAY_NEXT_IN_QUEUE_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"ytNoModernUI_enabled")
+                switchOn:IsEnabled(@"hidePlayNextInQueue_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
-                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"ytNoModernUI_enabled"];
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hidePlayNextInQueue_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_COMMENT_SECTION")
+                titleDescription:LOC(@"HIDE_COMMENT_SECTION_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"noCommentSection_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"noCommentSection_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_VIDEOS")
+                titleDescription:LOC(@"HIDE_VIDEOS_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"noRelatedWatchNexts_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"noRelatedWatchNexts_enabled"];
                     return YES;
                 }
                 settingItemId:0],
@@ -1591,16 +1671,6 @@ extern NSBundle *YouTubePlusBundle();
                 switchOn:IsEnabled(@"castConfirm_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"castConfirm_enabled"];
-                    return YES;
-                }
-                settingItemId:0],
-
-            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"DISABLE_HINTS")
-                titleDescription:LOC(@"DISABLE_HINTS_DESC")
-                accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"disableHints_enabled")
-                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
-                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableHints_enabled"];
                     return YES;
                 }
                 settingItemId:0],
