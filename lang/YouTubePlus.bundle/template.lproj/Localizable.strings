@@ -26,8 +26,8 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "AUTO_FULLSCREEN" = "Auto Full Screen (YTAutoFullScreen)";
 "AUTO_FULLSCREEN_DESC" = "Autoplay videos at full screen.";
 
-"DISABLE_DOUBLE_TAP_TO_SKIP" = "Disable double tap to skip";
-"DISABLE_DOUBLE_TAP_TO_SKIP_DESC" = "Disables the double tap to skip gestures in the video player. App restart is required.";
+"DISABLE_DOUBLE_TAP_TO_SKIP" = "Disable double tap to seek";
+"DISABLE_DOUBLE_TAP_TO_SKIP_DESC" = "Disables the double tap to seek gestures in the video player. App restart is required.";
 
 "SNAP_TO_CHAPTER" = "Disable snap to chapter";
 "SNAP_TO_CHAPTER_DESC" = "Disable auto snap to chapter when seeking in videos. App restart is required.";
@@ -107,8 +107,8 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "HIDE_SUBSCRIPTIONS_TAB" = "Hide 'Subscriptions' Tab";
 "HIDE_SUBSCRIPTIONS_TAB_DESC" = "Hide the Subscriptions Tab in the Pivot Bar.";
 
-"HIDE_LIBRARY_TAB" = "Hide 'Library' Tab";
-"HIDE_LIBRARY_TAB_DESC" = "Hide the Library Tab in the Pivot Bar.";
+"HIDE_YOU_TAB" = "Hide 'You' Tab";
+"HIDE_YOU_TAB_DESC" = "Hide the You Tab in the Pivot Bar.";
 
 // Shorts controls overlay options
 "SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Shorts Controls Overlay Options";
@@ -143,13 +143,17 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 // App settings overlay options
 "APP_SETTINGS_OVERLAY_OPTIONS" = "App Settings Overlay Options";
 
+"HIDE_ACCOUNT_SECTION" = "Hide `Account` Section";
 "HIDE_DONTEATMYCONTENT_SECTION" = "Hide `DontEatMyContent` Section";
 "HIDE_YOUTUBERETURNDISLIKE_SECTION" = "Hide `YouTube Return Dislike` Section";
 "HIDE_YOUPIP_SECTION" = "Hide `YouPiP` Section";
-"HIDE_TRYNEWFEATURES_SECTION" = "Hide `Try New Features` Section";
 "HIDE_AUTOPLAY_SECTION" = "Hide `Autoplay` Section";
+"HIDE_TRYNEWFEATURES_SECTION" = "Hide `Try New Features` Section";
+"HIDE_VIDEOQUALITYPREFERENCES_SECTION" = "Hide `Video quality preferences` Section";
 "HIDE_NOTIFICATIONS_SECTION" = "Hide `Notifications` Section";
-"HIDE_HISTORYANDPRIVACY_SECTION" = "Hide `History And Privacy` Section";
+"HIDE_MANAGEALLHISTORY_SECTION" = "Hide `Manage all history` Section";
+"HIDE_YOURDATAINYOUTUBE_SECTION" = "Hide `Your data in YouTube` Section";
+"HIDE_PRIVACY_SECTION" = "Hide `Privacy` Section";
 "HIDE_LIVECHAT_SECTION" = "Hide `Live Chat` Section";
 
 // Theme
@@ -183,14 +187,26 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "HIDE_YOUTUBE_LOGO" = "Hide YouTube Logo";
 "HIDE_YOUTUBE_LOGO_DESC" = "this will Hide the YouTube Logo on the top left of the Interface. App restart is required.";
 
+"DISABLE_HINTS" = "Disable hints";
+"DISABLE_HINTS_DESC" = "Disable feature hints from YouTube that usually display when the app is freshly installed.";
+
+"HIDE_MODERN_INTERFACE" = "Hide Modern Interface (YTNoModernUI)";
+"HIDE_MODERN_INTERFACE_DESC" = "Toggle this on to hide any Modern Element added by YouTube. Removes Ambient Mode, Rounded Design & More. App restart is required.";
+
 "STICK_NAVIGATION_BAR" = "Stick Navigation Bar";
 "STICK_NAVIGATION_BAR_DESC" = "Enable to make the Navigation Bar stay on the App when scrolling.";
 
 "HIDE_CHIP_BAR" = "Hide the Upper bar";
 "HIDE_CHIP_BAR_DESC" = "Hide Upper bar in the Home feeds (Trends, Music, Gaming...) and Subscription feeds (All videos, Continue watching...).";
 
-"HIDE_MODERN_INTERFACE" = "Hide Modern Interface (YTNoModernUI)";
-"HIDE_MODERN_INTERFACE_DESC" = "Toggle this on to hide any Modern Element added by YouTube. Removes Ambient Mode, Rounded Design & More. App restart is required.";
+"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "Hide the premium \"Play next in queue\" option in video context menus";
+
+"HIDE_COMMENT_SECTION" = "Hide the comment section under player";
+"HIDE_COMMENT_SECTION_DESC" = "Hides the Comment Section below the player.";
+
+"HIDE_VIDEOS" = "Hide all videos under player";
+"HIDE_VIDEOS_DESC" = "Hides all videos below the player.";
 
 "IPAD_LAYOUT" = "iPad Layout";
 "IPAD_LAYOUT_DESC" = "only use this if you want to have the iPad Layout on your current iPhone/iPod. App restart is required.";
@@ -204,9 +220,6 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "MSG_ARE_YOU_SURE" = "Are you sure you want to start casting?";
 "MSG_YES" = "Yes";
 "MSG_CANCEL" = "Cancel";
-
-"DISABLE_HINTS" = "Disable hints";
-"DISABLE_HINTS_DESC" = "Disable feature hints from YouTube that usually display when the app is freshly installed.";
 
 "NEW_MINIPLAYER_STYLE" = "New mini player bar style (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "App restart is required.";
