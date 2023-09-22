@@ -253,14 +253,17 @@ BOOL isAd(id node) {
 %end
 
 // YTShortsProgress - @PoomSmart - https://github.com/PoomSmart/YTShortsProgress
+%hook YTShortsPlayerViewController
+- (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
+- (BOOL)shouldEnablePlayerBarOnlyOnPause { return NO; }
+%end
+
 %hook YTReelPlayerViewController
-- (BOOL)shouldEnablePlayerBar { return YES; }
 - (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
 - (BOOL)shouldEnablePlayerBarOnlyOnPause { return NO; }
 %end
 
 %hook YTReelPlayerViewControllerSub
-- (BOOL)shouldEnablePlayerBar { return YES; }
 - (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
 - (BOOL)shouldEnablePlayerBarOnlyOnPause { return NO; }
 %end
@@ -296,18 +299,14 @@ BOOL isAd(id node) {
 }
 %end
 
-%hook YTSegmentableInlinePlayerBarView // Old Buffer Bar - YTNoModernUI
+%hook YTSegmentableInlinePlayerBarView // Gray Buffer Progress - YTNoModernUI
 - (void)setBufferedProgressBarColor:(id)arg1 {
      [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.90];
 }
 %end
 
 %hook YTQTMButton
-- (BOOL)buttonModernizationEnabled { return NO; }
-%end
-
-%hook YTSearchBarView
-- (BOOL)_roundedSearchBarEnabled { return NO; }
++ (BOOL)buttonModernizationEnabled { return NO; }
 %end
 
 %hook YTColdConfig
@@ -316,13 +315,11 @@ BOOL isAd(id node) {
 - (BOOL)cxClientEnableModernizedActionSheet { return NO; }
 - (BOOL)enableClientShortsSheetsModernization { return NO; }
 - (BOOL)enableTimestampModernizationForNative { return NO; }
-- (BOOL)mainAppCoreClientIosEnableModernOssPage { return NO; }
 - (BOOL)modernizeElementsTextColor { return NO; }
 - (BOOL)modernizeElementsBgColor { return NO; }
 - (BOOL)modernizeCollectionLockups { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigEnableEpUxUpdates { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigEnableModernButtonsForNative { return NO; }
-- (BOOL)uiSystemsClientGlobalConfigEnableModernButtonsForNativeLongTail { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigEnableModernTabsForNative { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigIosEnableSnackbarModernization { return NO; }
 // Disable Rounded Content - YTNoModernUI
@@ -442,7 +439,7 @@ BOOL isAd(id node) {
 }
 %end
 
-/// YTNoPaidPromo: https://github.com/PoomSmart/YTNoPaidPromo
+// YTNoPaidPromo: https://github.com/PoomSmart/YTNoPaidPromo
 %hook YTMainAppVideoPlayerOverlayViewController
 - (void)setPaidContentWithPlayerData:(id)data {
     if (IsEnabled(@"hidePaidPromotionCard_enabled")) {}
@@ -784,6 +781,21 @@ static void replaceTab(YTIGuideResponse *response) {
     if ((IsEnabled(@"hideBuySuperThanks_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.suggested_action"])) { 
         self.hidden = YES; 
     }
+
+// Hide the Download Button under the Video Player - @arichorn
+    if ((IsEnabled(@"hideAddToOfflineButton_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.ui.add_to_offline.button"])) {
+        self.hidden = YES;
+        self.userInteractionEnabled = NO;
+        [self setNeedsLayout];
+        [self layoutIfNeeded];
+    }
+
+// Hide the Comment Section under the Video Player - @arichorn
+    if ((IsEnabled(@"hideCommentSection_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.ui.comments_entry_point_teaser"] || [self.accessibilityIdentifier isEqualToString:@"id.ui.comments_entry_point_simplebox"] || [self.accessibilityIdentifier isEqualToString:@"id.ui.video_metadata_carousel"] || [self.accessibilityIdentifier isEqualToString:@"id.ui.carousel_header"])) {
+        self.hidden = YES;
+        self.opaque = YES;
+        self.userInteractionEnabled = NO;
+    }
 }
 %end
 
@@ -1044,22 +1056,6 @@ static void replaceTab(YTIGuideResponse *response) {
 }
 %end
 
-// Hide the Comment Section under the Video Player - @arichorn
-%group gNoCommentSection
-%hook YTIElementRenderer
-- (NSData *)elementData {
-    NSArray *commentSectionIDs = @[@"id.ui.comments_entry_point_teaser", @"id.ui.comments_entry_point_simplebox", @"id.ui_video_metadata_carousel", @"id.ui.carousel_header"];
-    NSString *description = [self description];
-    for (NSString *commentSectionID in commentSectionIDs) {
-        if ([description containsString:commentSectionID]) {
-            return [NSData data];
-        }
-    } 
-    return %orig;
-}
-%end
-%end
-
 // Hide the Videos under the Video Player - @Dayanch96
 %group gNoRelatedWatchNexts
 %hook YTWatchNextResultsViewController
@@ -1200,9 +1196,6 @@ static void replaceTab(YTIGuideResponse *response) {
     }
     if (IsEnabled(@"hideHeatwaves_enabled")) {
        %init(gHideHeatwaves);
-    }
-    if (IsEnabled(@"noCommentSection_enabled")) {
-        %init(gNoCommentSection);
     }
     if (IsEnabled(@"noRelatedWatchNexts_enabled")) {
         %init(gNoRelatedWatchNexts);
