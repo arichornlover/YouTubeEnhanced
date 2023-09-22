@@ -1719,9 +1719,9 @@ extern NSBundle *YouTubePlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_COMMENT_SECTION")
                 titleDescription:LOC(@"HIDE_COMMENT_SECTION_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"noCommentSection_enabled")
+                switchOn:IsEnabled(@"hideCommentSection_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
-                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"noCommentSection_enabled"];
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideCommentSection_enabled"];
                     return YES;
                 }
                 settingItemId:0],
