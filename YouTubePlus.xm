@@ -1137,6 +1137,16 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 %end
 
+// Hide Subscriptions Notification Badge - @arichorn
+%group gHideSubscriptionsNotificationBadge
+%hook YTPivotBarIndicatorView
+- (void)didMoveToWindow {
+    [self setHidden:YES];
+    %orig();
+}
+%end
+%end
+
 # pragma mark - ctor
 %ctor {
     %init;
