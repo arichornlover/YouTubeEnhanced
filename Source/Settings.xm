@@ -1816,12 +1816,12 @@ extern NSBundle *YouTubePlusBundle();
                 }
                 settingItemId:0], 	
 
-            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_NOTIFICATION_BADGE")
-                titleDescription:LOC(@"HIDE_NOTIFICATION_BADGE")
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_SUBSCRIPTIONS_BADGE")
+                titleDescription:LOC(@"HIDE_SUBSCRIPTIONS_BADGE")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"hideSubscriptionsNotificationBadge_enabled")
+                switchOn:IsEnabled(@"hideSubscriptionsRedPivotBadge_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
-                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideSubscriptionsNotificationBadge_enabled"];
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideSubscriptionsRedPivotBadge_enabled"];
                     return YES;
                 }
                 settingItemId:0],
