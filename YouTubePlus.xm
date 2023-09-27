@@ -1138,7 +1138,7 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 
 // Hide Subscriptions Notification Badge - @arichorn
-%group gHideSubscriptionsNotificationBadge
+%group gHideSubscriptionsRedPivotBadge
 %hook YTPivotBarIndicatorView
 - (void)didMoveToWindow {
     [self setHidden:YES];
@@ -1191,6 +1191,9 @@ static void replaceTab(YTIGuideResponse *response) {
     }
     if (IsEnabled(@"redProgressBar_enabled")) {
         %init(gRedProgressBar);
+    }
+    if (IsEnabled(@"hideSubscriptionsRedPivotBadge_enabled")) {
+        %init(gHideSubscriptionsRedPivotBadge);
     }
     if (IsEnabled(@"stickNavigationBar_enabled")) {
         %init(gStickNavigationBar);
