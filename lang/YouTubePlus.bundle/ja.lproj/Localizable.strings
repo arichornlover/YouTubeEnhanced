@@ -74,16 +74,69 @@
 "HIDE_DARK_OVERLAY_BACKGROUND" = "ダークオーバーレイの背景を非表示";
 "HIDE_DARK_OVERLAY_BACKGROUND_DESC" = "ビデオプレーヤーのダークオーバーレイの背景を非表示にします";
 
+// Hide Pivot Bar Tabs
+"HIDE_PIVOT_BAR_TABS" = "Hide Pivot Bar Tabs";
+
+"HIDE_EXPLORE_TAB" = "Hide 'Explore' Tab";
+"HIDE_EXPLORE_TAB_DESC" = "Hide the Explore Tab in the Pivot Bar.";
+
+"HIDE_SHORTS_TAB" = "Hide 'Shorts' Tab";
+"HIDE_SHORTS_TAB_DESC" = "Hide the Explore Tab in the Pivot Bar.";
+
+"HIDE_UPLOAD_TAB" = "Hide 'Upload' Tab";
+"HIDE_UPLOAD_TAB_DESC" = "Hide the Explore Tab in the Pivot Bar.";
+
+"HIDE_SUBSCRIPTIONS_TAB" = "Hide 'Subscriptions' Tab";
+"HIDE_SUBSCRIPTIONS_TAB_DESC" = "Hide the Subscriptions Tab in the Pivot Bar.";
+
+"HIDE_YOU_TAB" = "Hide 'You' Tab";
+"HIDE_YOU_TAB_DESC" = "Hide the You Tab in the Pivot Bar.";
+
 // Shorts controls overlay options
 "SHORTS_CONTROLS_OVERLAY_OPTIONS" = "ショートのコントロールオーバーレイの設定";
 
 "HIDE_SHORTS_VIDEOS" = "ショートを非表示";
 "HIDE_SHORTS_VIDEOS_DESC" = "ホームページからショートを非表示にします(推奨)";
 
-// Version Spoofer
-"APP_VERSION_SPOOFER" = "アプリのバージョン偽装を有効にする";
-"APP_VERSION_SPOOFER_DESC" = "この機能を有効にするとバージョン偽装を使用し、以下で好みのバージョンを選択できます。アプリの再起動が必要です";
-"VERSION_SPOOFER_TITLE" = "偽装バージョンの選択";
+"HIDE_SHORTS_CHANNEL_AVATAR" = "Hide Shorts channel's avatar";
+"HIDE_SHORTS_CHANNEL_AVATAR_DESC" = "";
+
+"HIDE_SHORTS_LIKE_BUTTON" = "Hide Shorts like button";
+"HIDE_SHORTS_LIKE_BUTTON_DESC" = "";
+
+"HIDE_SHORTS_DISLIKE_BUTTON" = "Hide Shorts dislike button";
+"HIDE_SHORTS_DISLIKE_BUTTON_DESC" = "";
+
+"HIDE_SHORTS_COMMENT_BUTTON" = "Hide Shorts comment button";
+"HIDE_SHORTS_COMMENT_BUTTON_DESC" = "";
+
+"HIDE_SHORTS_REMIX_BUTTON" = "Hide Shorts remix button";
+"HIDE_SHORTS_REMIX_BUTTON_DESC" = "";
+
+"HIDE_SHORTS_SHARE_BUTTON" = "Hide Shorts share button";
+"HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
+
+"HIDE_SUPER_THANKS" = "Hide 'Buy Super Thanks' banner";
+"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in Shorts.";
+
+"HIDE_SUBSCRIPTIONS" = "Hide Subscriptions button";
+"HIDE_SUBSCRIPTIONS_DESC" = "Hide Subscriptions button which shows up when paused.";
+
+// App settings overlay options
+"APP_SETTINGS_OVERLAY_OPTIONS" = "App Settings Overlay Options";
+
+"HIDE_ACCOUNT_SECTION" = "Hide `Account` Section";
+"HIDE_DONTEATMYCONTENT_SECTION" = "Hide `DontEatMyContent` Section";
+"HIDE_YOUTUBERETURNDISLIKE_SECTION" = "Hide `YouTube Return Dislike` Section";
+"HIDE_YOUPIP_SECTION" = "Hide `YouPiP` Section";
+"HIDE_AUTOPLAY_SECTION" = "Hide `Autoplay` Section";
+"HIDE_TRYNEWFEATURES_SECTION" = "Hide `Try New Features` Section";
+"HIDE_VIDEOQUALITYPREFERENCES_SECTION" = "Hide `Video quality preferences` Section";
+"HIDE_NOTIFICATIONS_SECTION" = "Hide `Notifications` Section";
+"HIDE_MANAGEALLHISTORY_SECTION" = "Hide `Manage all history` Section";
+"HIDE_YOURDATAINYOUTUBE_SECTION" = "Hide `Your data in YouTube` Section";
+"HIDE_PRIVACY_SECTION" = "Hide `Privacy` Section";
+"HIDE_LIVECHAT_SECTION" = "Hide `Live Chat` Section";
 
 // Theme
 "THEME_OPTIONS" = "テーマオプション";
@@ -103,6 +156,9 @@
 
 "LOW_CONTRAST_MODE" = "低コントラストモード";
 "LOW_CONTRAST_MODE_DESC" = "このオプションは、テキストとボタンのコントラストを以前のYouTubeインターフェイスのように低くします。アプリの再起動が必要です";
+"LCM_SELECTOR" = "Low contrast mode selection";
+"DEFAULT_LOWCONTRASTMODE" = "(Default) LowContrastMode";
+"CUSTOM_LOWCONTRASTMODE" = "(Custom Color) LowContrastMode";
 
 // Miscellaneous
 "MISCELLANEOUS" = "その他";
@@ -110,14 +166,29 @@
 "ENABLE_YT_STARTUP_ANIMATION" = "YouTube起動時のアニメーションを有効化";
 "ENABLE_YT_STARTUP_ANIMATION_DESC" = "";
 
+"HIDE_YOUTUBE_LOGO" = "Hide YouTube Logo";
+"HIDE_YOUTUBE_LOGO_DESC" = "this will Hide the YouTube Logo on the top left of the Interface. App restart is required.";
+
+"DISABLE_HINTS" = "ヒントを無効化";
+"DISABLE_HINTS_DESC" = "アプリが再インストールされた際に表示される機能の使い方を非表示にします";
+
+"HIDE_MODERN_INTERFACE" = "モダンインターフェイスを非表示 (YTNoModernUI)";
+"HIDE_MODERN_INTERFACE_DESC" = "YouTubeによって追加されたモダンな要素を隠すにはこれを有効にしてください。アンビエントモード,丸みを帯びたデザインなどを削除します。\nアプリの再起動が必要です";
+
 "STICK_NAVIGATION_BAR" = "ナビゲーションバーを固定する";
 "STICK_NAVIGATION_BAR_DESC" = "スクロール時にナビゲーションバーをアプリ上に固定するために有効にします。";
 
 "HIDE_CHIP_BAR" = "トップバーを非表示";
 "HIDE_CHIP_BAR_DESC" = "ホーム(トレンド,音楽,ゲーム など)と\n登録チャンネル(すべてのビデオ,視聴を続ける など)リボンのトップバーを非表示にします。\nアプリの再起動が必要です";
 
-"HIDE_MODERN_INTERFACE" = "モダンインターフェイスを非表示 (YTNoModernUI)";
-"HIDE_MODERN_INTERFACE_DESC" = "YouTubeによって追加されたモダンな要素を隠すにはこれを有効にしてください。アンビエントモード,丸みを帯びたデザインなどを削除します。\nアプリの再起動が必要です";
+"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "Hide the premium \"Play next in queue\" option in video context menus";
+
+"HIDE_COMMENT_SECTION" = "Hide the comment section under player";
+"HIDE_COMMENT_SECTION_DESC" = "Hides the Comment Section below the player.";
+
+"HIDE_VIDEOS" = "Hide all videos under player";
+"HIDE_VIDEOS_DESC" = "Hides all videos below the player.";
 
 "IPAD_LAYOUT" = "iPadレイアウト";
 "IPAD_LAYOUT_DESC" = "現在使用しているiPhone/iPodでiPadのレイアウトを使用したい場合にのみ使用します。\nアプリの再起動が必要です";
@@ -132,9 +203,6 @@
 "MSG_YES" = "はい";
 "MSG_CANCEL" = "いいえ";
 
-"DISABLE_HINTS" = "ヒントを無効化";
-"DISABLE_HINTS_DESC" = "アプリが再インストールされた際に表示される機能の使い方を非表示にします";
-
 "NEW_MINIPLAYER_STYLE" = "新しいミニプレーヤーバー (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "アプリの再起動が必要です";
 
@@ -147,9 +215,6 @@
 "HIDE_SPONSORBLOCK_BUTTON" = "ナビゲーションバーのiSponsorBlockボタンを非表示";
 "HIDE_SPONSORBLOCK_BUTTON_DESC" = "";
 
-"DISABLE_WIFI_RELATED_SETTINGS" = "Wi-Fi関連の設定を無効化";
-"DISABLE_WIFI_RELATED_SETTINGS_DESC" = "Wifi関連項目を無効化します。(通知,接続済みのアプリ,プライバシー,チャットなど) 設定メニューから選択してください。アプリの再起動が必要です";
-
 "YT_RE_EXPLORE" = "ショートタブを探索タブに置き換える (YTReExplore)";
 "YT_RE_EXPLORE_DESC" = "アプリの再起動が必要です";
 
@@ -158,3 +223,11 @@
 
 "ENABLE_FLEX" = "FLEXを有効化";
 "ENABLE_FLEX_DESC" = "デバッグ用のFLEXを有効化します(推奨しません) \n何をやっているのか分からない場合はオフにしてください";
+
+// Version Spoofer
+"APP_VERSION_SPOOFER" = "アプリのバージョン偽装を有効にする";
+"APP_VERSION_SPOOFER_DESC" = "この機能を有効にするとバージョン偽装を使用し、以下で好みのバージョンを選択できます。アプリの再起動が必要です";
+"VERSION_SPOOFER_TITLE" = "偽装バージョンの選択";
+
+// Other Localization
+"APP_RESTART_DESC" = "App restart is required.";
