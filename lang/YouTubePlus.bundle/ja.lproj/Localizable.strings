@@ -18,7 +18,7 @@
 "PINCH_TO_ZOOM_DESC" = "アプリの再起動が必要です";
 
 "YT_MINIPLAYER" = "全てのYouTubeのビデオにミニプレーヤーを有効化";
-"YT_MINIPLAYER_DESC" = "例えば子供向け動画など";
+"YT_MINIPLAYER_DESC" = "例:子供向け動画など";
 
 "STOCK_VOLUME_HUD" = "iOSの標準ボリュームHUDを利用する";
 "STOCK_VOLUME_HUD_DESC" = "";
@@ -45,16 +45,16 @@
 "HIDE_PAID_PROMOTION_CARDS_DESC" = "一部の動画の「有料プロモーションを含みます」カードを非表示にします";
 
 "HIDE_CHANNEL_WATERMARK" = "チャンネルウォーターマークを非表示";
-"HIDE_CHANNEL_WATERMARK_DESC" = "ビデオコントロールオーバーレイで、チャンネルのウォーターマークを非表示にします。アプリの再起動が必要です";
+"HIDE_CHANNEL_WATERMARK_DESC" = "ビデオコントロールオーバーレイでチャンネルのウォーターマークを非表示にします。アプリの再起動が必要です";
 
 "HIDE_SHADOW_OVERLAY_BUTTONS" = "シャドウオーバーレイボタンを非表示";
-"HIDE_SHADOW_OVERLAY_BUTTONS_DESC" = "再生/一時停止、前へ、次へ、進む、巻き戻しボタンのシャドウ オーバーレイを非表示にします";
+"HIDE_SHADOW_OVERLAY_BUTTONS_DESC" = "再生/一時停止,前へ,次へ,進む,巻き戻しボタンのシャドウ オーバーレイを非表示にします";
 
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "前後の動画を再生するボタンを非表示";
-"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "動画コントロールのオーバーレイで、前の動画と次の動画を再生するボタンを非表示にします";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "動画コントロールのオーバーレイで前の動画と次の動画を再生するボタンを非表示にします";
 
 "REPLACE_PREVIOUS_NEXT_BUTTON" = "前後の動画を再生するボタンを置き換える";
-"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "次の動画と前の動画を再生するボタンを、それぞれ早送りと巻き戻しボタンに置き換えます。\nアプリの再起動が必要です";
+"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "次の動画と前の動画を再生するボタンをそれぞれ早送りと巻き戻しボタンに置き換えます。\nアプリの再起動が必要です";
 
 "RED_PROGRESS_BAR" = "赤いプログレスバー";
 "RED_PROGRESS_BAR_DESC" = "赤いプログレスバーを復活させます。\nアプリの再起動が必要です";
@@ -75,22 +75,22 @@
 "HIDE_DARK_OVERLAY_BACKGROUND_DESC" = "ビデオプレーヤーのダークオーバーレイの背景を非表示にします";
 
 // Hide Pivot Bar Tabs
-"HIDE_PIVOT_BAR_TABS" = "Hide Pivot Bar Tabs";
+"HIDE_PIVOT_BAR_TABS" = "ピボットバータブを非表示";
 
-"HIDE_EXPLORE_TAB" = "Hide 'Explore' Tab";
-"HIDE_EXPLORE_TAB_DESC" = "Hide the Explore Tab in the Pivot Bar.";
+"HIDE_EXPLORE_TAB" = "'探索'タブを非表示";
+"HIDE_EXPLORE_TAB_DESC" = "ピボットバーの探索タブを非表示にします";
 
-"HIDE_SHORTS_TAB" = "Hide 'Shorts' Tab";
-"HIDE_SHORTS_TAB_DESC" = "Hide the Explore Tab in the Pivot Bar.";
+"HIDE_SHORTS_TAB" = "'ショート'タブを非表示";
+"HIDE_SHORTS_TAB_DESC" = "ピボットバーのショートタブを非表示にします";
 
-"HIDE_UPLOAD_TAB" = "Hide 'Upload' Tab";
-"HIDE_UPLOAD_TAB_DESC" = "Hide the Explore Tab in the Pivot Bar.";
+"HIDE_UPLOAD_TAB" = "'アップロード'タブを非表示";
+"HIDE_UPLOAD_TAB_DESC" = "ピボットバーのアップロードタブを非表示にします";
 
-"HIDE_SUBSCRIPTIONS_TAB" = "Hide 'Subscriptions' Tab";
-"HIDE_SUBSCRIPTIONS_TAB_DESC" = "Hide the Subscriptions Tab in the Pivot Bar.";
+"HIDE_SUBSCRIPTIONS_TAB" = "'登録チャンネル'タブを非表示";
+"HIDE_SUBSCRIPTIONS_TAB_DESC" = "ピボットバーの登録チャンネルタブを非表示にします";
 
-"HIDE_YOU_TAB" = "Hide 'You' Tab";
-"HIDE_YOU_TAB_DESC" = "Hide the You Tab in the Pivot Bar.";
+"HIDE_YOU_TAB" = "'You'タブを非表示";
+"HIDE_YOU_TAB_DESC" = "ピボットバーのYouタブを非表示にします";
 
 // Shorts controls overlay options
 "SHORTS_CONTROLS_OVERLAY_OPTIONS" = "ショートのコントロールオーバーレイの設定";
@@ -98,45 +98,45 @@
 "HIDE_SHORTS_VIDEOS" = "ショートを非表示";
 "HIDE_SHORTS_VIDEOS_DESC" = "ホームページからショートを非表示にします(推奨)";
 
-"HIDE_SHORTS_CHANNEL_AVATAR" = "Hide Shorts channel's avatar";
+"HIDE_SHORTS_CHANNEL_AVATAR" = "チャンネルのアバターを非表示";
 "HIDE_SHORTS_CHANNEL_AVATAR_DESC" = "";
 
-"HIDE_SHORTS_LIKE_BUTTON" = "Hide Shorts like button";
+"HIDE_SHORTS_LIKE_BUTTON" = "高評価ボタンを非表示";
 "HIDE_SHORTS_LIKE_BUTTON_DESC" = "";
 
-"HIDE_SHORTS_DISLIKE_BUTTON" = "Hide Shorts dislike button";
+"HIDE_SHORTS_DISLIKE_BUTTON" = "低評価ボタンを非表示";
 "HIDE_SHORTS_DISLIKE_BUTTON_DESC" = "";
 
-"HIDE_SHORTS_COMMENT_BUTTON" = "Hide Shorts comment button";
+"HIDE_SHORTS_COMMENT_BUTTON" = "コメントボタンを非表示";
 "HIDE_SHORTS_COMMENT_BUTTON_DESC" = "";
 
-"HIDE_SHORTS_REMIX_BUTTON" = "Hide Shorts remix button";
+"HIDE_SHORTS_REMIX_BUTTON" = "リミックスボタンを非表示";
 "HIDE_SHORTS_REMIX_BUTTON_DESC" = "";
 
-"HIDE_SHORTS_SHARE_BUTTON" = "Hide Shorts share button";
+"HIDE_SHORTS_SHARE_BUTTON" = "共有ボタンを非表示";
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
-"HIDE_SUPER_THANKS" = "Hide 'Buy Super Thanks' banner";
-"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in Shorts.";
+"HIDE_SUPER_THANKS" = "'スーパーサンクス'バナーを非表示";
+"HIDE_SUPER_THANKS_DESC" = "'スーパーサンクスを購入'バナーを非表示にします";
 
-"HIDE_SUBSCRIPTIONS" = "Hide Subscriptions button";
-"HIDE_SUBSCRIPTIONS_DESC" = "Hide Subscriptions button which shows up when paused.";
+"HIDE_SUBSCRIPTIONS" = "登録チャンネルタブを非表示";
+"HIDE_SUBSCRIPTIONS_DESC" = "一時停止すると表示される登録チャンネルタブを非表示します";
 
 // App settings overlay options
-"APP_SETTINGS_OVERLAY_OPTIONS" = "App Settings Overlay Options";
+"APP_SETTINGS_OVERLAY_OPTIONS" = "アプリの設定オーバーレイオプション";
 
-"HIDE_ACCOUNT_SECTION" = "Hide `Account` Section";
-"HIDE_DONTEATMYCONTENT_SECTION" = "Hide `DontEatMyContent` Section";
-"HIDE_YOUTUBERETURNDISLIKE_SECTION" = "Hide `YouTube Return Dislike` Section";
-"HIDE_YOUPIP_SECTION" = "Hide `YouPiP` Section";
-"HIDE_AUTOPLAY_SECTION" = "Hide `Autoplay` Section";
-"HIDE_TRYNEWFEATURES_SECTION" = "Hide `Try New Features` Section";
-"HIDE_VIDEOQUALITYPREFERENCES_SECTION" = "Hide `Video quality preferences` Section";
-"HIDE_NOTIFICATIONS_SECTION" = "Hide `Notifications` Section";
-"HIDE_MANAGEALLHISTORY_SECTION" = "Hide `Manage all history` Section";
-"HIDE_YOURDATAINYOUTUBE_SECTION" = "Hide `Your data in YouTube` Section";
-"HIDE_PRIVACY_SECTION" = "Hide `Privacy` Section";
-"HIDE_LIVECHAT_SECTION" = "Hide `Live Chat` Section";
+"HIDE_ACCOUNT_SECTION" = "`Account`セクションを非表示にする";
+"HIDE_DONTEATMYCONTENT_SECTION" = "`DontEatMyContent`セクションを非表示にします";
+"HIDE_YOUTUBERETURNDISLIKE_SECTION" = "`Return YouTube Dislike`セクションを非表示にします";
+"HIDE_YOUPIP_SECTION" = "`YouPiP`セクションを非表示にする";
+"HIDE_AUTOPLAY_SECTION" = "`自動再生`セクションを非表示にする";
+"HIDE_TRYNEWFEATURES_SECTION" = "`新機能を試す`セクションを非表示にします";
+"HIDE_VIDEOQUALITYPREFERENCES_SECTION" = "`動画の画質設定`セクションを非表示にする";
+"HIDE_NOTIFICATIONS_SECTION" = "`通知`セクションを非表示にします";
+"HIDE_MANAGEALLHISTORY_SECTION" = "`すべての履歴を管理`セクションを非表示にする";
+"HIDE_YOURDATAINYOUTUBE_SECTION" = "`Your data in YouTube`セクションを非表示にします";
+"HIDE_PRIVACY_SECTION" = "`プライバシー`セクションを非表示にする";
+"HIDE_LIVECHAT_SECTION" = "`チャット`セクションを非表示にします";
 
 // Theme
 "THEME_OPTIONS" = "テーマオプション";
@@ -156,9 +156,9 @@
 
 "LOW_CONTRAST_MODE" = "低コントラストモード";
 "LOW_CONTRAST_MODE_DESC" = "このオプションは、テキストとボタンのコントラストを以前のYouTubeインターフェイスのように低くします。アプリの再起動が必要です";
-"LCM_SELECTOR" = "Low contrast mode selection";
-"DEFAULT_LOWCONTRASTMODE" = "(Default) LowContrastMode";
-"CUSTOM_LOWCONTRASTMODE" = "(Custom Color) LowContrastMode";
+"LCM_SELECTOR" = "低コントラストモードの選択";
+"DEFAULT_LOWCONTRASTMODE" = "低コントラストモード(Default)";
+"CUSTOM_LOWCONTRASTMODE" = "低コントラストモード(Custom Color)";
 
 // Miscellaneous
 "MISCELLANEOUS" = "その他";
@@ -166,8 +166,8 @@
 "ENABLE_YT_STARTUP_ANIMATION" = "YouTube起動時のアニメーションを有効化";
 "ENABLE_YT_STARTUP_ANIMATION_DESC" = "";
 
-"HIDE_YOUTUBE_LOGO" = "Hide YouTube Logo";
-"HIDE_YOUTUBE_LOGO_DESC" = "this will Hide the YouTube Logo on the top left of the Interface. App restart is required.";
+"HIDE_YOUTUBE_LOGO" = "YouTubeロゴを非表示";
+"HIDE_YOUTUBE_LOGO_DESC" = "インターフェイスの左上にあるYouTubeロゴが非表示になります。アプリの再起動が必要です";
 
 "DISABLE_HINTS" = "ヒントを無効化";
 "DISABLE_HINTS_DESC" = "アプリが再インストールされた際に表示される機能の使い方を非表示にします";
@@ -176,19 +176,19 @@
 "HIDE_MODERN_INTERFACE_DESC" = "YouTubeによって追加されたモダンな要素を隠すにはこれを有効にしてください。アンビエントモード,丸みを帯びたデザインなどを削除します。\nアプリの再起動が必要です";
 
 "STICK_NAVIGATION_BAR" = "ナビゲーションバーを固定する";
-"STICK_NAVIGATION_BAR_DESC" = "スクロール時にナビゲーションバーをアプリ上に固定するために有効にします。";
+"STICK_NAVIGATION_BAR_DESC" = "スクロール時にナビゲーションバーをアプリ上に固定するために有効にします";
 
 "HIDE_CHIP_BAR" = "トップバーを非表示";
 "HIDE_CHIP_BAR_DESC" = "ホーム(トレンド,音楽,ゲーム など)と\n登録チャンネル(すべてのビデオ,視聴を続ける など)リボンのトップバーを非表示にします。\nアプリの再起動が必要です";
 
-"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
-"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "Hide the premium \"Play next in queue\" option in video context menus";
+"HIDE_PLAY_NEXT_IN_QUEUE" = "\"次に再生\"を削除";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "コンテキストメニューの\"キューの最初に追加\"オプションを非表示にします";
 
-"HIDE_COMMENT_SECTION" = "Hide the comment section under player";
-"HIDE_COMMENT_SECTION_DESC" = "Hides the Comment Section below the player.";
+"HIDE_COMMENT_SECTION" = "プレーヤーの下にあるコメントセクションを非表示";
+"HIDE_COMMENT_SECTION_DESC" = "プレーヤーの下にあるコメントセクションを非表示にします";
 
-"HIDE_VIDEOS" = "Hide all videos under player";
-"HIDE_VIDEOS_DESC" = "Hides all videos below the player.";
+"HIDE_VIDEOS" = "プレーヤーの下にあるすべての動画を非表示";
+"HIDE_VIDEOS_DESC" = "プレーヤーの下にあるすべての動画を非表示にします";
 
 "IPAD_LAYOUT" = "iPadレイアウト";
 "IPAD_LAYOUT_DESC" = "現在使用しているiPhone/iPodでiPadのレイアウトを使用したい場合にのみ使用します。\nアプリの再起動が必要です";
@@ -230,4 +230,4 @@
 "VERSION_SPOOFER_TITLE" = "偽装バージョンの選択";
 
 // Other Localization
-"APP_RESTART_DESC" = "App restart is required.";
+"APP_RESTART_DESC" = "アプリの再起動が必要です";
