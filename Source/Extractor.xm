@@ -1,4 +1,4 @@
-// Extractor.m was made by @LillieH1000 from https://www.github.com/LillieH1000/YouTube-Reborn
+// Extractor.xm was made by @LillieH1000 from https://www.github.com/LillieH1000/YouTube-Reborn
 
 #import "Extractor.h"
 
