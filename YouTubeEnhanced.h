@@ -14,6 +14,7 @@
 #import "Tweaks/YouTubeHeader/YTIGuideResponse.h"
 #import "Tweaks/YouTubeHeader/YTIGuideResponseSupportedRenderers.h"
 #import "Tweaks/YouTubeHeader/YTIPivotBarSupportedRenderers.h"
+#import "Tweaks/YouTubeHeader/YTIPivotBarItemRenderer.h"
 #import "Tweaks/YouTubeHeader/YTIPivotBarRenderer.h"
 #import "Tweaks/YouTubeHeader/YTIBrowseRequest.h"
 #import "Tweaks/YouTubeHeader/YTCommonColorPalette.h"
@@ -34,29 +35,19 @@
 #define LOC(x) [tweakBundle localizedStringForKey:x value:nil table:nil]
 #define YT_BUNDLE_ID @"com.google.ios.youtube"
 #define YT_NAME @"YouTube"
+#define DEFAULT_RATE 1.0f // YTSpeed
 
-// YTSpeed
-@interface YTVarispeedSwitchControllerOption : NSObject
-- (id)initWithTitle:(id)title rate:(float)rate;
+@interface YTSingleVideoController ()
+- (float)playbackRate;
+- (void)setPlaybackRate:(float)arg1;
 @end
 
-@interface MLHAMQueuePlayer : NSObject
-@property id playerEventCenter;
-@property id delegate;
-- (void)setRate:(float)rate;
-- (void)internalSetRate;
+@interface YTPlayerViewController ()
+- (YTSingleVideoController *)activeVideo;
 @end
 
-@interface MLPlayerStickySettings : NSObject
-- (void)setRate:(float)rate;
-@end
-
-@interface MLPlayerEventCenter : NSObject
-- (void)broadcastRateChange:(float)rate;
-@end
-
-@interface HAMPlayerInternal : NSObject
-- (void)setRate:(float)rate;
+// IAmYouTube
+@interface SSOConfiguration : NSObject
 @end
 
 // YouTubePlus
@@ -88,13 +79,44 @@
 @property (nonatomic, assign, readwrite) BOOL enableSnapToChapter;
 @end
 
+// Buttons
 @interface YTRightNavigationButtons : UIView
 @property YTQTMButton *notificationButton;
 @property YTQTMButton *sponsorBlockButton;
 @end
 
-// IAmYouTube
-@interface SSOConfiguration : NSObject
+@interface YTISlimMetadataButtonSupportedRenderers : NSObject
+- (id)slimButton_buttonRenderer;
+- (id)slimMetadataButtonRenderer;
+@end
+
+// YTSpeed
+@interface YTVarispeedSwitchControllerOption : NSObject
+- (id)initWithTitle:(id)title rate:(float)rate;
+@end
+
+@interface MLHAMQueuePlayer : NSObject
+@property id playerEventCenter;
+@property id delegate;
+- (void)setRate:(float)rate;
+- (void)internalSetRate;
+@end
+
+@interface MLPlayerStickySettings : NSObject
+- (void)setRate:(float)rate;
+@end
+
+@interface MLPlayerEventCenter : NSObject
+- (void)broadcastRateChange:(float)rate;
+@end
+
+@interface HAMPlayerInternal : NSObject
+- (void)setRate:(float)rate;
+@end
+
+@interface YTLocalPlaybackController : NSObject
+- (void)setPlaybackRate:(float)rate;
+- (id)activeVideo;
 @end
 
 // BigYTMiniPlayer
