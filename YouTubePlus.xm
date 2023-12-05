@@ -164,7 +164,7 @@ static BOOL IsEnabled(NSString *key) {
 - (BOOL)commercePlatformClientEnablePopupWebviewInWebviewDialogController { return NO;} // Disable In-App Website in the App
 %end
 
-// Hide Upgrade Dialog
+// Hide Upgrade Dialog - @arichorn
 %hook YTGlobalConfig
 - (BOOL)shouldBlockUpgradeDialog { return YES;}
 - (BOOL)shouldForceUpgrade { return NO;}
@@ -282,7 +282,7 @@ BOOL isAd(id node) {
 + (NSString *)appVersion { return @"17.38.10"; }
 %end
 
-%hook YTSettingsCell // made by Dayanch96
+%hook YTSettingsCell // Remove v17.38.10 Version Number - @Dayanch96
 - (void)setDetailText:(id)arg1 {
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *appVersion = infoDictionary[@"CFBundleShortVersionString"];
@@ -301,12 +301,25 @@ BOOL isAd(id node) {
 
 %hook YTSegmentableInlinePlayerBarView // Gray Buffer Progress - YTNoModernUI
 - (void)setBufferedProgressBarColor:(id)arg1 {
-     [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.90];
+     [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.50];
 }
 %end
 
-%hook YTQTMButton
+%hook YTQTMButton // Disable Modern/Rounded Buttons - YTNoModernUI
 + (BOOL)buttonModernizationEnabled { return NO; }
+%end
+
+%hook YTBubbleHintView // Disable Modern/Rounded Hints - YTNoModernUI
++ (BOOL)modernRoundedCornersEnabled { return NO; }
+%end
+
+%hook YTCinematicContainerView // Disable Ambient Mode in Fullscreen Container - YTNoModernUI
+- (BOOL)watchFullScreenCinematicSupported {
+    return NO;
+}
+- (BOOL)watchFullScreenCinematicEnabled {
+    return NO;
+}
 %end
 
 %hook YTColdConfig
@@ -318,17 +331,18 @@ BOOL isAd(id node) {
 - (BOOL)modernizeElementsTextColor { return NO; }
 - (BOOL)modernizeElementsBgColor { return NO; }
 - (BOOL)modernizeCollectionLockups { return NO; }
-- (BOOL)uiSystemsClientGlobalConfigEnableEpUxUpdates { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigEnableModernButtonsForNative { return NO; }
-- (BOOL)uiSystemsClientGlobalConfigEnableModernTabsForNative { return NO; }
+- (BOOL)uiSystemsClientGlobalConfigIosEnableModernTabsForNative { return NO; }
+- (BOOL)uiSystemsClientGlobalConfigIosEnableEpUxUpdates { return NO; }
+- (BOOL)uiSystemsClientGlobalConfigIosEnableSheetsUxUpdates { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigIosEnableSnackbarModernization { return NO; }
 // Disable Rounded Content - YTNoModernUI
 - (BOOL)iosDownloadsPageRoundedThumbs { return NO; }
 - (BOOL)iosRoundedSearchBarSuggestZeroPadding { return NO; }
+- (BOOL)uiSystemsClientGlobalConfigEnableRoundedDialogForNative { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigEnableRoundedThumbnailsForNative { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigEnableRoundedThumbnailsForNativeLongTail { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigEnableRoundedTimestampForNative { return NO; }
-- (BOOL)uiSystemsClientGlobalConfigEnableRoundedDialogForNative { return NO; }
 // Disable Darker Dark Mode - YTNoModernUI
 - (BOOL)enableDarkerDarkMode { return NO; }
 - (BOOL)useDarkerPaletteBgColorForElements { return NO; }
@@ -340,12 +354,15 @@ BOOL isAd(id node) {
 - (BOOL)enableCinematicContainer { return NO; }
 - (BOOL)enableCinematicContainerOnClient { return NO; }
 - (BOOL)enableCinematicContainerOnTablet { return NO; }
+- (BOOL)enableTurnOffCinematicForFrameWithBlackBars { return YES; }
+- (BOOL)enableTurnOffCinematicForVideoWithBlackBars { return YES; }
 - (BOOL)iosCinematicContainerClientImprovement { return NO; }
 - (BOOL)iosEnableGhostCardInlineTitleCinematicContainerFix { return NO; }
 - (BOOL)iosUseFineScrubberMosaicStoreForCinematic { return NO; }
 - (BOOL)mainAppCoreClientEnableClientCinematicPlaylists { return NO; }
 - (BOOL)mainAppCoreClientEnableClientCinematicPlaylistsPostMvp { return NO; }
 - (BOOL)mainAppCoreClientEnableClientCinematicTablets { return NO; }
+- (BOOL)iosEnableFullScreenAmbientMode { return NO; }
 // 16.42.3 Styled YouTube Channel Page Interface - YTNoModernUI
 - (BOOL)channelsClientConfigIosChannelNavRestructuring { return NO; }
 - (BOOL)channelsClientConfigIosMultiPartChannelHeader { return NO; }
@@ -354,10 +371,14 @@ BOOL isAd(id node) {
 - (BOOL)supportElementsInMenuItemSupportedRenderers { return NO; }
 - (BOOL)isNewRadioButtonStyleEnabled { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigEnableButtonSentenceCasingForNative { return NO; }
+- (BOOL)mainAppCoreClientEnableClientYouTab { return NO; }
+- (BOOL)mainAppCoreClientEnableClientYouLatency { return NO; }
+- (BOOL)mainAppCoreClientEnableClientYouTabTablet { return NO; }
 %end
 
 %hook YTHotConfig
-- (BOOL)liveChatIosUseModernRotationDetectiom { return NO; } // Disable Modern Content (YTHotConfig)
+- (BOOL)liveChatIosUseModernRotationDetection { return NO; } // Disable Modern Content (YTHotConfig)
+- (BOOL)liveChatModernizeClassicElementizeTextMessage { return NO; }
 - (BOOL)iosShouldRepositionChannelBar { return NO; }
 - (BOOL)enableElementRendererOnChannelCreation { return NO; }
 %end
@@ -596,29 +617,22 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 %end
 
-// Hide YouTube annoying shorts banner in Home page & search page? - @MiRO92 - YTNoShorts: https://github.com/MiRO92/YTNoShorts
+// Hide YouTube annoying shorts cells around the app? - @PoomSmart & @iCrazeiOS - YTUnShorts: https://github.com/PoomSmart/YTUnShorts/
 %group gHideShorts
-%hook YTAsyncCollectionView
-- (id)cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = %orig;
-
-    if ([cell isKindOfClass:objc_lookUpClass("_ASCollectionViewCell")]) {
-        _ASCollectionViewCell *cell = %orig;
-        if ([cell respondsToSelector:@selector(node)]) {
-            NSString *idToRemove = [[cell node] accessibilityIdentifier];
-            if ([idToRemove isEqualToString:@"eml.shorts-grid"] || [idToRemove isEqualToString:@"eml.shorts-shelf"]) {
-                [self removeCellsAtIndexPath:indexPath];
+%hook YTIElementRenderer
+- (NSData *)elementData {
+    NSString *description = [self description];
+    if (IsEnabled(@"hideShortsCells_enabled")) {
+        if ([description containsString:@"shorts_shelf.eml"] ||
+            [description containsString:@"#shorts"] ||
+            [description containsString:@"shorts_video_cell.eml"] ||
+            [description containsString:@"6Shorts"]) {
+            if (![description containsString:@"history*"]) {
+                return nil;
             }
         }
-    } else if ([cell isKindOfClass:objc_lookUpClass("YTReelShelfCell")]) {
-        [self removeCellsAtIndexPath:indexPath];
     }
     return %orig;
-}
-
-%new
-- (void)removeCellsAtIndexPath:(NSIndexPath *)indexPath {
-    [self deleteItemsAtIndexPaths:@[indexPath]];
 }
 %end
 %end
@@ -626,27 +640,46 @@ static void replaceTab(YTIGuideResponse *response) {
 // YTSpeed - https://github.com/Lyvendia/YTSpeed
 %group gYTSpeed
 %hook YTVarispeedSwitchController
-- (id)init {
-	id result = %orig;
+- (instancetype)init {
+	if ((self = %orig)) {
+        const int size = 17;
+        float speeds[] = {0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5, 2.75, 3.0, 3.25, 3.5, 3.75, 4.0, 5.0};
+        id varispeedSwitchControllerOptions[size];
 
-	const int size = 17;
-	float speeds[] = {0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5, 2.75, 3.0, 3.25, 3.5, 3.75, 4.0, 5.0};
-	id varispeedSwitchControllerOptions[size];
+        for (int i = 0; i < size; ++i) {
+            id title = [NSString stringWithFormat:@"%.2fx", speeds[i]];
+            varispeedSwitchControllerOptions[i] = [[%c(YTVarispeedSwitchControllerOption) alloc] initWithTitle:title rate:speeds[i]];
+        }
 
-	for (int i = 0; i < size; ++i) {
-		id title = [NSString stringWithFormat:@"%.2fx", speeds[i]];
-		varispeedSwitchControllerOptions[i] = [[%c(YTVarispeedSwitchControllerOption) alloc] initWithTitle:title rate:speeds[i]];
-	}
+        NSUInteger count = sizeof(varispeedSwitchControllerOptions) / sizeof(id);
+        NSArray *varispeedArray = [NSArray arrayWithObjects:varispeedSwitchControllerOptions count:count];
+        MSHookIvar<NSArray *>(self, "_options") = varispeedArray;
+    }
+	return self;
+}
+%end
 
-	NSUInteger count = sizeof(varispeedSwitchControllerOptions) / sizeof(id);
-	NSArray *varispeedArray = [NSArray arrayWithObjects:varispeedSwitchControllerOptions count:count];
-	MSHookIvar<NSArray *>(self, "_options") = varispeedArray;
-
-	return result;
+%hook YTLocalPlaybackController
+- (instancetype)initWithParentResponder:(id)parentResponder overlayFactory:(id)overlayFactory playerView:(id)playerView playbackControllerDelegate:(id)playbackControllerDelegate viewportSizeProvider:(id)viewportSizeProvider shouldDelayAdsPlaybackCoordinatorCreation:(BOOL)shouldDelayAdsPlaybackCoordinatorCreation {
+    float savedRate = [[NSUserDefaults standardUserDefaults] floatForKey:@"YoutubeSpeed_PlaybackRate"];
+    if ((self = %orig)) {
+        MSHookIvar<float>(self, "_restoredPlaybackRate") = savedRate == 0 ? DEFAULT_RATE : savedRate;
+    }
+    return self;
+}
+- (void)setPlaybackRate:(float)rate {
+    %orig;
+	[[NSUserDefaults standardUserDefaults] setFloat: rate forKey:@"YoutubeSpeed_PlaybackRate"];
 }
 %end
 
 %hook MLHAMQueuePlayer
+- (instancetype)initWithStickySettings:(id)stickySettings playerViewProvider:(id)playerViewProvider {
+	id result = %orig;
+	float savedRate = [[NSUserDefaults standardUserDefaults] floatForKey:@"YoutubeSpeed_PlaybackRate"];
+	[self setRate: savedRate == 0 ? DEFAULT_RATE : savedRate];
+	return result;
+}
 - (void)setRate:(float)rate {
     MSHookIvar<float>(self, "_rate") = rate;
 	MSHookIvar<float>(self, "_preferredRate") = rate;
@@ -661,13 +694,6 @@ static void replaceTab(YTIGuideResponse *response) {
 
 	YTSingleVideoController *singleVideoController = self.delegate;
 	[singleVideoController playerRateDidChange: rate];
-}
-%end 
-
-%hook YTPlayerViewController
-%property (nonatomic, assign) float playbackRate;
-- (void)singleVideo:(id)video playbackRateDidChange:(float)rate {
-	%orig;
 }
 %end
 %end
@@ -869,7 +895,23 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 %end
 
-// Hide Watermark
+// Hide Channel Watermark
+%hook YTMainAppVideoPlayerOverlayView
+- (BOOL)isWatermarkEnabled {
+    if (IsEnabled(@"hideChannelWatermark_enabled")) {
+        return NO;
+    }
+    return %orig;
+}
+- (void)setFeaturedChannelWatermarkImageView:(id)imageView {
+    if (IsEnabled(@"hideChannelWatermark_enabled")) {
+        return;
+    }
+    %orig(imageView);
+}
+%end
+
+// Hide Channel Watermark (for Backwards Compatibility)
 %hook YTAnnotationsViewController
 - (void)loadFeaturedChannelWatermark {
     if (IsEnabled(@"hideChannelWatermark_enabled")) {}
@@ -1137,12 +1179,18 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 %end
 
-// Hide Subscriptions Notification Badge - @arichorn
+// Hide Indicators - @Dayanch96 & @arichorn
 %group gHideSubscriptionsRedPivotBadge
 %hook YTPivotBarIndicatorView
 - (void)didMoveToWindow {
     [self setHidden:YES];
     %orig();
+}
+- (void)setFillColor:(id)arg1 {
+    %orig([UIColor clearColor]);
+}
+- (void)setBorderColor:(id)arg1 {
+    %orig([UIColor clearColor]);
 }
 %end
 %end
