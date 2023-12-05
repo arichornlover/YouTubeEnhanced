@@ -1,4 +1,4 @@
-#import "Header.h"
+#import "YouTubeEnhanced.h"
 
 NSBundle *YouTubePlusBundle() {
     static NSBundle *bundle = nil;
